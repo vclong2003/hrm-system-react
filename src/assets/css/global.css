@@ -5,36 +5,54 @@
   outline: none;
   margin: 0;
   padding: 0;
+  font-family: var(--f-regular);
 }
+
+/*Orders
+1. Positioning: position, top, right, bottom, left, z-index
+2. Box Model: display, box-sizing, width, height, margin, padding
+3. Typography: font, font-family, font-size, font-weight, line-height, text-align, text-transform, text-decoration, letter-spacing, color
+4. Visual Formatting: background, border, border-radius, box-shadow, opacity
+5. Layout: flex, grid, float, clear
+7. Miscellaneous: cursor, outline, overflow, visibility, transition, animation
+*/
 
 :root {
   /* Colors ------------------------ */
-  --c-high-contrast-text: #00254d;
-  --c-low-contrast-text: #006adc;
-  --c-hovered-solid-bg: #0081f1;
-  --c-solid-bg: #0091ff;
-  --c-hovered-element-border: #5eb0ef;
-  --c-element-border-and-focus-rings: #96c7f2;
-  --c-subtle-borders-separators: #b7d9f8;
-  --c-active-element-bg: #cee7fe;
-  --c-hovered-element-bg: #e1f0ff;
-  --c-element-bg: #edf6ff;
-  --c-subtle-bg: #f5faff;
-  --c-app-bg: #fbfdff;
+  --c-white: #ffffff;
+  --c-black: #000000;
+  --c-blue-12: #00254d;
+  --c-blue-11: #006adc;
+  --c-blue-10: #0081f1;
+  --c-blue-9: #0091ff;
+  --c-blue-8: #5eb0ef;
+  --c-blue-7: #96c7f2;
+  --c-blue-6: #b7d9f8;
+  --c-blue-5: #cee7fe;
+  --c-blue-4: #e1f0ff;
+  --c-blue-3: #edf6ff;
+  --c-blue-2: #f5faff;
+  --c-blue-1: #fbfdff;
+  --c-green: #30a46c;
+  --c-red: #e5484d;
+  --c-pink: #f3aeaf;
+  --c-pink-1: #ffefef;
+  --c-gray: #687076;
+  --c-gray-1: #f1f3f5;
 
   /* Font -------------------------- */
   --f-regular: "SofiaProRegular", "Public Sans", sans-serif;
   --f-medium: "SofiaProMedium", "Public Sans", sans-serif;
 
   /* Font sizes -------------------- */
-  --fs-sm: 0.875rem;
-  --fs-md: 1rem;
-  --fs-lg: 1.125rem;
-  --fs-xl: 1.25rem;
-  --fs-2xl: 1.5rem;
-  --fs-3xl: 2.25rem;
-  --fs-4xl: 3rem;
-  --fs-5xl: 4rem;
+  --fs-body2: 0.875rem;
+  --fs-body1: 1rem;
+  --fs-h1: 1.125rem;
+  --fs-h2: 1.25rem;
+  --fs-h3: 1.5rem;
+  --fs-h4: 2.25rem;
+  --fs-h5: 3rem;
+  --fs-h6: 4rem;
 
   /* Font weights ------------------- */
   --fw-regular: 400;
@@ -53,8 +71,8 @@
   --s-10: 2.5rem;
 
   /* Border radius ------------------ */
-  --br-md: 6px;
-  --br-lg: 8rem;
+  --br-1: 6px;
+  --br-2: 8px;
 
   /* Shadows ------------------------ */
   --box-shadow: rgb(236, 238, 240) 0px 5px 15px;
