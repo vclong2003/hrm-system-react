@@ -22,24 +22,23 @@
   --c-subtle-bg: #f5faff;
   --c-app-bg: #fbfdff;
 
+  /* Font -------------------------- */
+  --f-regular: "SofiaProRegular", "Public Sans", sans-serif;
+  --f-medium: "SofiaProMedium", "Public Sans", sans-serif;
+
   /* Font sizes -------------------- */
-  --fs-xs: 0.75rem;
   --fs-sm: 0.875rem;
   --fs-md: 1rem;
   --fs-lg: 1.125rem;
   --fs-xl: 1.25rem;
   --fs-2xl: 1.5rem;
-  --fs-3xl: 1.875rem;
-  --fs-4xl: 2.25rem;
-  --fs-5xl: 3rem;
-  --fs-6xl: 4rem;
+  --fs-3xl: 2.25rem;
+  --fs-4xl: 3rem;
+  --fs-5xl: 4rem;
 
   /* Font weights ------------------- */
-  --fw-light: 300;
-  --fw-normal: 400;
+  --fw-regular: 400;
   --fw-medium: 500;
-  --fw-semibold: 600;
-  --fw-bold: 700;
 
   /* Spacing ------------------------ */
   --s-1: 0.25rem;
@@ -52,20 +51,11 @@
   --s-8: 2rem;
   --s-9: 2.25rem;
   --s-10: 2.5rem;
-  --s-11: 2.75rem;
-  --s-12: 3rem;
-  --s-13: 3.25rem;
-  --s-14: 3.5rem;
-  --s-15: 3.75rem;
-  --s-16: 4rem;
-  --s-17: 4.25rem;
-  --s-18: 4.5rem;
-  --s-19: 4.75rem;
-  --s-20: 5rem;
 
   /* Border radius ------------------ */
   --br-md: 6px;
   --br-lg: 8rem;
 
   /* Shadows ------------------------ */
+  --box-shadow: rgb(236, 238, 240) 0px 5px 15px;
 }

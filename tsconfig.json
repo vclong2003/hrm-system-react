@@ -23,7 +23,21 @@
     /* Path */
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["./src/assets/*"]
+      "@assets/*": ["./src/assets/*"],
+      "@components/*": ["./src/components/*"],
+      "@configs/*": ["./src/configs/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@libs/*": ["./src/libs/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@providers/*": ["./src/providers/*"],
+      "@routes/*": ["./src/routes/*"],
+      "@services/*": ["./src/services/*"],
+      "@store/*": ["./src/store/*"],
+      "types/*": ["./src/types/*"],
+      "@utils/*": ["./src/utils/*"],
+      "@validations/*": ["./src/validations/*"],
+      "@variables/*": ["./src/variables/*"]
     }
   },
   "include": ["src"],
