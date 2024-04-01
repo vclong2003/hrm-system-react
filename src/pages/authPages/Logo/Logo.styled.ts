@@ -7,7 +7,7 @@ export const Logo = styled.div`
 `;
 
 export const LogoImage = styled.img`
-  width: 64px;
+  width: 100px;
   height: auto;
 `;
 

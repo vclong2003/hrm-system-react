@@ -13,6 +13,7 @@ export const LoginForm = styled.div`
 
 export const LoginButton = styled(Button)`
   width: 100%;
+  margin: var(--s-4) 0;
 `;
 
 export const ForgotPasswordContainer = styled.div`
