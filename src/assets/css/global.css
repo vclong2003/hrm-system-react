@@ -8,15 +8,6 @@
   font-family: var(--f-regular);
 }
 
-/*Orders
-1. Positioning: position, top, right, bottom, left, z-index
-2. Box Model: display, box-sizing, width, height, margin, padding
-3. Typography: font, font-family, font-size, font-weight, line-height, text-align, text-transform, text-decoration, letter-spacing, color
-4. Visual Formatting: background, border, border-radius, box-shadow, opacity
-5. Layout: flex, grid, float, clear
-7. Miscellaneous: cursor, outline, overflow, visibility, transition, animation
-*/
-
 :root {
   /* Colors ------------------------ */
   --c-white: #ffffff;
@@ -34,6 +25,7 @@
   --c-blue-2: #f5faff;
   --c-blue-1: #fbfdff;
   --c-green: #30a46c;
+  --c-green-1: #e9f9ee;
   --c-red: #e5484d;
   --c-pink: #f3aeaf;
   --c-pink-1: #ffefef;
@@ -73,6 +65,7 @@
   /* Border radius ------------------ */
   --br-1: 6px;
   --br-2: 8px;
+  --br-3: 12px;
 
   /* Shadows ------------------------ */
   --box-shadow: rgb(236, 238, 240) 0px 5px 15px;

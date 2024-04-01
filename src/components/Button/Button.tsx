@@ -1,7 +1,7 @@
 import * as S from "./Button.styled";
 
 interface IButtonProps
-  extends React.HTMLAttributes<HTMLButtonElement>,
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     JSX.IntrinsicAttributes {
   children: React.ReactNode;
 }
