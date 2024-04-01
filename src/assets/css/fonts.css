@@ -1,0 +1,11 @@
+@font-face {
+  font-family: "SofiaProRegular";
+  src: local("SofiaProRegular"),
+    url("../fonts/SVN-SofiaPro-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "SofiaProMedium";
+  src: local("SofiaProRegular"),
+    url("../fonts/SVN-SofiaPro-Medium.woff2") format("woff2");
+}

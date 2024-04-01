@@ -1,0 +1,71 @@
+/* Global styles -------------------- */
+* {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Colors ------------------------ */
+  --c-high-contrast-text: #00254d;
+  --c-low-contrast-text: #006adc;
+  --c-hovered-solid-bg: #0081f1;
+  --c-solid-bg: #0091ff;
+  --c-hovered-element-border: #5eb0ef;
+  --c-element-border-and-focus-rings: #96c7f2;
+  --c-subtle-borders-separators: #b7d9f8;
+  --c-active-element-bg: #cee7fe;
+  --c-hovered-element-bg: #e1f0ff;
+  --c-element-bg: #edf6ff;
+  --c-subtle-bg: #f5faff;
+  --c-app-bg: #fbfdff;
+
+  /* Font sizes -------------------- */
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-2xl: 1.5rem;
+  --fs-3xl: 1.875rem;
+  --fs-4xl: 2.25rem;
+  --fs-5xl: 3rem;
+  --fs-6xl: 4rem;
+
+  /* Font weights ------------------- */
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Spacing ------------------------ */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.25rem;
+  --s-6: 1.5rem;
+  --s-7: 1.75rem;
+  --s-8: 2rem;
+  --s-9: 2.25rem;
+  --s-10: 2.5rem;
+  --s-11: 2.75rem;
+  --s-12: 3rem;
+  --s-13: 3.25rem;
+  --s-14: 3.5rem;
+  --s-15: 3.75rem;
+  --s-16: 4rem;
+  --s-17: 4.25rem;
+  --s-18: 4.5rem;
+  --s-19: 4.75rem;
+  --s-20: 5rem;
+
+  /* Border radius ------------------ */
+  --br-md: 6px;
+  --br-lg: 8rem;
+
+  /* Shadows ------------------------ */
+}
