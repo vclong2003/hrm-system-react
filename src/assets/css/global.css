@@ -1,66 +1,71 @@
 /* Global styles -------------------- */
 * {
+  font-family: var(--ff-regular);
   box-sizing: border-box;
   border: none;
   outline: none;
   margin: 0;
   padding: 0;
-  font-family: var(--f-regular);
 }
 
 :root {
   /* Colors ------------------------ */
-  --c-white: #ffffff;
   --c-black: #000000;
-  --c-blue-12: #00254d;
-  --c-blue-11: #006adc;
-  --c-blue-10: #0081f1;
-  --c-blue-9: #0091ff;
-  --c-blue-8: #5eb0ef;
-  --c-blue-7: #96c7f2;
-  --c-blue-6: #b7d9f8;
-  --c-blue-5: #cee7fe;
-  --c-blue-4: #e1f0ff;
-  --c-blue-3: #edf6ff;
-  --c-blue-2: #f5faff;
-  --c-blue-1: #fbfdff;
+
+  --c-white: #ffffff;
+  --c-white-1: #f1f3f5;
+  --c-white-2: #f8f9fa;
+  --c-white-3: #eceef0;
+
+  --c-gray: #687076;
+  --c-gray-1: #d7dbdf;
+  --c-gray-2: #c1c8cd;
+
+  --c-red: #e5484d;
+  --c-pink: #ffefef;
+  --c-pink-1: #f3aeaf;
+
   --c-green: #30a46c;
   --c-green-1: #e9f9ee;
-  --c-red: #e5484d;
-  --c-pink: #f3aeaf;
-  --c-pink-1: #ffefef;
-  --c-gray: #687076;
-  --c-gray-1: #f1f3f5;
+  --c-green-2: #93c926;
+  --c-green-3: #5d770d;
+  --c-green-4: #eefadc;
+  --c-green-5: #30a46c;
+  --c-green-6: #69d9c1;
+  --c-green-7: #def5f1;
+
+  --c-blue: #0091ff;
+  --c-blue-1: #edf6ff;
 
   /* Font -------------------------- */
-  --f-regular: "SofiaProRegular", "Public Sans", sans-serif;
-  --f-medium: "SofiaProMedium", "Public Sans", sans-serif;
+  --ff-regular: "SofiaProRegular", "Public Sans", sans-serif;
+  --ff-medium: "SofiaProMedium", "Public Sans", sans-serif;
 
   /* Font sizes -------------------- */
-  --fs-body2: 0.875rem;
-  --fs-body1: 1rem;
-  --fs-h1: 1.125rem;
-  --fs-h2: 1.25rem;
-  --fs-h3: 1.5rem;
-  --fs-h4: 2.25rem;
-  --fs-h5: 3rem;
-  --fs-h6: 4rem;
+  --fs-body2: 0.875rem; /* 14px */
+  --fs-body1: 1rem; /* 16px */
+  --fs-h1: 1.125rem; /* 18px */
+  --fs-h2: 1.25rem; /* 20px */
+  --fs-h3: 1.5rem; /* 24px */
+  --fs-h4: 2.25rem; /* 36px */
+  --fs-h5: 3rem; /* 48px */
+  --fs-h6: 4rem; /* 64px */
 
   /* Font weights ------------------- */
   --fw-regular: 400;
   --fw-medium: 500;
 
   /* Spacing ------------------------ */
-  --s-1: 0.25rem;
-  --s-2: 0.5rem;
-  --s-3: 0.75rem;
-  --s-4: 1rem;
-  --s-5: 1.25rem;
-  --s-6: 1.5rem;
-  --s-7: 1.75rem;
-  --s-8: 2rem;
-  --s-9: 2.25rem;
-  --s-10: 2.5rem;
+  --s-1: 0.25rem; /* 4px */
+  --s-2: 0.5rem; /* 8px */
+  --s-3: 0.75rem; /* 12px */
+  --s-4: 1rem; /* 16px */
+  --s-5: 1.25rem; /* 20px */
+  --s-6: 1.5rem; /* 24px */
+  --s-7: 1.75rem; /* 28px */
+  --s-8: 2rem; /* 32px */
+  --s-9: 2.25rem; /* 36px */
+  --s-10: 2.5rem; /* 40px */
 
   /* Border radius ------------------ */
   --br-1: 6px;
