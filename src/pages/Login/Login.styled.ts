@@ -42,7 +42,6 @@ export const FormSelect = styled(Select)`
 export const LoginButton = styled(Button)`
   width: 100%;
   margin: var(--s-3) 0;
-  color: var(--c-white);
 `;
 
 export const ForgotPasswordContainer = styled.div`

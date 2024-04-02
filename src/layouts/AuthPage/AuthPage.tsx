@@ -8,7 +8,7 @@ export default function AuthPage() {
     <S.AuthPage>
       <S.Logo>
         <S.LogoImage src={LogoImage} />
-        <S.LogoText variant="h4">HR Management System</S.LogoText>
+        <S.LogoText variant="h3">HR Management System</S.LogoText>
       </S.Logo>
       {/* Content goes here */}
       <Outlet />
