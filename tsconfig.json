@@ -28,6 +28,7 @@
       "@configs/*": ["./src/configs/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@interfaces/*": ["./src/interfaces/*"],
+      "@layouts/*": ["./src/layouts/*"],
       "@libs/*": ["./src/libs/*"],
       "@pages/*": ["./src/pages/*"],
       "@providers/*": ["./src/providers/*"],
