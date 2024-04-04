@@ -35,6 +35,11 @@ export const H5 = styled.h5<ITypoProps>`
   font-size: var(--fs-h5);
 `;
 
+export const H6 = styled.h6<ITypoProps>`
+  ${BaseStyle}
+  font-size: var(--fs-h6);
+`;
+
 export const Body1 = styled.p<ITypoProps>`
   ${BaseStyle}
   font-size: var(--fs-body1);

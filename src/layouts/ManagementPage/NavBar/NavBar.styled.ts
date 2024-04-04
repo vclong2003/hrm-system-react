@@ -4,13 +4,23 @@ import styled from "styled-components";
 export const NavBar = styled.nav`
   display: flex;
   flex-direction: row;
+  align-items: center;
   box-shadow: var(--box-shadow);
 `;
 
 export const Logo = styled.div``;
 
-export const LogoImage = styled.img``;
+export const LogoImage = styled.img`
+  width: 36px;
+  height: 36px;
+`;
 
 export const LogoText = styled(Typo)``;
 
-export const Devider = styled.div``;
+export const Divider = styled.div`
+  flex: 1;
+`;
+
+export const LanguageSwitcher = styled.div``;
+
+export const UserMenu = styled.div``;
