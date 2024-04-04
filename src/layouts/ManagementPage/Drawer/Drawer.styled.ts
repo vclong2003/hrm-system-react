@@ -9,4 +9,5 @@ export const Drawer = styled.nav`
 
 export const Title = styled(Typo)`
   color: var(--c-blue-2);
+  margin-bottom: var(--s-3);
 `;
