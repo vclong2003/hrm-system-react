@@ -2,6 +2,7 @@ import Typo from "@components/Typo/Typo";
 import styled from "styled-components";
 
 export const NavBar = styled.nav`
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
