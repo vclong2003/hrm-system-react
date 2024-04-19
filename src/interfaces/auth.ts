@@ -1,3 +1,30 @@
+import { ICompany } from "./company";
+import { IDepartment } from "./department";
+import { IEmployee } from "./employee";
+
+export interface IProfile {
+  id: number;
+  username: string;
+  email: string;
+  role_id: number;
+  level: number;
+  employee_id: number;
+  department_id: number;
+  company_id: number;
+  register_token: string;
+  email_verified_at: string;
+  is_active: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string;
+  department_name: string;
+  position_name: string;
+  department: string;
+  employee: IEmployee | null;
+  company: ICompany;
+  departments: IDepartment[];
+}
+
 // Login ---------------------------------------------
 export interface ILoginPayload {
   username: string;

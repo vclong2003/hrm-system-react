@@ -1,3 +1,66 @@
+export interface IEmployee {
+  id: number;
+  old_staff_id: string;
+  staff_id: string;
+  name: string;
+  gender: number;
+  department_id: number;
+  company_id: number;
+  marriage_id: number;
+  position_id: number;
+  type: string;
+  mother_name: string;
+  dob: string;
+  pob: string;
+  ktp_no: string;
+  nc_id: string;
+  home_address_1: string;
+  home_address_2: string;
+  mobile_no: string;
+  tel_no: string;
+  bank_account_no: string;
+  bank_name: string;
+  card_number: string;
+  family_card_number: string;
+  health_insurance_no: string;
+  safety_insurance_no: string;
+  education_background: string;
+  emergency_contract: string;
+  emergency_relationship: string;
+  emergency_name: string;
+  basic_salary: string;
+  audit_salary: string;
+  health_insurance: string;
+  safety_insurance: string;
+  safety_insurance_audit: string;
+  health_insurance_audit: string;
+  meal_allowance: string;
+  entitle_ot: number;
+  meal_allowance_paid: number;
+  operational_allowance_paid: number;
+  attendance_allowance_paid: number;
+  minimum_salary_used: string;
+  hidden_on_payroll: string;
+  contract_start_date: string;
+  resign_reason: string;
+  resign_effective_date: string;
+  resign_date: string;
+  shift: string;
+  grade_id: number;
+  remark: string;
+  created_at: string;
+  updated_at: string;
+  deleted_at: string;
+  department_name: string;
+  marriage_code: string;
+  position_name: string;
+  grade_prefix: string;
+  grade_name: string;
+  contracts: string[];
+  users: string[];
+  allowed_to_view_salary: number;
+}
+
 // Get Employees ---------------------------------------------
 export interface IGetEmployeesPayload {
   search: string;
