@@ -2,7 +2,7 @@ import { ICompany } from "./company";
 import { IDepartment } from "./department";
 import { IEmployee } from "./employee";
 
-export interface IProfile {
+export interface IUser {
   id: number;
   username: string;
   email: string;
