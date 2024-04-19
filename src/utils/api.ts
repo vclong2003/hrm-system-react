@@ -1,7 +1,7 @@
 /**
  * Builds a query string from the given parameters object.
  * @param params - The parameters object containing key-value pairs.
- * @returns The encoded query string.
+ * @returns The encoded query string, include "?"
  */
 export const buildQueryString = (params: {
   [key: string]: unknown;

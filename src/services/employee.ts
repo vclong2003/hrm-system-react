@@ -30,7 +30,7 @@ const createEmployee = async (
   payload: ICreateEmployeePayload
 ): Promise<IEmployee> => {
   const query = buildQueryString({ ...payload });
-  return await axiosInstance.post(`/employee?${query}`);
+  return await axiosInstance.post(`/employee${query}`);
 };
 
 // Update Employee ----------------------------------------------
@@ -38,7 +38,7 @@ const updateEmployee = async (
   payload: IUpdateEmployeePayload
 ): Promise<IEmployee> => {
   const query = buildQueryString({ ...payload });
-  return await axiosInstance.put(`/employee/${payload.id}?${query}`);
+  return await axiosInstance.put(`/employee/${payload.id}${query}`);
 };
 
 // Delete Multiple Employee -------------------------------------
@@ -46,7 +46,7 @@ const deleteMultipleEmployees = async (
   payload: IDeleteMultipleEmployeesPayload
 ): Promise<void> => {
   const query = buildQueryString({ ...payload });
-  return await axiosInstance.delete(`/employee?${query}`);
+  return await axiosInstance.delete(`/employee${query}`);
 };
 
 export default {
