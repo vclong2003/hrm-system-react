@@ -1,152 +1,10 @@
 import { EGender, EShift, EType } from "src/enums/employee";
 import { IDepartment } from "./department";
+import { IPosition } from "./position";
+import { IBenefit } from "./benefit";
+import { IEmployeeDocument } from "./employeeDocument";
 
 export interface IEmployee {
-  /*
-  {
-    "id": 202,
-    "old_staff_id": "AA01453",
-    "staff_id": "AA01453",
-    "name": "ADEN SUPRIANI",
-    "gender": 0,
-    "department_id": 7,
-    "company_id": 1,
-    "marriage_id": 1,
-    "position_id": 60,
-    "type": "2",
-    "mother_name": "SUHARTI",
-    "dob": "2001-09-17",
-    "pob": "BOGOR",
-    "ktp_no": "3201325610010002",
-    "nc_id": null,
-    "home_address_1": "KP. LULUT, RT 005 / RW 004 DESA LULUT",
-    "home_address_2": "KEC. KLAPANUNGGAL, BOGOR JAWA BARAT",
-    "mobile_no": "089611350896",
-    "tel_no": null,
-    "bank_account_no": "195810017580",
-    "bank_name": "OCBC NISP",
-    "card_number": null,
-    "family_card_number": null,
-    "health_insurance_no": "0000385051511",
-    "safety_insurance_no": "21005016239",
-    "education_background": null,
-    "emergency_contract": null,
-    "emergency_relationship": null,
-    "emergency_name": null,
-    "basic_salary": 0,
-    "audit_salary": 0,
-    "health_insurance": 0,
-    "safety_insurance": 0,
-    "safety_insurance_audit": null,
-    "health_insurance_audit": null,
-    "meal_allowance": 0,
-    "entitle_ot": 1,
-    "meal_allowance_paid": 1,
-    "operational_allowance_paid": 1,
-    "attendance_allowance_paid": 0,
-    "minimum_salary_used": "1",
-    "hidden_on_payroll": "",
-    "contract_start_date": "2020-12-06",
-    "resign_reason": null,
-    "resign_effective_date": null,
-    "resign_date": null,
-    "shift": "1",
-    "grade_id": 8,
-    "remark": null,
-    "created_at": "2023-05-31T15:46:06.000000Z",
-    "updated_at": "2024-04-19T03:38:46.000000Z",
-    "deleted_at": null,
-    "department": {
-      "id": 7,
-      "name": "LINE 02",
-      "code": "LINE 02",
-      "company_id": 1,
-      "created_at": "2023-05-31T15:23:16.000000Z",
-      "updated_at": "2023-05-31T15:23:16.000000Z"
-    },
-    "position": {
-      "id": 60,
-      "name": "COMPLIANCE MANAGE",
-      "code": "COMPLIANCE MANAGE",
-      "company_id": 1,
-      "created_at": "2023-05-31T15:25:03.000000Z",
-      "updated_at": "2023-05-31T15:25:03.000000Z"
-    },
-    "company": {
-      "id": 1,
-      "name": "SBM",
-      "full_name": "PT.SENTRAL BRA MAKMUR",
-      "address": "Jl. Mercedes Benz RT.01 RW.02 Desa. Cicadas, Kec. Gunung Putri, Kab. Bogor, Jawa Barat 16964, Indonesia",
-      "place": "Bogor",
-      "tel_no": "+62-21 8677808/21",
-      "mail": "hrm_admin@sentralbra.com",
-      "prefix": "S",
-      "created_at": "2023-05-31T22:18:15.000000Z",
-      "updated_at": "2024-01-04T23:22:47.000000Z"
-    },
-    "marriage": {
-      "id": 1,
-      "name": "TK",
-      "code": "TK",
-      "company_id": 1,
-      "created_at": "2023-05-31T15:23:06.000000Z",
-      "updated_at": "2023-05-31T15:23:06.000000Z"
-    },
-    "manager": null,
-    "benefits": [],
-    "documents": [
-      {
-        "id": 1,
-        "employee_id": 202,
-        "document": "https://api-training.hrm.div4.pgtest.co/storage/documents/202/Gojo-Satoru_1713453302.jpg",
-        "created_at": "2024-04-18T22:15:02.000000Z",
-        "updated_at": null
-      },
-      {
-        "id": 2,
-        "employee_id": 202,
-        "document": "https://api-training.hrm.div4.pgtest.co/storage/documents/202/Gojo-Satoru_1713496531.jpg",
-        "created_at": "2024-04-19T10:15:31.000000Z",
-        "updated_at": null
-      },
-      {
-        "id": 6,
-        "employee_id": 202,
-        "document": "https://api-training.hrm.div4.pgtest.co/storage/documents/202/boycry_1713497677.jpg",
-        "created_at": "2024-04-19T10:34:37.000000Z",
-        "updated_at": null
-      }
-    ],
-    "contracts": [],
-    "employee_contracts": [],
-    "salaries_history": [
-      {
-        "id": 162,
-        "employee_id": 202,
-        "manager_id": 42,
-        "company_id": 1,
-        "basic_salary": 0,
-        "basic_salary_new": 0,
-        "audit_salary": 0,
-        "audit_salary_new": 0,
-        "safety_insurance": 0,
-        "safety_insurance_new": 0,
-        "health_insurance": 0,
-        "health_insurance_new": 0,
-        "meal_allowance": 0,
-        "meal_allowance_new": 0,
-        "created_at": "2024-04-15T06:24:23.000000Z",
-        "updated_at": "2024-04-15T06:24:23.000000Z",
-        "safety_insurance_audit": null,
-        "safety_insurance_audit_new": null,
-        "health_insurance_audit": null,
-        "health_insurance_audit_new": null
-      }
-    ],
-    "annual_leaves": [],
-    "allowed_to_view_salary": 0
-  }
-  */
   id: number;
   old_staff_id: string;
   staff_id: string;
@@ -200,6 +58,10 @@ export interface IEmployee {
   updated_at: string;
   deleted_at: string;
   department: IDepartment;
+  position: IPosition;
+  manager: IEmployee;
+  benefits: IBenefit[];
+  documents: IEmployeeDocument[];
 }
 
 // Get Employees ---------------------------------------------
@@ -250,6 +112,7 @@ export interface ICreateEmployeePayload {
   remark: string;
   benefits: number[];
   account_user_id: number; // User Id
+  hidden_on_payroll: string; // 0 or 1
 }
 
 // Get employee By Id ----------------------------------------
@@ -300,23 +163,4 @@ export interface IUpdateEmployeePayload {
 // Delete Multiple Employees ----------------------------------
 export interface IDeleteMultipleEmployeesPayload {
   record_ids: number[];
-}
-
-// Get available employyee list for assign --------------------
-export interface IGetAvailableForAssignPayload {
-  id: string; // User id
-  search: string;
-  department_id: number;
-  position_id: number;
-}
-
-// Get employee list for account user --------------------------
-export interface IGetEmployeeListForAccountUserPayload {
-  department_id: string;
-  search: string;
-}
-
-// Get default salary -----------------------------------------
-export interface IGetDefaultSalaryPayload {
-  id: number; // Employee id
 }

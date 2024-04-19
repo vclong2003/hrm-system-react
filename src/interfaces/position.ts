@@ -6,3 +6,10 @@ export interface IPosition {
   created_at: string;
   updated_at: string;
 }
+
+// Get Posotion List -------------------------
+export interface IGetPositionListPayload {
+  search: string;
+  page: number;
+  company_id: number;
+}
