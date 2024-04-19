@@ -31,6 +31,9 @@ export interface ILoginPayload {
   password: string;
   company_id: number;
 }
+export interface ILoginResponse {
+  token: string;
+}
 
 // Forgot Password -----------------------------------
 export interface IForgotPasswordPayload {

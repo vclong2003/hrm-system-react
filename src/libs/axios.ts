@@ -22,3 +22,15 @@ axiosInstance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
+axiosInstance.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    const message =
+      error?.response?.data?.message ||
+      error?.message ||
+      "Something went wrong!";
+
+    Promise.reject(message);
+  }
+);
