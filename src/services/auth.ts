@@ -7,10 +7,12 @@ import {
   IResetPasswordPayload,
 } from "@interfaces/auth";
 import { axiosInstance } from "@libs/axios";
+import { buildQueryString } from "@utils/api";
 
 // Login -----------------------------------------------------------------
 const login = async (payload: ILoginPayload): Promise<ILoginResponse> => {
-  return axiosInstance.post("/login", payload);
+  const query = buildQueryString({ ...payload });
+  return axiosInstance.post(`/login?${query}`);
 };
 
 // Logout ----------------------------------------------------------------
@@ -20,24 +22,28 @@ const logout = async () => {
 
 // Forgot Password -------------------------------------------------------
 const forgotPassword = async (payload: IForgotPasswordPayload) => {
-  return axiosInstance.post("/forgot-password", payload);
+  const query = buildQueryString({ ...payload });
+  return axiosInstance.post(`/forgot-password?${query}`);
 };
 
 // Reset Password --------------------------------------------------------
 const resetPassword = async (payload: IResetPasswordPayload) => {
-  return axiosInstance.post("/reset-password", payload);
+  const query = buildQueryString({ ...payload });
+  return axiosInstance.post(`/reset-password?${query}`);
 };
 
 // Change Password -------------------------------------------------------
 const changePassword = async (payload: IChangePasswordPayload) => {
-  return axiosInstance.post("/change-password", payload);
+  const query = buildQueryString({ ...payload });
+  return axiosInstance.post(`/change-password?${query}`);
 };
 
 // Change Password First Login -------------------------------------------
 const changePasswordFirstLogin = async (
   payload: IChangePasswordFirstLoginPayload
 ) => {
-  return axiosInstance.post("/change-password-first-login", payload);
+  const query = buildQueryString({ ...payload });
+  return axiosInstance.post(`/change-password-first-login?${query}`);
 };
 
 export default {
