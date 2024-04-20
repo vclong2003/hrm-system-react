@@ -9,7 +9,12 @@ export const NavBar = styled.nav`
   box-shadow: var(--box-shadow);
 `;
 
-export const Logo = styled.div``;
+export const Logo = styled.div`
+  margin: var(--s-3) var(--s-8);
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-3);
+`;
 
 export const LogoImage = styled.img`
   width: 36px;
@@ -18,9 +23,7 @@ export const LogoImage = styled.img`
 
 export const LogoText = styled(Typo)``;
 
-export const Divider = styled.div`
-  flex: 1;
-`;
+export const Divider = styled.div``;
 
 export const LanguageSwitcher = styled.div``;
 

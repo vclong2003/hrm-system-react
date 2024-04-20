@@ -8,7 +8,9 @@ export default function ManagementPage() {
     <S.ManagementPage>
       <NavBar />
       <Drawer />
-      <Outlet />
+      <S.ContentContainer>
+        <Outlet />
+      </S.ContentContainer>
     </S.ManagementPage>
   );
 }
