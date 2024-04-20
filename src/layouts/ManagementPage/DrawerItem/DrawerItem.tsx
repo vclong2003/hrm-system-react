@@ -1,10 +1,10 @@
 import * as S from "./DrawerItem.styled";
 
-import TestIcon from "@assets/icons/employee_manage.png";
+import TestIcon from "@assets/icons/employee_management.png";
 
 export default function DrawerItem() {
   return (
-    <S.DrawerItem>
+    <S.DrawerItem $isActive>
       <S.Icon>
         <S.IconImage src={TestIcon} alt="icon" />
       </S.Icon>

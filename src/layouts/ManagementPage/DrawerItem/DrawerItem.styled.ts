@@ -8,6 +8,7 @@ interface IDrawerItemProps {
 export const DrawerItem = styled.div<IDrawerItemProps>`
   display: flex;
   font-display: row;
+  align-items: center;
   padding: var(--s-2) var(--s-3);
   margin-bottom: var(--s-3);
   border-radius: var(--br-2);
@@ -17,14 +18,15 @@ export const DrawerItem = styled.div<IDrawerItemProps>`
 
 export const Icon = styled.div`
   background-color: var(--c-white);
-  padding: var(--s-2);
   margin-right: var(--s-3);
+  display: flex;
+  padding: var(--s-2);
   border-radius: 50%;
 `;
 
 export const IconImage = styled.img`
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 `;
 
 export const Text = styled(Typo)`
