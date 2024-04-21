@@ -6,4 +6,6 @@ export const Button = styled.button`
   background-color: var(--c-blue);
   color: var(--c-white);
   border-radius: var(--br-1);
+  font-size: var(--fs-body1);
+  cursor: pointer;
 `;
