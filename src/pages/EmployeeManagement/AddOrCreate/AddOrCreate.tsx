@@ -5,6 +5,9 @@ import * as S from "./AddOrCreate.styled";
 import { useState } from "react";
 import PageHeading from "../PageHeading/PageHeading";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
+import Typo from "@components/Typo/Typo";
+import EmployeeInformation from "../Forms/EmployeeInformation/EmployeeInfomation";
+import { Formik } from "formik";
 
 enum EPAGE {
   EMPLOYEE_INFORMATION = "employee-information",
@@ -63,7 +66,17 @@ export default function AddOrCreate() {
           currentKey={page}
         />
       </S.MenuContainer>
-      {/* Form --------------------------------------------------- */}
+      {/* Form Container ----------------------------------------- */}
+      <S.FormContainer>
+        <S.FormHeading>
+          <Typo variant="h4">Personal Information</Typo>
+        </S.FormHeading>
+        <S.Divider />
+        {/* Form --------------------- */}
+        <Formik>
+          <EmployeeInformation />
+        </Formik>
+      </S.FormContainer>
     </S.AddOrCreate>
   );
 }
