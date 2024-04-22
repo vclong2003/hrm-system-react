@@ -6,7 +6,7 @@ export const PageHeading = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--s-4);
+  margin: var(--s-3) 0;
 `;
 
 export const SearchInput = styled(Input)`

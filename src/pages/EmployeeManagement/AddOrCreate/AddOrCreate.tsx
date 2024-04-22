@@ -42,6 +42,7 @@ export default function AddOrCreate() {
 
   return (
     <S.AddOrCreate>
+      {/* Breadcrumb --------------------------------------------- */}
       <Breadcrumb
         items={[
           { title: "General" },
@@ -52,7 +53,9 @@ export default function AddOrCreate() {
           { title: "Add Employee" },
         ]}
       />
+      {/* Page Heading ------------------------------------------- */}
       <PageHeading variant="add" />
+      {/* Menu --------------------------------------------------- */}
       <S.MenuContainer>
         <HorizontalMenu
           items={MENU_LIST}
@@ -60,6 +63,7 @@ export default function AddOrCreate() {
           currentKey={page}
         />
       </S.MenuContainer>
+      {/* Form --------------------------------------------------- */}
     </S.AddOrCreate>
   );
 }
