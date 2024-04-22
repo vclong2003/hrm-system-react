@@ -9,6 +9,10 @@ import { Table, TableColumnsType } from "antd";
 import { IEmployeeListItem } from "@interfaces/employee.ts";
 import { EGender } from "src/enums/employee.ts";
 
+import Add from "@assets/icons/add.png";
+import Trash from "@assets/icons/trash.png";
+import Pagination from "@components/Pagination/Pagination.tsx";
+
 interface IData extends IEmployeeListItem {
   key: Key;
   gender_name: string;
@@ -63,8 +67,6 @@ export default function EmployeeList() {
     dispatch(getEmployeeList({ page: 1 }));
   }, [dispatch]);
 
-  console.log(selectedRowKeys);
-
   return (
     <S.EmployeeList>
       <Breadcrumb
@@ -77,6 +79,17 @@ export default function EmployeeList() {
       />
       <PageHeading variant="search" />
       <S.TableContainer>
+        <S.BtnsContainer>
+          <S.AddBtn>
+            <S.BtnIcon src={Add} />
+            Add
+          </S.AddBtn>
+          <S.DeleteBtn>
+            <S.BtnIcon src={Trash} />
+            Delete
+          </S.DeleteBtn>
+        </S.BtnsContainer>
+        <S.Divider />
         <Table
           pagination={false}
           rowSelection={{
@@ -86,6 +99,8 @@ export default function EmployeeList() {
           columns={columns}
           dataSource={santinizeData(employees)}
         />
+        <S.Divider />
+        <Pagination />
       </S.TableContainer>
     </S.EmployeeList>
   );

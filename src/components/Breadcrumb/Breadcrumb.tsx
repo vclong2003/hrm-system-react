@@ -11,7 +11,6 @@ interface IBreadcrumbProps {
 
 export default function Breadcrumb({ items }: IBreadcrumbProps) {
   const itemRender = (route: BreadcrumbItemType) => {
-    console.log(route);
     if (route.path) return <Link to={`/${route.path}`}>{route.title}</Link>;
     return <span>{route.title}</span>;
   };
