@@ -8,7 +8,7 @@ interface IDatePickerProps extends DatePickerProps {
 export default function DatePicker({ name }: IDatePickerProps) {
   const { setFieldValue } = useFormikContext();
 
-  const onChange = (_: unknown, dateString: string) => {
+  const onChange = (_: unknown, dateString: string | string[]) => {
     setFieldValue(name, dateString);
   };
 
