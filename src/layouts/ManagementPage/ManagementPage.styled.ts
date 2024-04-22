@@ -10,4 +10,5 @@ export const ManagementPage = styled.div`
 export const ContentContainer = styled.div`
   flex: 1;
   min-height: 100vh;
+  padding: var(--s-6) var(--s-8);
 `;
