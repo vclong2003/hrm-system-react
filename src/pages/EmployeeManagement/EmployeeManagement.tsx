@@ -4,6 +4,7 @@ import HorizontalMenu, {
   IMenuItem,
 } from "@components/HorizontalMenu/HorizontalMenu";
 import { useState } from "react";
+import PageHeading from "./PageHeading/PageHeading";
 
 enum EPAGE {
   EMPLOYEE_INFORMATION = "employee-information",
@@ -51,6 +52,7 @@ export default function EmployeeManagement() {
           },
         ]}
       />
+      <PageHeading variant="search" />
       <S.MenuContainer>
         <HorizontalMenu
           items={MENU_LIST}
@@ -58,6 +60,7 @@ export default function EmployeeManagement() {
           currentKey={page}
         />
       </S.MenuContainer>
+      {/* Form container --------------- */}
     </S.EmployeeManagement>
   );
 }
