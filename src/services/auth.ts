@@ -5,6 +5,7 @@ import {
   ILoginPayload,
   ILoginResponse,
   IResetPasswordPayload,
+  IUser,
 } from "@interfaces/auth";
 import { axiosInstance } from "@libs/axios";
 import { buildQueryString } from "@utils/api";
@@ -12,7 +13,8 @@ import { buildQueryString } from "@utils/api";
 // Login -----------------------------------------------------------------
 const login = async (payload: ILoginPayload): Promise<ILoginResponse> => {
   const query = buildQueryString({ ...payload });
-  return axiosInstance.post(`/login?${query}`);
+  console.log(query);
+  return axiosInstance.post(`/login${query}`);
 };
 
 // Logout ----------------------------------------------------------------
@@ -46,6 +48,11 @@ const changePasswordFirstLogin = async (
   return axiosInstance.post(`/change-password-first-login?${query}`);
 };
 
+// Get current user -------------------------------------------------------
+const getCurrentUser = async (): Promise<IUser> => {
+  return axiosInstance.get("/user/detail");
+};
+
 export default {
   login,
   logout,
@@ -53,4 +60,5 @@ export default {
   resetPassword,
   changePassword,
   changePasswordFirstLogin,
+  getCurrentUser,
 };

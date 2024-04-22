@@ -14,7 +14,7 @@ export default function EmployeeList() {
         ]}
       />
       <PageHeading variant="search" />
-      {/* Table container --------------- */}
+      <S.TableContainer></S.TableContainer>
     </S.EmployeeList>
   );
 }

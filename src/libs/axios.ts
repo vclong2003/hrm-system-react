@@ -7,7 +7,6 @@ export const axiosInstance = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
 });
 
 axiosInstance.interceptors.request.use(
@@ -24,7 +23,7 @@ axiosInstance.interceptors.request.use(
 );
 
 axiosInstance.interceptors.response.use(
-  (response) => response.data,
+  (response) => response.data?.data,
   (error) => {
     const message =
       error?.response?.data?.message ||

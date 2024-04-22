@@ -25,6 +25,10 @@ export interface IUser {
   departments: IDepartment[];
 }
 
+export interface IAuthState {
+  user: IUser | null;
+}
+
 // Login ---------------------------------------------
 export interface ILoginPayload {
   username: string;

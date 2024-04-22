@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import { authRoutes } from "./authRoutes";
 import { managementRoutes } from "./managementRoutes";
 import ManagementPage from "@layouts/ManagementPage/ManagementPage";
+import RouteGuard from "./RouteGuard";
 
 export default function AppRoutes() {
   return (
@@ -12,10 +13,16 @@ export default function AppRoutes() {
           <Route key={route.path} path={route.path} element={route.component} />
         ))}
       </Route>
-      <Route element={<ManagementPage />}>
-        {managementRoutes.map((route) => (
-          <Route key={route.path} path={route.path} element={route.component} />
-        ))}
+      <Route element={<RouteGuard />}>
+        <Route element={<ManagementPage />}>
+          {managementRoutes.map((route) => (
+            <Route
+              key={route.path}
+              path={route.path}
+              element={route.component}
+            />
+          ))}
+        </Route>
       </Route>
     </Routes>
   );
