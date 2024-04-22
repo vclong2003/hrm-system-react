@@ -3,7 +3,7 @@ import EmployeeManagement from "@pages/EmployeeManagement/EmployeeManagement";
 
 export const managementRoutes: IRoute[] = [
   {
-    path: "/",
+    path: "employee/*",
     component: <EmployeeManagement />,
   },
 ];
