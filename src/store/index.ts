@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authState from "./auth";
+import employeeState from "./employee";
 
 const store = configureStore({
   reducer: {
     [authState.name]: authState.reducer,
+    [employeeState.name]: employeeState.reducer,
   },
 });
 

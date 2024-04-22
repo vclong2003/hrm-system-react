@@ -3,19 +3,19 @@ import {
   IDeleteMultipleEmployeesPayload,
   IEmployee,
   IGetEmployeeByIdPayload,
-  IGetEmployeesPayload,
-  IGetEmplyeesResponse,
+  IGetEmployeeListPayload,
+  IGetEmployeeListResponse,
   IUpdateEmployeePayload,
 } from "@interfaces/employee";
 import { axiosInstance } from "@libs/axios";
 import { buildQueryString } from "@utils/api";
 
 // Get Employees ------------------------------------------------
-const getEmployee = async (
-  payload: IGetEmployeesPayload
-): Promise<IGetEmplyeesResponse> => {
+const getEmployeeList = async (
+  payload: IGetEmployeeListPayload
+): Promise<IGetEmployeeListResponse> => {
   const query = buildQueryString({ ...payload });
-  return await axiosInstance.get(`/employee?${query}`);
+  return await axiosInstance.get(`/employee${query}`);
 };
 
 // Get Employee By Id -------------------------------------------
@@ -50,7 +50,7 @@ const deleteMultipleEmployees = async (
 };
 
 export default {
-  getEmployee,
+  getEmployeeList,
   getEmployeeById,
   createEmployee,
   updateEmployee,

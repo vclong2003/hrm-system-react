@@ -3,6 +3,7 @@ import { IDepartment } from "./department";
 import { IPosition } from "./position";
 import { IBenefit } from "./benefit";
 import { IEmployeeDocument } from "./employeeDocument";
+import { IMarriage } from "./marriage";
 
 export interface IEmployee {
   id: number;
@@ -60,19 +61,84 @@ export interface IEmployee {
   department: IDepartment;
   position: IPosition;
   manager: IEmployee;
+  marriage: IMarriage;
   benefits: IBenefit[];
   documents: IEmployeeDocument[];
 }
 
-// Get Employees ---------------------------------------------
-export interface IGetEmployeesPayload {
-  search: string;
-  page: number;
+export interface IEmployeeListItem {
+  allowed_to_view_salary: number;
+  attendance_allowance_paid: string;
+  audit_salary: string;
+  bank_account_no: string;
+  bank_name: string;
+  basic_salary: number;
+  card_number: string;
+  company_id: number;
+  contract_start_date: string;
+  department_id: number;
+  department_name: string;
+  dob: string;
+  education_background: string;
+  emergency_contract: string;
+  emergency_name: string;
+  emergency_relationship: string;
+  entitle_ot: string;
+  family_card_number: string;
+  gender: number;
+  grade_id: number;
+  grade_name: string;
+  grade_prefix: string;
+  health_insurance: string;
+  health_insurance_audit: string;
+  health_insurance_no: string;
+  hidden_on_payroll: string;
+  home_address_1: string;
+  home_address_2: string;
+  id: number;
+  ktp_no: string;
+  marriage_code: string;
+  marriage_id: number;
+  meal_allowance: string;
+  meal_allowance_paid: string;
+  minimum_salary_used: string;
+  mobile_no: string;
+  mother_name: string;
+  name: string;
+  nc_id: string;
+  old_staff_id: string;
+  operational_allowance_paid: string;
+  pob: string;
+  position_id: number;
+  position_name: string;
+  remark: string;
+  resign_date: string;
+  resign_effective_date: string;
+  resign_reason: string;
+  safety_insurance: string;
+  safety_insurance_audit: string;
+  safety_insurance_no: string;
+  shift: string;
+  staff_id: string;
+  tel_no: string;
+  type: string;
+  updated_at: string;
 }
-export interface IGetEmplyeesResponse {
+
+export interface IEmployeeState {
+  employees: IEmployeeListItem[];
+  last_page: number;
+}
+
+// Get Employees ---------------------------------------------
+export interface IGetEmployeeListPayload {
+  search?: string;
+  page?: number;
+}
+export interface IGetEmployeeListResponse {
   current_page: number;
-  last_page: string;
-  data: IEmployee[];
+  last_page: number;
+  data: IEmployeeListItem[];
 }
 
 // Create Employee -------------------------------------------
