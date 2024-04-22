@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Select = styled(BaseSelect)`
   width: 100%;
+  height: 40px;
   .ant-select-selector {
     font-size: var(--fs-body1) !important;
     /* padding: var(--s-4) var(--s-2) !important; */
