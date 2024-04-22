@@ -12,6 +12,7 @@ import { EGender } from "src/enums/employee.ts";
 import Add from "@assets/icons/add.png";
 import Trash from "@assets/icons/trash.png";
 import Pagination from "@components/Pagination/Pagination.tsx";
+import { useNavigate } from "react-router-dom";
 
 interface IData extends IEmployeeListItem {
   key: Key;
@@ -57,6 +58,7 @@ const santinizeData = (data: IEmployeeListItem[]): IData[] => {
 };
 
 export default function EmployeeList() {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const { employees, last_page } = useSelector(
     (state: RootState) => state.employeeState
@@ -80,7 +82,7 @@ export default function EmployeeList() {
       <PageHeading variant="search" />
       <S.TableContainer>
         <S.BtnsContainer>
-          <S.AddBtn>
+          <S.AddBtn onClick={() => navigate("add-or-create")}>
             <S.BtnIcon src={Add} />
             Add
           </S.AddBtn>
