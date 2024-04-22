@@ -6,8 +6,7 @@ import { useState } from "react";
 import PageHeading from "../PageHeading/PageHeading";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
 import Typo from "@components/Typo/Typo";
-import EmployeeInformation from "../Forms/EmployeeInformation/EmployeeInfomation";
-import { Formik } from "formik";
+import Forms from "../Forms";
 
 enum EPAGE {
   EMPLOYEE_INFORMATION = "employee-information",
@@ -73,9 +72,7 @@ export default function AddOrCreate() {
         </S.FormHeading>
         <S.Divider />
         {/* Form --------------------- */}
-        <Formik>
-          <EmployeeInformation />
-        </Formik>
+        <Forms />
       </S.FormContainer>
     </S.AddOrCreate>
   );

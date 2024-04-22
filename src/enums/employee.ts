@@ -10,6 +10,6 @@ export enum EType {
 }
 
 export enum EShift {
-  First = 1,
-  Second = 2,
+  First = "1",
+  Second = "2",
 }

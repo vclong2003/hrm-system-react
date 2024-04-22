@@ -8,7 +8,7 @@ export default function EmployeeInformation() {
   return (
     <Row>
       <Col span={12}>
-        {/* NIK ---------------------------------------------- */}
+        {/* NIK ------------------------------------------------------ */}
         <S.FormGroup>
           <S.LabelCol
             span={9}
@@ -19,7 +19,7 @@ export default function EmployeeInformation() {
             <Input disabled />
           </Col>
         </S.FormGroup>
-        {/* Name ---------------------------------------------- */}
+        {/* Name ------------------------------------------------------- */}
         <S.FormGroup>
           <S.LabelCol
             span={9}
@@ -30,7 +30,7 @@ export default function EmployeeInformation() {
             <Input name="name" />
           </Col>
         </S.FormGroup>
-        {/* Gender ---------------------------------------------- */}
+        {/* Gender ------------------------------------------------------ */}
         <S.FormGroup>
           <S.LabelCol
             span={9}
@@ -41,7 +41,7 @@ export default function EmployeeInformation() {
             <Select name="gender"></Select>
           </Col>
         </S.FormGroup>
-        {/* Mother Name ---------------------------------------------- */}
+        {/* Mother Name ------------------------------------------------- */}
         <S.FormGroup>
           <S.LabelCol
             span={9}
@@ -52,7 +52,7 @@ export default function EmployeeInformation() {
             <Input name="mother_name" />
           </Col>
         </S.FormGroup>
-        {/* Date of birth ---------------------------------------------- */}
+        {/* Date of birth ----------------------------------------------- */}
         <S.FormGroup>
           <S.LabelCol
             span={9}
@@ -60,7 +60,7 @@ export default function EmployeeInformation() {
             <Typo variant="body1">Date of birth :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <DatePicker name="date_of_birth" />
+            <DatePicker name="dob" />
           </Col>
         </S.FormGroup>
         {/* Place Of birth ---------------------------------------------- */}
@@ -71,7 +71,7 @@ export default function EmployeeInformation() {
             <Typo variant="body1">Place Of birth :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="place_of_birth" />
+            <Input name="pob" placeholder="-auto change to upper case-" />
           </Col>
         </S.FormGroup>
         {/* KTP No. ---------------------------------------------------- */}
