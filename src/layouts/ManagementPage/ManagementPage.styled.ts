@@ -11,4 +11,6 @@ export const ContentContainer = styled.div`
   flex: 1;
   min-height: 100vh;
   padding: var(--s-6) var(--s-8);
+  display: flex;
+  flex-direction: column;
 `;
