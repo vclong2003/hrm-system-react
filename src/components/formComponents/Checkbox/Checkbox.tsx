@@ -7,11 +7,17 @@ interface ICheckboxProps {
   children: string;
 }
 export default function Checkbox({ name, children }: ICheckboxProps) {
-  const { setFieldValue } = useFormikContext();
+  const { setFieldValue, values } = useFormikContext<{
+    [key: string]: number;
+  }>();
 
   const onChange = (e: CheckboxChangeEvent) => {
     setFieldValue(name, e.target.checked ? 1 : 0);
   };
 
-  return <S.Checkbox onChange={onChange}>{children}</S.Checkbox>;
+  return (
+    <S.Checkbox onChange={onChange} checked={values[name] === 1}>
+      {children}
+    </S.Checkbox>
+  );
 }
