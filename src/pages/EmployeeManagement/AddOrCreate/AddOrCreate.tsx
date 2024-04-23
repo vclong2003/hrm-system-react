@@ -3,23 +3,25 @@ import * as S from "./AddOrCreate.styled";
 import PageHeading from "../PageHeading/PageHeading";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
 import Typo from "@components/Typo/Typo";
-import { Form, Formik } from "formik";
+import HorizontalMenu from "@components/HorizontalMenu/HorizontalMenu";
+
 // Forms --------------------------------------------------------------------------
+import { Form, Formik } from "formik";
 import EmployeeInformation from "../Forms/EmployeeInformation/EmployeeInfomation";
 import ContractInformation from "../Forms/ContractInformation/ContractInformation";
 import EmploymentDetails from "../Forms/EmploymentDetails/EmploymentDetails";
 import SalaryAndWages from "../Forms/SalaryAndWages/SalaryAndWages";
 import Others from "../Forms/Others/Others";
 
-import { useState } from "react";
-import { employeeSchema } from "@validations/employee";
-
-import { EFORM_TAB } from "src/enums/employee-addOrCreate";
-import { FORM_TABS } from "./formTabs";
-import { initialValues } from "./formInitialValues";
-import HorizontalMenu from "@components/HorizontalMenu/HorizontalMenu";
+import { useMemo, useState } from "react";
 import useFormData from "@hooks/employeeManagement/useFormData";
 import useFormErrors from "@hooks/employeeManagement/useFormErrors";
+import { addEmployee } from "@variables/employeeManagement/breadcrumbs";
+
+import { employeeSchema } from "@validations/employee";
+import { EFORM_TAB } from "src/enums/employee-addOrCreate";
+import { FORM_TABS } from "../../../variables/employeeManagement/formTabs";
+import { initialValues } from "../../../variables/employeeManagement/formInitialValues";
 
 export default function AddOrCreate() {
   const { marriages, departments, positions, grades } = useFormData();
@@ -28,21 +30,14 @@ export default function AddOrCreate() {
     EFORM_TAB.EMPLOYEE_INFORMATION
   );
 
-  console.log(errors);
+  const isSubmitDisabled = useMemo(
+    () => Object.values(errors).some((error) => error),
+    [errors]
+  );
 
   return (
     <S.AddOrCreate>
-      {/* Breadcrumb --------------------------------------------- */}
-      <Breadcrumb
-        items={[
-          { title: "General" },
-          {
-            path: "employee",
-            title: "Employee Management",
-          },
-          { title: "Add Employee" },
-        ]}
-      />
+      <Breadcrumb items={addEmployee} />
       <Formik
         initialValues={initialValues}
         validationSchema={employeeSchema}
@@ -50,9 +45,7 @@ export default function AddOrCreate() {
           console.log(values);
         }}>
         <Form>
-          {/* Page Heading ------------------------------------------- */}
-          <PageHeading variant="add" disabled={false} />
-          {/* Menu --------------------------------------------------- */}
+          <PageHeading variant="add" disabled={isSubmitDisabled} />
           <S.MenuContainer>
             <HorizontalMenu
               items={FORM_TABS}
@@ -61,7 +54,6 @@ export default function AddOrCreate() {
               currentKey={formTab}
             />
           </S.MenuContainer>
-          {/* Form Container ----------------------------------------- */}
           <S.FormContainer>
             <S.FormHeading>
               <Typo variant="h4">
@@ -69,7 +61,6 @@ export default function AddOrCreate() {
               </Typo>
             </S.FormHeading>
             <S.Divider />
-            {/* Forms ------------------------------------------------- */}
             <EmployeeInformation
               marriages={marriages}
               show={formTab === EFORM_TAB.EMPLOYEE_INFORMATION}

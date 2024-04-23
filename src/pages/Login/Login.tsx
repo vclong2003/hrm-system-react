@@ -1,21 +1,20 @@
-import { Formik } from "formik";
 import * as S from "./Login.styled";
-import { Select as AntSelect } from "antd";
-import { useEffect, useState } from "react";
-import { ICompany } from "@interfaces/company";
-import companyService from "@services/company";
-import { ILoginPayload } from "@interfaces/auth";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@store/index";
-import { Navigate } from "react-router-dom";
-import { login } from "@store/auth";
-import { loginSchema } from "@validations/login";
 
-const initialValues: ILoginPayload = {
-  username: "",
-  password: "",
-  company_id: 0,
-};
+import { Formik } from "formik";
+import { Select as AntSelect } from "antd";
+import { Navigate } from "react-router-dom";
+
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import companyService from "@services/company";
+import { login } from "@store/auth";
+
+import { ICompany } from "@interfaces/company";
+import { ILoginPayload } from "@interfaces/auth";
+import { AppDispatch, RootState } from "@store/index";
+
+import { loginSchema } from "@validations/login";
+import { initialValues } from "@variables/login/formInitialValues";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
