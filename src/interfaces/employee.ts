@@ -146,23 +146,23 @@ export interface ICreateEmployeePayload {
   name: string;
   card_number: string;
   gender: EGender | ""; // Gender
-  mother_name: string;
+  mother_name?: string;
   dob: string;
-  pob: string; // Place of birth
+  pob?: string; // Place of birth
   ktp_no: string;
   nc_id: string; // National Card ID
-  home_address_1: string;
-  home_address_2: string;
-  mobile_no: string;
-  tel_no: string;
-  marriage_id: number; // Marriage Status
-  bank_account_no: string;
-  bank_name: string;
-  family_card_number: string;
-  safety_insurance_no: string;
-  health_insurance_no: string;
-  department_id: number;
-  position_id: number;
+  home_address_1?: string;
+  home_address_2?: string;
+  mobile_no?: string;
+  tel_no?: string;
+  marriage_id?: number; // Marriage Status
+  bank_account_no?: string;
+  bank_name?: string;
+  family_card_number?: string;
+  safety_insurance_no?: string;
+  health_insurance_no?: string;
+  department_id?: number;
+  position_id?: number;
   shift: EShift | ""; // Shift (1, 2)
   type: EType | ""; // Employee Type (0: Permanent, 1: Part-time worker, 2: Contract worker)
   entitle_ot: number; // Entitle OT (0: unchecked, 1:checked)
@@ -178,7 +178,7 @@ export interface ICreateEmployeePayload {
   grade_id: number;
   remark: string;
   benefits: number[];
-  account_user_id: number; // User Id
+  account_user_id?: number; // User Id
 }
 
 // Get employee By Id ----------------------------------------
@@ -187,44 +187,8 @@ export interface IGetEmployeeByIdPayload {
 }
 
 // Update Employee -------------------------------------------
-export interface IUpdateEmployeePayload {
+export interface IUpdateEmployeePayload extends ICreateEmployeePayload {
   id: number;
-  name: string;
-  card_number: string;
-  gender: EGender | ""; // Gender
-  mother_name: string;
-  dob: string;
-  pob: string; // Place of birth
-  ktp_no: string;
-  nc_id: string; // National Card ID
-  home_address_1: string;
-  home_address_2: string;
-  mobile_no: string;
-  tel_no: string;
-  marriage_id: number; // Marriage Status
-  bank_account_no: string;
-  bank_name: string;
-  family_card_number: string;
-  safety_insurance_no: string;
-  health_insurance_no: string;
-  department_id: number;
-  position_id: number;
-  shift: EShift | ""; // Shift (1, 2)
-  type: EType | ""; // Employee Type (0: Permanent, 1: Part-time worker, 2: Contract worker)
-  entitle_ot: number; // Entitle OT (0: unchecked, 1:checked)
-  meal_allowance_paid: number; // Meal Allowance Paid (0: unchecked, 1:checked)
-  operational_allowance_paid: number; // Operational Allowance Paid (0: unchecked, 1:checked)
-  hidden_on_payroll: number; // 0 or 1
-  attendance_allowance_paid: number; // Attendance Allowance Paid (0: unchecked, 1:checked)
-  basic_salary: number;
-  audit_salary: number;
-  safety_insurance: number; // amount
-  health_insurance: number; // amount
-  contract_start_date: string; // Contract Start Date Format: yyyy-mm-dd
-  grade_id: number;
-  remark: string;
-  benefits: number[];
-  account_user_id: number; // User Id
 }
 
 // Delete Multiple Employees ----------------------------------
