@@ -12,6 +12,7 @@ export const DrawerItem = styled.div<IDrawerItemProps>`
   padding: var(--s-2) var(--s-3);
   margin-bottom: var(--s-3);
   border-radius: var(--br-2);
+  cursor: pointer;
   background-color: ${({ $isActive }) =>
     $isActive ? "var(--c-white-1)" : "transparent"};
 `;
