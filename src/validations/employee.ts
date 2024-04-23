@@ -13,7 +13,6 @@ export const employeeSchema = Yup.object().shape({
   home_address_2: Yup.string(),
   mobile_no: Yup.string(),
   tel_no: Yup.string(),
-  marriage_id: Yup.number(),
   card_number: Yup.string(),
   bank_account_no: Yup.string(),
   bank_name: Yup.string(),
@@ -26,14 +25,7 @@ export const employeeSchema = Yup.object().shape({
   type: Yup.string().required(),
 
   // Employee Details -----------------------------------------------
-  department_id: Yup.number(),
-  position_id: Yup.number(),
   shift: Yup.string().required(),
-  entitle_ot: Yup.number().required(),
-  meal_allowance_paid: Yup.number().required(),
-  operational_allowance_paid: Yup.number().required(),
-  attendance_allowance_paid: Yup.number().required(),
-  hidden_on_payroll: Yup.number().required(),
 
   // Salary and Wages ------------------------------------------------
   basic_salary: Yup.number().required(),
@@ -42,7 +34,6 @@ export const employeeSchema = Yup.object().shape({
   health_insurance: Yup.number().required(),
 
   // Others ----------------------------------------------------------
-  grade_id: Yup.number(),
   benefits: Yup.array(),
   remark: Yup.string(),
 });
