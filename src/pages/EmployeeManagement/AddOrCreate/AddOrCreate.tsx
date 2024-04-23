@@ -56,6 +56,7 @@ export default function AddOrCreate() {
           <S.MenuContainer>
             <HorizontalMenu
               items={FORM_TABS}
+              errors={errors}
               onChange={setFormTab}
               currentKey={formTab}
             />

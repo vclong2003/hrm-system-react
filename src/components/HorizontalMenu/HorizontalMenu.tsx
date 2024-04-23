@@ -10,12 +10,14 @@ interface IHorizontalMenuProps {
   items: IMenuItem[];
   onChange: (key: string) => void;
   currentKey: string;
+  errors?: { [key: string]: boolean };
 }
 
 export default function HorizontalMenu({
   items,
   onChange,
   currentKey,
+  errors,
 }: IHorizontalMenuProps) {
   return (
     <S.HorizontalMenu>
@@ -24,6 +26,7 @@ export default function HorizontalMenu({
           key={item.key}
           label={item.label}
           isActive={item.key === currentKey}
+          isError={errors && errors[item.key]}
           onClick={() => onChange(item.key)}
         />
       ))}
