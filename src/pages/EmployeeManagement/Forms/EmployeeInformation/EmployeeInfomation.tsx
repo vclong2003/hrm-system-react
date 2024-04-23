@@ -11,10 +11,12 @@ import { useEffect } from "react";
 import { EGender } from "src/enums/employee";
 
 interface IEmployeeInformationProps {
+  nik?: string;
   marriages: IMarriage[];
   setError: (isError: boolean) => void;
 }
 export default function EmployeeInformation({
+  nik,
   marriages,
   setError,
 }: IEmployeeInformationProps) {
@@ -58,7 +60,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">NIK :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input disabled />
+            <Input disabled value={nik || "Not Generated Yet"} />
           </Col>
         </S.FormGroup>
         {/* Name ------------------------------------------------------- */}
