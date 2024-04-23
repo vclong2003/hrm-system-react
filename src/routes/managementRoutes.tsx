@@ -1,4 +1,5 @@
 import { IRoute } from "@interfaces/common";
+
 import EmployeeManagement from "@pages/EmployeeManagement/EmployeeManagement";
 import General from "@pages/General/General";
 

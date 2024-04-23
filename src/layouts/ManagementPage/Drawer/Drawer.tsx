@@ -1,5 +1,5 @@
-import DrawerItem from "../DrawerItem/DrawerItem";
 import * as S from "./Drawer.styled";
+import DrawerItem from "../DrawerItem/DrawerItem";
 
 export default function Drawer() {
   return (

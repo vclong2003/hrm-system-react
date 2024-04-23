@@ -3,7 +3,6 @@ import "@assets/css/fonts.css"; // Importing custom fonts
 import "react-toastify/dist/ReactToastify.css"; // Css for toast notification
 
 import { BrowserRouter } from "react-router-dom";
-
 import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import store from "@store/index";

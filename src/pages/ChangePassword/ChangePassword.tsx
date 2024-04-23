@@ -1,5 +1,5 @@
-import { Formik } from "formik";
 import * as S from "./ChangePassword.styled";
+import { Formik } from "formik";
 
 export default function ChangePassword() {
   return (

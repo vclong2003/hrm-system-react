@@ -1,5 +1,5 @@
-import { Formik } from "formik";
 import * as S from "./ForgotPassword.styled";
+import { Formik } from "formik";
 
 export default function ForgotPassword() {
   return (
