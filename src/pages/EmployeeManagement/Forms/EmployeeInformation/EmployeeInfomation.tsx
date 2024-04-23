@@ -3,10 +3,13 @@ import Typo from "@components/Typo/Typo";
 import { Input, Select } from "@components/formComponents";
 import DatePicker from "@components/formComponents/DatePicker/DatePicker";
 import { ICreateEmployeePayload } from "@interfaces/employee";
+import { IMarriage } from "@interfaces/marriage";
 import { Col } from "antd";
 import { Select as AntSelect } from "antd";
 import { useFormikContext } from "formik";
+import { useEffect, useState } from "react";
 import { EGender } from "src/enums/employee";
+import marriageService from "@services/marriage";
 
 interface IEmployeeInformationProps {
   show?: boolean;
@@ -15,6 +18,13 @@ export default function EmployeeInformation({
   show,
 }: IEmployeeInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
+  const [marriages, setMarriages] = useState<IMarriage[]>([]);
+
+  useEffect(() => {
+    marriageService.getMarriageList({}).then((data) => setMarriages(data));
+  }, []);
+
+  console.log(marriages);
 
   return (
     <S.EmployeeInformation $show={show}>
@@ -164,7 +174,13 @@ export default function EmployeeInformation({
             <Typo variant="body1">Marriage Status :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Select name="marriage_status"></Select>
+            <Select name="marriage_id">
+              {marriages.map((marriage) => (
+                <AntSelect.Option key={marriage.id} value={marriage.id}>
+                  {marriage.name}
+                </AntSelect.Option>
+              ))}
+            </Select>
           </Col>
         </S.FormGroup>
         {/* Bank Card NO. ---------------------------------------------- */}

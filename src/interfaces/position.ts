@@ -9,7 +9,7 @@ export interface IPosition {
 
 // Get Posotion List -------------------------
 export interface IGetPositionListPayload {
-  search: string;
-  page: number;
-  company_id: number;
+  search?: string;
+  page?: number;
+  company_id?: number;
 }

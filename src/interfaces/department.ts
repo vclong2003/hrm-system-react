@@ -9,6 +9,6 @@ export interface IDepartment {
 
 // Get department list --------------------------------
 export interface IGetDepartmentListPayload {
-  search: string;
-  page: number;
+  search?: string;
+  page?: number;
 }

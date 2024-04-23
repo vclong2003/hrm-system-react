@@ -6,6 +6,7 @@ import { ICreateEmployeePayload } from "@interfaces/employee";
 import { Select as AntdSelect } from "antd";
 import DatePicker from "@components/formComponents/DatePicker/DatePicker";
 import { Select } from "@components/formComponents";
+import { EType } from "src/enums/employee";
 
 interface IContractInformationProps {
   show?: boolean;
@@ -33,7 +34,17 @@ export default function ContractInformation({
             <Typo variant="body1">Employee Type</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Select name="type"></Select>
+            <Select name="type">
+              <AntdSelect.Option value={EType.Permanent}>
+                Permanent
+              </AntdSelect.Option>
+              <AntdSelect.Option value={EType.PartTimeWorker}>
+                Part-time worker
+              </AntdSelect.Option>
+              <AntdSelect.Option value={EType.ContractWorker}>
+                Contract worker
+              </AntdSelect.Option>
+            </Select>
           </Col>
         </S.FormGroup>
       </Col>

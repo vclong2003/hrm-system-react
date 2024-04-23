@@ -9,6 +9,6 @@ export interface IMarriage {
 
 // Get Marriage List ---------------------------------------------
 export interface IGetMarriageListPayload {
-  search: string;
-  page: number;
+  search?: string;
+  page?: number;
 }

@@ -1,17 +1,35 @@
-import { Col, Select as AntdSelect } from "antd";
 import * as S from "./EmploymentDetails.styled";
+
+import { Col, Select as AntdSelect } from "antd";
 import Typo from "@components/Typo/Typo";
 import { Select } from "@components/formComponents";
-import { EShift } from "src/enums/employee";
-import { useFormikContext } from "formik";
-import { ICreateEmployeePayload } from "@interfaces/employee";
 import Checkbox from "@components/formComponents/Checkbox/Checkbox";
+
+import { useFormikContext } from "formik";
+import { useEffect, useState } from "react";
+import departmentService from "@services/department";
+import positionService from "@services/position";
+
+import { EShift } from "src/enums/employee";
+import { ICreateEmployeePayload } from "@interfaces/employee";
+import { IDepartment } from "@interfaces/department";
+import { IPosition } from "@interfaces/position";
 
 interface IEmploymentDetailsProps {
   show?: boolean;
 }
 export default function EmploymentDetails({ show }: IEmploymentDetailsProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
+
+  const [deplartments, setDepartments] = useState<IDepartment[]>([]);
+  const [positions, setPositions] = useState<IPosition[]>([]);
+
+  useEffect(() => {
+    departmentService
+      .getDepartmentList({})
+      .then((data) => setDepartments(data));
+    positionService.getPositionList({}).then((data) => setPositions(data));
+  }, []);
 
   return (
     <S.EmploymentDetails $show={show}>
@@ -22,7 +40,13 @@ export default function EmploymentDetails({ show }: IEmploymentDetailsProps) {
             <Typo variant="body1">Department</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Select name="department_id"></Select>
+            <Select name="department_id">
+              {deplartments.map((department) => (
+                <AntdSelect.Option key={department.id} value={department.id}>
+                  {department.name}
+                </AntdSelect.Option>
+              ))}
+            </Select>
           </Col>
         </S.FormGroup>
         {/* Position ------------------------------- */}
@@ -31,7 +55,13 @@ export default function EmploymentDetails({ show }: IEmploymentDetailsProps) {
             <Typo variant="body1">Position</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Select name="position_id"></Select>
+            <Select name="position_id">
+              {positions.map((position) => (
+                <AntdSelect.Option key={position.id} value={position.id}>
+                  {position.name}
+                </AntdSelect.Option>
+              ))}
+            </Select>
           </Col>
         </S.FormGroup>
         {/* Shift ----------------------------------- */}

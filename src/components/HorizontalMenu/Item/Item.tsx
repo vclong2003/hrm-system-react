@@ -8,7 +8,7 @@ export interface IItemProps {
 
 export default function Item({ label, isActive, onClick }: IItemProps) {
   return (
-    <S.Item $isActive={isActive} onClick={onClick}>
+    <S.Item type="button" $isActive={isActive} onClick={onClick}>
       {label}
     </S.Item>
   );
