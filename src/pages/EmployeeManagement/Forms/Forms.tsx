@@ -4,6 +4,8 @@ import { ICreateEmployeePayload } from "@interfaces/employee";
 import { employeeSchema } from "@validations/employee";
 import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 import ContractInformation from "./ContractInformation/ContractInformation";
+import EmploymentDetails from "./EmploymentDetails/EmploymentDetails";
+import SalaryAndWages from "./SalaryAndWages/SalaryAndWages";
 
 const initialValues: ICreateEmployeePayload = {
   // Employee Information -------------------------------------------
@@ -66,6 +68,8 @@ export default function Forms({ tab, onError, onSave }: IFormsProps) {
       <Form>
         <EmployeeInformation show={tab === EFORM_TAB.EMPLOYEE_INFORMATION} />
         <ContractInformation show={tab === EFORM_TAB.CONTRACT_INFORMATION} />
+        <EmploymentDetails show={tab === EFORM_TAB.EMPLOYMENT_DETAILS} />
+        <SalaryAndWages show={tab === EFORM_TAB.SALARY_AND_WAGES} />
       </Form>
     </Formik>
   );

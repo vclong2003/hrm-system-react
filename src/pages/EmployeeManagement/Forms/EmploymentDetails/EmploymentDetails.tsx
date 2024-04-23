@@ -5,6 +5,7 @@ import { Select } from "@components/formComponents";
 import { EShift } from "src/enums/employee";
 import { useFormikContext } from "formik";
 import { ICreateEmployeePayload } from "@interfaces/employee";
+import Checkbox from "@components/formComponents/Checkbox/Checkbox";
 
 interface IEmploymentDetailsProps {
   show?: boolean;
@@ -44,6 +45,26 @@ export default function EmploymentDetails({ show }: IEmploymentDetailsProps) {
               <AntdSelect.Option value={EShift.Second}>2</AntdSelect.Option>
             </Select>
           </Col>
+        </S.FormGroup>
+        {/* Checkboxes ------------------------------- */}
+        <S.FormGroup>
+          <Checkbox name="entitle_ot">Entitle OT</Checkbox>
+        </S.FormGroup>
+        <S.FormGroup>
+          <Checkbox name="meal_allowance_paid">Meal Allowance Paid</Checkbox>
+        </S.FormGroup>
+        <S.FormGroup>
+          <Checkbox name="operational_allowance_paid">
+            Operational Allowance Paid
+          </Checkbox>
+        </S.FormGroup>
+        <S.FormGroup>
+          <Checkbox name="attendance_allowance_paid">
+            Attendance Allowance Paid
+          </Checkbox>
+        </S.FormGroup>
+        <S.FormGroup>
+          <Checkbox name="hidden_on_payroll">Hidden on Payroll</Checkbox>
         </S.FormGroup>
       </Col>
     </S.EmploymentDetails>
