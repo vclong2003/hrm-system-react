@@ -29,7 +29,7 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       authUtils.redirectToLogin();
-      Promise.reject("Unauthorized");
+      return Promise.reject("Unauthorized");
     }
 
     const message =
@@ -38,6 +38,6 @@ axiosInstance.interceptors.response.use(
       "Something went wrong!";
 
     notiUtils.notifyError(message);
-    Promise.reject(message);
+    return Promise.reject(message);
   }
 );

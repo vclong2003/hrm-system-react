@@ -8,7 +8,7 @@ import { IDepartment } from "@interfaces/department";
 import { IMarriage } from "@interfaces/marriage";
 import { IGrade } from "@interfaces/grade";
 
-export default function useFormData() {
+export default function useFormSelectOptions() {
   const [marriages, setMarriages] = useState<IMarriage[]>([]);
   const [departments, setDepartments] = useState<IDepartment[]>([]);
   const [positions, setPositions] = useState<IPosition[]>([]);

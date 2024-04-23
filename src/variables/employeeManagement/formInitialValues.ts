@@ -3,7 +3,7 @@ import { ICreateEmployeePayload } from "@interfaces/employee";
 export const initialValues: ICreateEmployeePayload = {
   // Employee Information -------------------------------------------
   name: "",
-  gender: "",
+  gender: null,
   mother_name: "",
   dob: "",
   pob: "",
@@ -13,7 +13,7 @@ export const initialValues: ICreateEmployeePayload = {
   home_address_2: "",
   mobile_no: "",
   tel_no: "",
-  marriage_id: 0,
+  marriage_id: null,
   card_number: "",
   bank_account_no: "",
   bank_name: "",
@@ -23,12 +23,12 @@ export const initialValues: ICreateEmployeePayload = {
 
   // Contract Information --------------------------------------------
   contract_start_date: "",
-  type: "",
+  type: null,
 
   // Employment Details ----------------------------------------------
-  department_id: 0,
-  position_id: 0,
-  shift: "",
+  department_id: null,
+  position_id: null,
+  shift: null,
   entitle_ot: 0,
   meal_allowance_paid: 0,
   operational_allowance_paid: 0,
@@ -42,7 +42,7 @@ export const initialValues: ICreateEmployeePayload = {
   health_insurance: 0,
 
   // Others ----------------------------------------------------------
-  grade_id: 0,
+  grade_id: null,
   benefits: [],
   remark: "",
 };

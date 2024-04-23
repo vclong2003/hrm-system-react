@@ -8,7 +8,7 @@ export const buildQueryString = (params: {
 }): string => {
   let query = "";
   for (const key in params) {
-    if (params[key]) {
+    if (params[key] !== null && params[key] !== undefined) {
       query += `${key}=${params[key]}&`;
     }
   }

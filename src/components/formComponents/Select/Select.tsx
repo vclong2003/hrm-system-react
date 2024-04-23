@@ -19,7 +19,7 @@ export default function Select({ children, name, ...props }: ISelectProps) {
   return (
     <Field
       component={S.Select}
-      value={values[name] || ""}
+      value={values[name]}
       onChange={handleChange}
       {...props}>
       {children}
