@@ -6,7 +6,7 @@ import { useState } from "react";
 import PageHeading from "../PageHeading/PageHeading";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
 import Typo from "@components/Typo/Typo";
-import Forms from "../Forms";
+import Forms from "../Forms/Forms";
 
 enum EPAGE {
   EMPLOYEE_INFORMATION = "employee-information",
