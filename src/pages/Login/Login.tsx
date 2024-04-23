@@ -55,7 +55,9 @@ export default function Login() {
             ))}
           </S.FormSelect>
 
-          <S.LoginButton type="submit">Login</S.LoginButton>
+          <S.LoginButton size="large" type="submit">
+            Login
+          </S.LoginButton>
           <S.ForgotPasswordContainer>
             <S.ForgotPasswordLink to="#">
               Forgot Your Password?
