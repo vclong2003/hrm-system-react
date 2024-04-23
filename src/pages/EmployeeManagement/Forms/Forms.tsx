@@ -1,8 +1,10 @@
 import { Formik } from "formik";
 import EmployeeInformation from "./EmployeeInformation/EmployeeInfomation";
 import { ICreateEmployeePayload } from "@interfaces/employee";
+import { employeeSchema } from "@validations/employee";
+import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 
-const initialValues: Partial<ICreateEmployeePayload> = {
+const initialValues: ICreateEmployeePayload = {
   // Employee Information -------------------------------------------
   name: "",
   gender: "",
@@ -49,10 +51,18 @@ const initialValues: Partial<ICreateEmployeePayload> = {
   remark: "",
 };
 
-export default function Forms() {
+interface IFormsProps {
+  tab: EFORM_TAB;
+  onError: (tab: EFORM_TAB) => void;
+  onSave: (values: ICreateEmployeePayload) => void;
+}
+export default function Forms({ tab, onError, onSave }: IFormsProps) {
   return (
-    <Formik>
-      <EmployeeInformation />
+    <Formik
+      onSubmit={onSave}
+      initialValues={initialValues}
+      validationSchema={employeeSchema}>
+      <EmployeeInformation show={tab === EFORM_TAB.EMPLOYEE_INFORMATION} />
     </Formik>
   );
 }

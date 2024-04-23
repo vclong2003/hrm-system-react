@@ -2,11 +2,22 @@ import * as S from "./EmployeeInformation.styled";
 import Typo from "@components/Typo/Typo";
 import { Input, Select } from "@components/formComponents";
 import DatePicker from "@components/formComponents/DatePicker/DatePicker";
-import { Col, Row } from "antd";
+import { ICreateEmployeePayload } from "@interfaces/employee";
+import { Col } from "antd";
+import { Select as AntSelect } from "antd";
+import { useFormikContext } from "formik";
+import { EGender } from "src/enums/employee";
 
-export default function EmployeeInformation() {
+interface IEmployeeInformationProps {
+  show?: boolean;
+}
+export default function EmployeeInformation({
+  show,
+}: IEmployeeInformationProps) {
+  const { errors } = useFormikContext<ICreateEmployeePayload>();
+
   return (
-    <Row>
+    <S.EmployeeInformation $show={show}>
       <Col span={12}>
         {/* NIK ------------------------------------------------------ */}
         <S.FormGroup>
@@ -38,7 +49,10 @@ export default function EmployeeInformation() {
             <Typo variant="body1">Gender' :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Select name="gender"></Select>
+            <Select name="gender">
+              <AntSelect.Option value={EGender.Male}>Male</AntSelect.Option>
+              <AntSelect.Option value={EGender.Female}>Female</AntSelect.Option>
+            </Select>
           </Col>
         </S.FormGroup>
         {/* Mother Name ------------------------------------------------- */}
@@ -220,6 +234,6 @@ export default function EmployeeInformation() {
           </Col>
         </S.FormGroup>
       </Col>
-    </Row>
+    </S.EmployeeInformation>
   );
 }

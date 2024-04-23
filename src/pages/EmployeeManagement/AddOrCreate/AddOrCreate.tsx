@@ -7,40 +7,35 @@ import PageHeading from "../PageHeading/PageHeading";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
 import Typo from "@components/Typo/Typo";
 import Forms from "../Forms/Forms";
-
-enum EPAGE {
-  EMPLOYEE_INFORMATION = "employee-information",
-  CONTRACT_INFORMATION = "contract-information",
-  EMPLOYEE_DETAILS = "employee-details",
-  SALARY_AND_WAGES = "salary-and-wages",
-  OTHERS = "others",
-}
+import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 
 const MENU_LIST: IMenuItem[] = [
   {
     label: "Employee Information",
-    key: EPAGE.EMPLOYEE_INFORMATION,
+    key: EFORM_TAB.EMPLOYEE_INFORMATION,
   },
   {
     label: "Contract Information",
-    key: EPAGE.CONTRACT_INFORMATION,
+    key: EFORM_TAB.CONTRACT_INFORMATION,
   },
   {
     label: "Employee Details",
-    key: EPAGE.EMPLOYEE_DETAILS,
+    key: EFORM_TAB.EMPLOYEE_DETAILS,
   },
   {
     label: "Salary & Wages",
-    key: EPAGE.SALARY_AND_WAGES,
+    key: EFORM_TAB.SALARY_AND_WAGES,
   },
   {
     label: "Others",
-    key: EPAGE.OTHERS,
+    key: EFORM_TAB.OTHERS,
   },
 ];
 
 export default function AddOrCreate() {
-  const [page, setPage] = useState<string>(EPAGE.EMPLOYEE_INFORMATION);
+  const [formTab, setFormTab] = useState<string>(
+    EFORM_TAB.EMPLOYEE_INFORMATION
+  );
 
   return (
     <S.AddOrCreate>
@@ -61,18 +56,24 @@ export default function AddOrCreate() {
       <S.MenuContainer>
         <HorizontalMenu
           items={MENU_LIST}
-          onChange={setPage}
-          currentKey={page}
+          onChange={setFormTab}
+          currentKey={formTab}
         />
       </S.MenuContainer>
       {/* Form Container ----------------------------------------- */}
       <S.FormContainer>
         <S.FormHeading>
-          <Typo variant="h4">Personal Information</Typo>
+          <Typo variant="h4">
+            {MENU_LIST.find((item) => item.key === formTab)?.label}
+          </Typo>
         </S.FormHeading>
         <S.Divider />
         {/* Form --------------------- */}
-        <Forms />
+        <Forms
+          tab={formTab as EFORM_TAB}
+          onSave={() => {}}
+          onError={() => {}}
+        />
       </S.FormContainer>
     </S.AddOrCreate>
   );
