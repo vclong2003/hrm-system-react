@@ -1,8 +1,9 @@
-import { Formik } from "formik";
+import { Form, Formik } from "formik";
 import EmployeeInformation from "./EmployeeInformation/EmployeeInfomation";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { employeeSchema } from "@validations/employee";
 import { EFORM_TAB } from "src/enums/employee-addOrCreate";
+import ContractInformation from "./ContractInformation/ContractInformation";
 
 const initialValues: ICreateEmployeePayload = {
   // Employee Information -------------------------------------------
@@ -29,7 +30,7 @@ const initialValues: ICreateEmployeePayload = {
   contract_start_date: "",
   type: "",
 
-  // Employee Details -----------------------------------------------
+  // Employment Details ----------------------------------------------
   department_id: 0,
   position_id: 0,
   shift: "",
@@ -62,7 +63,10 @@ export default function Forms({ tab, onError, onSave }: IFormsProps) {
       onSubmit={onSave}
       initialValues={initialValues}
       validationSchema={employeeSchema}>
-      <EmployeeInformation show={tab === EFORM_TAB.EMPLOYEE_INFORMATION} />
+      <Form>
+        <EmployeeInformation show={tab === EFORM_TAB.EMPLOYEE_INFORMATION} />
+        <ContractInformation show={tab === EFORM_TAB.CONTRACT_INFORMATION} />
+      </Form>
     </Formik>
   );
 }

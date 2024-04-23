@@ -19,8 +19,8 @@ const MENU_LIST: IMenuItem[] = [
     key: EFORM_TAB.CONTRACT_INFORMATION,
   },
   {
-    label: "Employee Details",
-    key: EFORM_TAB.EMPLOYEE_DETAILS,
+    label: "Employment Details",
+    key: EFORM_TAB.EMPLOYMENT_DETAILS,
   },
   {
     label: "Salary & Wages",
