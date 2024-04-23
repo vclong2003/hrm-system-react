@@ -22,9 +22,7 @@ export default function EmployeeInformation({
 
   useEffect(() => {
     marriageService.getMarriageList({}).then((data) => setMarriages(data));
-  }, []);
-
-  console.log(marriages);
+  }, [show]);
 
   return (
     <S.EmployeeInformation $show={show}>

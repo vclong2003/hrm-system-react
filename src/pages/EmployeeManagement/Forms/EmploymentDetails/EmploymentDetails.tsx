@@ -17,6 +17,7 @@ import { IPosition } from "@interfaces/position";
 
 interface IEmploymentDetailsProps {
   show?: boolean;
+  onErrors?: (isError: boolean) => void;
 }
 export default function EmploymentDetails({ show }: IEmploymentDetailsProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();

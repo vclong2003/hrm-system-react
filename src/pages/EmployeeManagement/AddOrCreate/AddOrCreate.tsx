@@ -86,7 +86,12 @@ export default function AddOrCreate() {
           { title: "Add Employee" },
         ]}
       />
-      <Formik initialValues={initialValues} validationSchema={employeeSchema}>
+      <Formik
+        initialValues={initialValues}
+        validationSchema={employeeSchema}
+        onSubmit={(values) => {
+          console.log(values);
+        }}>
         <Form>
           {/* Page Heading ------------------------------------------- */}
           <PageHeading variant="add" />
