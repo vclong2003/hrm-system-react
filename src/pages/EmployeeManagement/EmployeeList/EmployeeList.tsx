@@ -44,7 +44,7 @@ export default function EmployeeList() {
       <PageHeading variant="search" />
       <S.TableContainer>
         <S.BtnsContainer>
-          <S.AddBtn onClick={() => navigate("add-or-create")}>
+          <S.AddBtn onClick={() => navigate("add-or-update")}>
             <S.BtnIcon src={Add} />
             Add
           </S.AddBtn>
