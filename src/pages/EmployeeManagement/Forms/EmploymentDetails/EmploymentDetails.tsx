@@ -6,31 +6,34 @@ import { Select } from "@components/formComponents";
 import Checkbox from "@components/formComponents/Checkbox/Checkbox";
 
 import { useFormikContext } from "formik";
-import { useEffect, useState } from "react";
-import departmentService from "@services/department";
-import positionService from "@services/position";
 
 import { EShift } from "src/enums/employee";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IDepartment } from "@interfaces/department";
 import { IPosition } from "@interfaces/position";
+import { useEffect } from "react";
 
 interface IEmploymentDetailsProps {
   show?: boolean;
-  onErrors?: (isError: boolean) => void;
+  setError: (isError: boolean) => void;
+  departments: IDepartment[];
+  positions: IPosition[];
 }
-export default function EmploymentDetails({ show }: IEmploymentDetailsProps) {
+export default function EmploymentDetails({
+  show,
+  setError,
+  departments,
+  positions,
+}: IEmploymentDetailsProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
-  const [deplartments, setDepartments] = useState<IDepartment[]>([]);
-  const [positions, setPositions] = useState<IPosition[]>([]);
-
   useEffect(() => {
-    departmentService
-      .getDepartmentList({})
-      .then((data) => setDepartments(data));
-    positionService.getPositionList({}).then((data) => setPositions(data));
-  }, []);
+    if (errors.department_id || errors.position_id || errors.shift) {
+      setError(true);
+      return;
+    }
+    setError(false);
+  }, [errors]);
 
   return (
     <S.EmploymentDetails $show={show}>
@@ -42,7 +45,7 @@ export default function EmploymentDetails({ show }: IEmploymentDetailsProps) {
           </S.LabelCol>
           <Col span={14}>
             <Select name="department_id">
-              {deplartments.map((department) => (
+              {departments.map((department) => (
                 <AntdSelect.Option key={department.id} value={department.id}>
                   {department.name}
                 </AntdSelect.Option>

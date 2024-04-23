@@ -5,12 +5,24 @@ import { Select } from "@components/formComponents";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { useFormikContext } from "formik";
 import TextArea from "@components/formComponents/TextArea/TextArea";
+import { useEffect } from "react";
+import { IGrade } from "@interfaces/grade";
 
 interface IOthersProps {
   show?: boolean;
+  setError: (isError: boolean) => void;
+  grades: IGrade[];
 }
-export default function Others({ show }: IOthersProps) {
+export default function Others({ grades, show, setError }: IOthersProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
+
+  useEffect(() => {
+    if (errors.grade_id || errors.remark) {
+      setError(true);
+      return;
+    }
+    setError(false);
+  }, [errors]);
 
   return (
     <S.Others $show={show}>
@@ -21,7 +33,13 @@ export default function Others({ show }: IOthersProps) {
             <Typo variant="body1">Grade</Typo>
           </S.LabelCol>
           <Col span={16}>
-            <Select name="grade_id"></Select>
+            <Select name="grade_id">
+              {grades.map((grade) => (
+                <AntdSelect.Option key={grade.id} value={grade.id}>
+                  {grade.name}
+                </AntdSelect.Option>
+              ))}
+            </Select>
           </Col>
         </S.FormGroup>
         {/* Benefits ---------------------------------- */}

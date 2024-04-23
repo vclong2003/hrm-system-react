@@ -4,12 +4,30 @@ import { useFormikContext } from "formik";
 import { Col } from "antd";
 import Typo from "@components/Typo/Typo";
 import { Input } from "@components/formComponents";
+import { useEffect } from "react";
 
 interface ISalaryAndWagesProps {
   show?: boolean;
+  setError: (isError: boolean) => void;
 }
-export default function SalaryAndWages({ show }: ISalaryAndWagesProps) {
+export default function SalaryAndWages({
+  show,
+  setError,
+}: ISalaryAndWagesProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
+
+  useEffect(() => {
+    if (
+      errors.basic_salary ||
+      errors.audit_salary ||
+      errors.safety_insurance ||
+      errors.health_insurance
+    ) {
+      setError(true);
+      return;
+    }
+    setError(false);
+  }, [errors]);
 
   // Rp prefix for input
   const current = <S.MoneyCurrent variant="body1">Rp</S.MoneyCurrent>;

@@ -7,22 +7,47 @@ import { IMarriage } from "@interfaces/marriage";
 import { Col } from "antd";
 import { Select as AntSelect } from "antd";
 import { useFormikContext } from "formik";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { EGender } from "src/enums/employee";
-import marriageService from "@services/marriage";
 
 interface IEmployeeInformationProps {
+  marriages: IMarriage[];
+  setError: (isError: boolean) => void;
   show?: boolean;
 }
 export default function EmployeeInformation({
   show,
+  marriages,
+  setError,
 }: IEmployeeInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
-  const [marriages, setMarriages] = useState<IMarriage[]>([]);
 
   useEffect(() => {
-    marriageService.getMarriageList({}).then((data) => setMarriages(data));
-  }, [show]);
+    if (
+      errors.name ||
+      errors.gender ||
+      errors.mother_name ||
+      errors.dob ||
+      errors.pob ||
+      errors.ktp_no ||
+      errors.nc_id ||
+      errors.home_address_1 ||
+      errors.home_address_2 ||
+      errors.mobile_no ||
+      errors.tel_no ||
+      errors.marriage_id ||
+      errors.card_number ||
+      errors.bank_account_no ||
+      errors.bank_name ||
+      errors.family_card_number ||
+      errors.safety_insurance_no ||
+      errors.health_insurance_no
+    ) {
+      setError(true);
+      return;
+    }
+    setError(false);
+  }, [errors]);
 
   return (
     <S.EmployeeInformation $show={show}>
@@ -115,7 +140,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">National Card :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="national_card" />
+            <Input name="nc_id" />
           </Col>
         </S.FormGroup>
         {/* Home Address I ---------------------------------------------- */}

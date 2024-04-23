@@ -1,8 +1,5 @@
 import * as S from "./AddOrCreate.styled";
 
-import HorizontalMenu, {
-  IMenuItem,
-} from "@components/HorizontalMenu/HorizontalMenu";
 import PageHeading from "../PageHeading/PageHeading";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
 import Typo from "@components/Typo/Typo";
@@ -11,67 +8,27 @@ import { Form, Formik } from "formik";
 import EmployeeInformation from "../Forms/EmployeeInformation/EmployeeInfomation";
 import ContractInformation from "../Forms/ContractInformation/ContractInformation";
 import EmploymentDetails from "../Forms/EmploymentDetails/EmploymentDetails";
-import Others from "../Forms/Others/Others";
 import SalaryAndWages from "../Forms/SalaryAndWages/SalaryAndWages";
+import Others from "../Forms/Others/Others";
 
 import { useState } from "react";
 import { employeeSchema } from "@validations/employee";
 
 import { EFORM_TAB } from "src/enums/employee-addOrCreate";
-import { ICreateEmployeePayload } from "@interfaces/employee";
 import { FORM_TABS } from "./formTabs";
-
-const initialValues: ICreateEmployeePayload = {
-  // Employee Information -------------------------------------------
-  name: "",
-  gender: "",
-  mother_name: "",
-  dob: "",
-  pob: "",
-  ktp_no: "",
-  nc_id: "",
-  home_address_1: "",
-  home_address_2: "",
-  mobile_no: "",
-  tel_no: "",
-  marriage_id: 0,
-  card_number: "",
-  bank_account_no: "",
-  bank_name: "",
-  family_card_number: "",
-  safety_insurance_no: "",
-  health_insurance_no: "",
-
-  // Contract Information --------------------------------------------
-  contract_start_date: "",
-  type: "",
-
-  // Employment Details ----------------------------------------------
-  department_id: 0,
-  position_id: 0,
-  shift: "",
-  entitle_ot: 0,
-  meal_allowance_paid: 0,
-  operational_allowance_paid: 0,
-  attendance_allowance_paid: 0,
-  hidden_on_payroll: 0,
-
-  // Salary and Wages ------------------------------------------------
-  basic_salary: 0,
-  audit_salary: 0,
-  safety_insurance: 0,
-  health_insurance: 0,
-
-  // Others ----------------------------------------------------------
-  grade_id: 0,
-  benefits: [],
-  remark: "",
-};
+import { initialValues } from "./formInitialValues";
+import HorizontalMenu from "@components/HorizontalMenu/HorizontalMenu";
+import useFormData from "@hooks/employeeManagement/useFormData";
+import useFormErrors from "@hooks/employeeManagement/useFormErrors";
 
 export default function AddOrCreate() {
+  const { marriages, departments, positions, grades } = useFormData();
+  const { errors, setTabError } = useFormErrors();
   const [formTab, setFormTab] = useState<string>(
     EFORM_TAB.EMPLOYEE_INFORMATION
   );
+
+  console.log(errors);
 
   return (
     <S.AddOrCreate>
@@ -94,7 +51,7 @@ export default function AddOrCreate() {
         }}>
         <Form>
           {/* Page Heading ------------------------------------------- */}
-          <PageHeading variant="add" />
+          <PageHeading variant="add" disabled={false} />
           {/* Menu --------------------------------------------------- */}
           <S.MenuContainer>
             <HorizontalMenu
@@ -113,16 +70,37 @@ export default function AddOrCreate() {
             <S.Divider />
             {/* Forms ------------------------------------------------- */}
             <EmployeeInformation
+              marriages={marriages}
               show={formTab === EFORM_TAB.EMPLOYEE_INFORMATION}
+              setError={(isError) =>
+                setTabError(EFORM_TAB.EMPLOYEE_INFORMATION, isError)
+              }
             />
             <ContractInformation
               show={formTab === EFORM_TAB.CONTRACT_INFORMATION}
+              setError={(isError) =>
+                setTabError(EFORM_TAB.CONTRACT_INFORMATION, isError)
+              }
             />
             <EmploymentDetails
+              departments={departments}
+              positions={positions}
               show={formTab === EFORM_TAB.EMPLOYMENT_DETAILS}
+              setError={(isError) =>
+                setTabError(EFORM_TAB.EMPLOYMENT_DETAILS, isError)
+              }
             />
-            <SalaryAndWages show={formTab === EFORM_TAB.SALARY_AND_WAGES} />
-            <Others show={formTab === EFORM_TAB.OTHERS} />
+            <SalaryAndWages
+              show={formTab === EFORM_TAB.SALARY_AND_WAGES}
+              setError={(isError) =>
+                setTabError(EFORM_TAB.SALARY_AND_WAGES, isError)
+              }
+            />
+            <Others
+              grades={grades}
+              show={formTab === EFORM_TAB.OTHERS}
+              setError={(isError) => setTabError(EFORM_TAB.OTHERS, isError)}
+            />
           </S.FormContainer>
         </Form>
       </Formik>

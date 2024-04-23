@@ -12,5 +12,5 @@ export interface IGrade {
 
 // Get Grade List -------------------------------------
 export interface IGetGradeListPayload {
-  search: string;
+  search?: string;
 }
