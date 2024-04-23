@@ -2,12 +2,7 @@ import Typo from "@components/Typo/Typo";
 import { Col, Row } from "antd";
 import styled from "styled-components";
 
-interface ISalaryAndWagesProps {
-  $show?: boolean;
-}
-export const SalaryAndWages = styled(Row)<ISalaryAndWagesProps>`
-  display: ${({ $show }) => ($show ? "flex" : "none")};
-`;
+export const SalaryAndWages = styled(Row)``;
 
 export const FormGroup = styled(Row)`
   margin-bottom: var(--s-3);

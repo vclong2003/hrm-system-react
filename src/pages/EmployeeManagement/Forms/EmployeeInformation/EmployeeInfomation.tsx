@@ -13,10 +13,8 @@ import { EGender } from "src/enums/employee";
 interface IEmployeeInformationProps {
   marriages: IMarriage[];
   setError: (isError: boolean) => void;
-  show?: boolean;
 }
 export default function EmployeeInformation({
-  show,
   marriages,
   setError,
 }: IEmployeeInformationProps) {
@@ -50,7 +48,7 @@ export default function EmployeeInformation({
   }, [errors]);
 
   return (
-    <S.EmployeeInformation $show={show}>
+    <S.EmployeeInformation>
       <Col span={12}>
         {/* NIK ------------------------------------------------------ */}
         <S.FormGroup>

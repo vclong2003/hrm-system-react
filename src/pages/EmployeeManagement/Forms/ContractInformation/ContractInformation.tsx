@@ -10,11 +10,9 @@ import { EType } from "src/enums/employee";
 import { useEffect } from "react";
 
 interface IContractInformationProps {
-  show?: boolean;
   setError: (isError: boolean) => void;
 }
 export default function ContractInformation({
-  show,
   setError,
 }: IContractInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
@@ -28,7 +26,7 @@ export default function ContractInformation({
   }, [errors]);
 
   return (
-    <S.ContractInformation $show={show}>
+    <S.ContractInformation>
       <Col span={10}>
         {/* Start date -------------------------------- */}
         <S.FormGroup>

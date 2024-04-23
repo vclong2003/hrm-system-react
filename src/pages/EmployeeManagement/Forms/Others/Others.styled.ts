@@ -1,12 +1,7 @@
 import { Col, Row } from "antd";
 import styled from "styled-components";
 
-interface IOthersProps {
-  $show?: boolean;
-}
-export const Others = styled(Row)<IOthersProps>`
-  display: ${({ $show }) => ($show ? "flex" : "none")};
-`;
+export const Others = styled(Row)``;
 
 export const FormGroup = styled(Row)`
   margin-bottom: var(--s-3);

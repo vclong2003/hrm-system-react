@@ -7,13 +7,9 @@ import { Input } from "@components/formComponents";
 import { useEffect } from "react";
 
 interface ISalaryAndWagesProps {
-  show?: boolean;
   setError: (isError: boolean) => void;
 }
-export default function SalaryAndWages({
-  show,
-  setError,
-}: ISalaryAndWagesProps) {
+export default function SalaryAndWages({ setError }: ISalaryAndWagesProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
@@ -33,7 +29,7 @@ export default function SalaryAndWages({
   const current = <S.MoneyCurrent variant="body1">Rp</S.MoneyCurrent>;
 
   return (
-    <S.SalaryAndWages $show={show}>
+    <S.SalaryAndWages>
       <Col span={12}>
         {/* Basic salary -------------------------------------------- */}
         <S.FormGroup>

@@ -1,12 +1,7 @@
 import { Col, Row } from "antd";
 import styled from "styled-components";
 
-interface IEmployeeInformationProps {
-  $show?: boolean;
-}
-export const EmployeeInformation = styled(Row)<IEmployeeInformationProps>`
-  display: ${({ $show }) => ($show ? "flex" : "none")};
-`;
+export const EmployeeInformation = styled(Row)``;
 
 export const FormGroup = styled(Row)`
   margin-bottom: var(--s-3);

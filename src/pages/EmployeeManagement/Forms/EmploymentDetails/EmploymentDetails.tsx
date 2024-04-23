@@ -14,16 +14,14 @@ import { IPosition } from "@interfaces/position";
 import { useEffect } from "react";
 
 interface IEmploymentDetailsProps {
-  show?: boolean;
-  setError: (isError: boolean) => void;
   departments: IDepartment[];
   positions: IPosition[];
+  setError: (isError: boolean) => void;
 }
 export default function EmploymentDetails({
-  show,
-  setError,
   departments,
   positions,
+  setError,
 }: IEmploymentDetailsProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
@@ -36,7 +34,7 @@ export default function EmploymentDetails({
   }, [errors]);
 
   return (
-    <S.EmploymentDetails $show={show}>
+    <S.EmploymentDetails>
       <Col span={10}>
         {/* Department ---------------------------- */}
         <S.FormGroup>

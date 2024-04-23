@@ -9,11 +9,10 @@ import { useEffect } from "react";
 import { IGrade } from "@interfaces/grade";
 
 interface IOthersProps {
-  show?: boolean;
-  setError: (isError: boolean) => void;
   grades: IGrade[];
+  setError: (isError: boolean) => void;
 }
-export default function Others({ grades, show, setError }: IOthersProps) {
+export default function Others({ grades, setError }: IOthersProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
@@ -25,7 +24,7 @@ export default function Others({ grades, show, setError }: IOthersProps) {
   }, [errors]);
 
   return (
-    <S.Others $show={show}>
+    <S.Others>
       <Col span={12}>
         {/* Grade ------------------------------------ */}
         <S.FormGroup>
