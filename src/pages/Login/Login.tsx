@@ -14,7 +14,7 @@ import { ILoginPayload } from "@interfaces/auth";
 import { AppDispatch, RootState } from "@store/index";
 
 import { loginSchema } from "@validations/login";
-import { initialValues } from "@variables/login/formInitialValues";
+import { initialValues } from "@variables/auth/loginForm";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,6 +1,3 @@
-/**
- * The key used to store the token in the local storage.
- */
 const TOKEN_KEY = "token";
 
 /**

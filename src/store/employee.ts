@@ -1,5 +1,5 @@
-import { IEmployeeState, IGetEmployeeListPayload } from "@interfaces/employee";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { IEmployeeState, IGetEmployeeListPayload } from "@interfaces/employee";
 import employeeService from "@services/employee";
 
 const name = "employeeState";

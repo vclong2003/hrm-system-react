@@ -1,6 +1,5 @@
-import { IAuthState, ILoginPayload } from "@interfaces/auth";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import { IAuthState, ILoginPayload } from "@interfaces/auth";
 import authService from "@services/auth";
 import authUtils from "@utils/auth";
 
