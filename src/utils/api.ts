@@ -8,9 +8,19 @@ export const buildQueryString = (params: {
 }): string => {
   let query = "";
   for (const key in params) {
-    if (params[key] !== null && params[key] !== undefined) {
-      query += `${key}=${params[key]}&`;
+    // Field is null or undefined
+    if (params[key] === null || params[key] === undefined) continue;
+
+    // Field is an array
+    if (params[key] instanceof Array) {
+      for (const item of params[key] as unknown[]) {
+        query += `${key}[]=${item}&`;
+      }
+      continue;
     }
+
+    // Normal field
+    query += `${key}=${params[key]}&`;
   }
   return encodeURI("?" + query.slice(0, -1));
 };
