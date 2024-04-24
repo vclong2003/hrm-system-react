@@ -11,13 +11,14 @@ import { useEffect } from "react";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IGrade } from "@interfaces/grade";
 import { IBenefit } from "@interfaces/benefit";
+import BenefitsSelector from "./BenefitsSelector/BenefitsSelector";
 
 interface IOthersProps {
   grades: IGrade[];
   benefits: IBenefit[];
   setError: (isError: boolean) => void;
 }
-export default function Others({ grades, setError }: IOthersProps) {
+export default function Others({ grades, benefits, setError }: IOthersProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
@@ -27,6 +28,8 @@ export default function Others({ grades, setError }: IOthersProps) {
     }
     setError(false);
   }, [errors]);
+
+  console.log(benefits);
 
   return (
     <S.Others>
@@ -51,7 +54,9 @@ export default function Others({ grades, setError }: IOthersProps) {
           <S.LabelCol span={8}>
             <Typo variant="body1">Benefits</Typo>
           </S.LabelCol>
-          <Col span={16}></Col>
+          <Col span={16}>
+            <BenefitsSelector name="benefits" availableBenefits={benefits} />
+          </Col>
         </S.FormGroup>
         {/* Remark ------------------------------------- */}
         <S.FormGroup>

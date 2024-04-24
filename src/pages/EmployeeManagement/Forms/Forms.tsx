@@ -17,7 +17,8 @@ interface IFormsProps {
   onSetError: (tab: EFORM_TAB, isError: boolean) => void;
 }
 export default function Forms({ tab, employee, onSetError }: IFormsProps) {
-  const { marriages, departments, positions, grades } = useFormSelectOptions();
+  const { marriages, departments, positions, grades, benefits } =
+    useFormSelectOptions();
   const { setFieldValue, resetForm } =
     useFormikContext<ICreateEmployeePayload>();
 
@@ -31,6 +32,10 @@ export default function Forms({ tab, employee, onSetError }: IFormsProps) {
       setFieldValue(key, value);
     });
     setFieldValue("annual_leaves", null); // Quick fix
+    setFieldValue(
+      "benefits",
+      employee.benefits.map((b) => b.id) // Santinize benefits
+    );
   }, [employee]);
 
   return (
@@ -70,6 +75,7 @@ export default function Forms({ tab, employee, onSetError }: IFormsProps) {
       {tab === EFORM_TAB.OTHERS && (
         <Others
           grades={grades}
+          benefits={benefits}
           setError={(isError) => onSetError(EFORM_TAB.OTHERS, isError)}
         />
       )}
