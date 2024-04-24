@@ -15,3 +15,16 @@ export const addEmployee: BreadcrumbItemType[] = [
   },
   { title: "Add Employee" },
 ];
+
+export const updateEmployee: BreadcrumbItemType[] = [
+  { title: "General" },
+  {
+    path: "employee",
+    title: "Employee Management",
+  },
+  {
+    path: "employee/add-or-update",
+    title: "Add Employee",
+  },
+  { title: "Update Employee" },
+];

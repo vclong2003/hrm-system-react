@@ -1,22 +1,37 @@
-import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 import EmployeeInformation from "./EmployeeInformation/EmployeeInfomation";
 import ContractInformation from "./ContractInformation/ContractInformation";
 import EmploymentDetails from "./EmploymentDetails/EmploymentDetails";
 import SalaryAndWages from "./SalaryAndWages/SalaryAndWages";
 import Others from "./Others/Others";
+
 import useFormSelectOptions from "@hooks/employeeManagement/useFormSelectOptions";
+
+import { ICreateEmployeePayload, IEmployee } from "@interfaces/employee";
+import { EFORM_TAB } from "src/enums/employee-addOrCreate";
+import { useEffect } from "react";
+import { useFormikContext } from "formik";
 
 interface IFormsProps {
   tab: EFORM_TAB;
+  employee?: IEmployee;
   onSetError: (tab: EFORM_TAB, isError: boolean) => void;
 }
-export default function Forms({ tab, onSetError }: IFormsProps) {
+export default function Forms({ tab, employee, onSetError }: IFormsProps) {
   const { marriages, departments, positions, grades } = useFormSelectOptions();
+  const { setFieldValue } = useFormikContext<ICreateEmployeePayload>();
+
+  useEffect(() => {
+    if (!employee) return;
+    Object.entries(employee).forEach(([key, value]) => {
+      setFieldValue(key, value);
+    });
+  }, [employee, setFieldValue]);
 
   return (
     <>
       {tab === EFORM_TAB.EMPLOYEE_INFORMATION && (
         <EmployeeInformation
+          nik={employee?.staff_id}
           marriages={marriages}
           setError={(isError) =>
             onSetError(EFORM_TAB.EMPLOYEE_INFORMATION, isError)

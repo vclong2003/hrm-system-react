@@ -10,7 +10,7 @@ export default function EmployeeManagement() {
       <Routes>
         <Route path="" element={<EmployeeList />} />
         <Route path="add-or-update" element={<AddOrCreate />} />
-        <Route path="add-or-update/:id" element={<AddOrCreate />} />
+        <Route path="add-or-update/:employeeId" element={<AddOrCreate />} />
       </Routes>
     </S.EmployeeManagement>
   );

@@ -5,7 +5,7 @@ import Search from "@assets/icons/search.png";
 import Button from "@components/Button/Button";
 
 interface IPageHeadingProps {
-  variant: "search" | "add" | "edit";
+  variant: "search" | "add" | "update";
   disabled?: boolean;
   onSearch?: (value: string) => void;
 }
@@ -29,7 +29,7 @@ export default function PageHeading({
           Add
         </Button>
       )}
-      {variant === "edit" && (
+      {variant === "update" && (
         <Button size="large" type="submit" disabled={disabled}>
           Save Changes
         </Button>

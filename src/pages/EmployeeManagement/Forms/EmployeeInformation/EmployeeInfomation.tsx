@@ -21,7 +21,6 @@ export default function EmployeeInformation({
   setError,
 }: IEmployeeInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
-
   useEffect(() => {
     if (
       errors.name ||
@@ -214,7 +213,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Bank Card NO.:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="bank_card_no" />
+            <Input name="card_number" />
           </Col>
         </S.FormGroup>
         {/* Bank Account No. ------------------------------------------- */}
@@ -247,7 +246,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Family Card Number :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="family_card_no" />
+            <Input name="family_card_number" />
           </Col>
         </S.FormGroup>
         {/* Safety Insurance NO. --------------------------------------- */}

@@ -13,7 +13,6 @@ import { buildQueryString } from "@utils/api";
 // Login -----------------------------------------------------------------
 const login = async (payload: ILoginPayload): Promise<ILoginResponse> => {
   const query = buildQueryString({ ...payload });
-  console.log(query);
   return axiosInstance.post(`/login${query}`);
 };
 

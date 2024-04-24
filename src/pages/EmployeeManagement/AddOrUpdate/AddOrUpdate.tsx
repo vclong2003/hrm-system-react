@@ -7,9 +7,12 @@ import Typo from "@components/Typo/Typo";
 import HorizontalMenu from "@components/HorizontalMenu/HorizontalMenu";
 import Forms from "../Forms/Forms";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import useFormErrors from "@hooks/employeeManagement/useFormErrors";
-import { addEmployee } from "@variables/employeeManagement/breadcrumbs";
+import {
+  addEmployee,
+  updateEmployee,
+} from "@variables/employeeManagement/breadcrumbs";
 import employeeService from "@services/employee";
 import notiUtils from "@utils/notification";
 
@@ -17,19 +20,29 @@ import { employeeSchema } from "@validations/employee";
 import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 import { FORM_TABS } from "@variables/employeeManagement/formTabs";
 import { initialValues } from "@variables/employeeManagement/formInitialValues";
-import { ICreateEmployeePayload } from "@interfaces/employee";
+import { ICreateEmployeePayload, IEmployee } from "@interfaces/employee";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function AddOrUpdate() {
-  const { errors, setTabError } = useFormErrors();
+  const navigate = useNavigate();
+  const { employeeId } = useParams();
+
+  const [mode, setMode] = useState<"add" | "update">("add");
+  const [employee, setEmployee] = useState<IEmployee>();
   const [formTab, setFormTab] = useState<string>(
     EFORM_TAB.EMPLOYEE_INFORMATION
   );
+  const { errors, setTabError } = useFormErrors();
 
   const onAddEmployee = (values: ICreateEmployeePayload) => {
-    console.log(values);
     employeeService
       .createEmployee(values)
       .then(() => notiUtils.notifySuccess("Employee added successfully!"));
+  };
+  const onUpdateEmployee = (values: ICreateEmployeePayload) => {
+    employeeService
+      .updateEmployee({ id: Number(employeeId), ...values })
+      .then(() => notiUtils.notifySuccess("Employee updated successfully!"));
   };
 
   const isSubmitDisabled = useMemo(
@@ -37,16 +50,32 @@ export default function AddOrUpdate() {
     [errors]
   );
 
+  useEffect(() => {
+    // If employeeId is not present -> add mode
+    if (!employeeId) {
+      setMode("add");
+      setEmployee(undefined);
+      return;
+    }
+    // If employeeId is present -> update mode
+    setMode("update");
+    employeeService
+      .getEmployeeById({ id: Number(employeeId) })
+      .then((data) => setEmployee(data))
+      .catch(() => navigate(-1));
+  }, [employeeId, navigate]);
+
   return (
     <S.AddOrUpdate>
-      <Breadcrumb items={addEmployee} />
+      <Breadcrumb items={mode === "update" ? updateEmployee : addEmployee} />
       <Formik
         initialValues={initialValues}
         validationSchema={employeeSchema}
-        onSubmit={onAddEmployee}>
+        onSubmit={mode === "add" ? onAddEmployee : onUpdateEmployee}>
         <Form>
-          <PageHeading variant="add" disabled={isSubmitDisabled} />
+          <PageHeading variant={mode} disabled={isSubmitDisabled} />
           <S.MenuContainer>
+            {/* Menu tab --------------------------------------------- */}
             <HorizontalMenu
               items={FORM_TABS}
               errors={errors}
@@ -55,13 +84,19 @@ export default function AddOrUpdate() {
             />
           </S.MenuContainer>
           <S.FormContainer>
+            {/* Form Title -------------------------------------------- */}
             <S.FormHeading>
               <Typo variant="h4">
                 {FORM_TABS.find((item) => item.key === formTab)?.label}
               </Typo>
             </S.FormHeading>
             <S.Divider />
-            <Forms tab={formTab as EFORM_TAB} onSetError={setTabError} />
+            {/* Forms -------------------------------------------------- */}
+            <Forms
+              tab={formTab as EFORM_TAB}
+              employee={employee}
+              onSetError={setTabError}
+            />
           </S.FormContainer>
         </Form>
       </Formik>
