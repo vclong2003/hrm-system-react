@@ -30,6 +30,7 @@ export default function Forms({ tab, employee, onSetError }: IFormsProps) {
     Object.entries(employee).forEach(([key, value]) => {
       setFieldValue(key, value);
     });
+    setFieldValue("annual_leaves", null); // Quick fix
   }, [employee]);
 
   return (

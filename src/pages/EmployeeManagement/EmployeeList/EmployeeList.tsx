@@ -38,6 +38,10 @@ export default function EmployeeList() {
     dispatch(getEmployeeList({ page: 1 }));
   }, [dispatch]);
 
+  const handleNavigate = (employeeId: number) => {
+    return navigate(`add-or-update/${employeeId}`);
+  };
+
   return (
     <S.EmployeeList>
       <Breadcrumb items={employeeList} />
@@ -62,6 +66,11 @@ export default function EmployeeList() {
           }}
           columns={COLUMNS}
           dataSource={santinizeData(employees)}
+          onRow={(record) => {
+            return {
+              onDoubleClick: () => handleNavigate(Number(record.key)),
+            };
+          }}
         />
         <S.Divider />
         <Pagination />
