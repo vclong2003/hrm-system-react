@@ -40,8 +40,6 @@ export default function BenefitsSelector({
     );
   };
 
-  console.log(selected);
-
   return (
     <S.BenefitsSelector>
       <S.AvailableList>
