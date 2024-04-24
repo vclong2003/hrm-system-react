@@ -1,9 +1,12 @@
+import { HTMLAttributes } from "react";
 import * as S from "./Typo.styled";
 
 export type Weight = "regular" | "medium";
 type Variant = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "body1" | "body2";
 
-interface ITypoProps extends JSX.IntrinsicAttributes {
+interface ITypoProps
+  extends JSX.IntrinsicAttributes,
+    HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   weight?: Weight;
   variant: Variant;
