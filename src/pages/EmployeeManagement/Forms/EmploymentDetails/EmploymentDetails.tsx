@@ -95,9 +95,9 @@ export default function EmploymentDetails({
             Attendance Allowance Paid
           </Checkbox>
         </S.FormGroup>
-        <S.FormGroup>
+        {/* <S.FormGroup>
           <Checkbox name="hidden_on_payroll">Hidden on Payroll</Checkbox>
-        </S.FormGroup>
+        </S.FormGroup> */}
       </Col>
     </S.EmploymentDetails>
   );

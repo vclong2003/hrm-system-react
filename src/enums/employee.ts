@@ -4,9 +4,9 @@ export enum EGender {
 }
 
 export enum EType {
-  Permanent = 0,
-  PartTimeWorker = 1,
-  ContractWorker = 2,
+  Permanent = "0",
+  PartTimeWorker = "1",
+  ContractWorker = "2",
 }
 
 export enum EShift {

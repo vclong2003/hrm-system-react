@@ -18,14 +18,19 @@ interface IFormsProps {
 }
 export default function Forms({ tab, employee, onSetError }: IFormsProps) {
   const { marriages, departments, positions, grades } = useFormSelectOptions();
-  const { setFieldValue } = useFormikContext<ICreateEmployeePayload>();
+  const { setFieldValue, resetForm } =
+    useFormikContext<ICreateEmployeePayload>();
 
+  // Set form values when employee is present (edit mode)
   useEffect(() => {
-    if (!employee) return;
+    if (!employee) {
+      resetForm();
+      return;
+    }
     Object.entries(employee).forEach(([key, value]) => {
       setFieldValue(key, value);
     });
-  }, [employee, setFieldValue]);
+  }, [employee]);
 
   return (
     <>
