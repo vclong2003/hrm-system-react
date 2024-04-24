@@ -8,6 +8,7 @@ import DatePicker from "@components/formComponents/DatePicker/DatePicker";
 import { Select } from "@components/formComponents";
 import { EType } from "src/enums/employee";
 import { useEffect } from "react";
+import helpers from "@helpers/employeeManagement/form";
 
 interface IContractInformationProps {
   setError: (isError: boolean) => void;
@@ -18,11 +19,11 @@ export default function ContractInformation({
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
-    if (errors.contract_start_date || errors.type) {
-      setError(true);
-      return;
-    }
-    setError(false);
+    const isAnyError = helpers.checkErrors(errors, [
+      "contract_start_date",
+      "type",
+    ]);
+    setError(isAnyError);
   }, [errors]);
 
   return (

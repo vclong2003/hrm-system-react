@@ -9,6 +9,7 @@ import { Select as AntSelect } from "antd";
 import { useFormikContext } from "formik";
 import { useEffect } from "react";
 import { EGender } from "src/enums/employee";
+import helpers from "@helpers/employeeManagement/form";
 
 interface IEmployeeInformationProps {
   nik?: string;
@@ -22,31 +23,27 @@ export default function EmployeeInformation({
 }: IEmployeeInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
   useEffect(() => {
-    if (
-      errors.name ||
-      errors.gender ||
-      errors.mother_name ||
-      errors.dob ||
-      errors.pob ||
-      errors.ktp_no ||
-      errors.nc_id ||
-      errors.home_address_1 ||
-      errors.home_address_2 ||
-      errors.mobile_no ||
-      errors.tel_no ||
-      errors.marriage_id ||
-      errors.card_number ||
-      errors.bank_account_no ||
-      errors.bank_name ||
-      errors.family_card_number ||
-      errors.safety_insurance_no ||
-      errors.health_insurance_no
-    ) {
-      setError(true);
-      console.log(errors);
-      return;
-    }
-    setError(false);
+    const isAnyError = helpers.checkErrors(errors, [
+      "name",
+      "gender",
+      "mother_name",
+      "dob",
+      "pob",
+      "ktp_no",
+      "nc_id",
+      "home_address_1",
+      "home_address_2",
+      "mobile_no",
+      "tel_no",
+      "marriage_id",
+      "card_number",
+      "bank_account_no",
+      "bank_name",
+      "family_card_number",
+      "safety_insurance_no",
+      "health_insurance_no",
+    ]);
+    setError(isAnyError);
   }, [errors]);
 
   return (

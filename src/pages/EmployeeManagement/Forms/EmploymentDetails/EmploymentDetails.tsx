@@ -6,6 +6,7 @@ import { Select } from "@components/formComponents";
 import Checkbox from "@components/formComponents/Checkbox/Checkbox";
 
 import { useFormikContext } from "formik";
+import helpers from "@helpers/employeeManagement/form";
 
 import { EShift } from "src/enums/employee";
 import { ICreateEmployeePayload } from "@interfaces/employee";
@@ -26,11 +27,12 @@ export default function EmploymentDetails({
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
-    if (errors.department_id || errors.position_id || errors.shift) {
-      setError(true);
-      return;
-    }
-    setError(false);
+    const isAnyError = helpers.checkErrors(errors, [
+      "department_id",
+      "position_id",
+      "shift",
+    ]);
+    setError(isAnyError);
   }, [errors]);
 
   return (

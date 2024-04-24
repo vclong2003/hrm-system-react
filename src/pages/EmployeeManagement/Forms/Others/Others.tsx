@@ -7,6 +7,7 @@ import TextArea from "@components/formComponents/TextArea/TextArea";
 
 import { useFormikContext } from "formik";
 import { useEffect } from "react";
+import helpers from "@helpers/employeeManagement/form";
 
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IGrade } from "@interfaces/grade";
@@ -22,14 +23,9 @@ export default function Others({ grades, benefits, setError }: IOthersProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
-    if (errors.grade_id || errors.remark) {
-      setError(true);
-      return;
-    }
-    setError(false);
+    const isAnyError = helpers.checkErrors(errors, ["grade_id", "remark"]);
+    setError(isAnyError);
   }, [errors]);
-
-  console.log(benefits);
 
   return (
     <S.Others>

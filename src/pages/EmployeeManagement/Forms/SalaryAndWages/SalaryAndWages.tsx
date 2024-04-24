@@ -5,6 +5,7 @@ import { Col } from "antd";
 import Typo from "@components/Typo/Typo";
 import { Input } from "@components/formComponents";
 import { useEffect } from "react";
+import helpers from "@helpers/employeeManagement/form";
 
 interface ISalaryAndWagesProps {
   setError: (isError: boolean) => void;
@@ -13,16 +14,13 @@ export default function SalaryAndWages({ setError }: ISalaryAndWagesProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
-    if (
-      errors.basic_salary ||
-      errors.audit_salary ||
-      errors.safety_insurance ||
-      errors.health_insurance
-    ) {
-      setError(true);
-      return;
-    }
-    setError(false);
+    const isAnyError = helpers.checkErrors(errors, [
+      "basic_salary",
+      "audit_salary",
+      "safety_insurance",
+      "health_insurance",
+    ]);
+    setError(isAnyError);
   }, [errors]);
 
   // Rp prefix for input
