@@ -26,6 +26,8 @@
       "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@configs/*": ["./src/configs/*"],
+      "@enums/*": ["./src/enums/*"],
+      "@helpers/*": ["./src/helpers/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@layouts/*": ["./src/layouts/*"],
