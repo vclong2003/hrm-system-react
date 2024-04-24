@@ -11,6 +11,6 @@ export interface IBenefit {
 
 // Get Benefit List -----------------------------------
 export interface IGetBenefitListPayload {
-  search: string;
-  grade_id: number;
+  search?: string;
+  grade_id?: number;
 }

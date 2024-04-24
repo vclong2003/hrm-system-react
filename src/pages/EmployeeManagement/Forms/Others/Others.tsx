@@ -1,15 +1,20 @@
-import { Col, Select as AntdSelect } from "antd";
 import * as S from "./Others.styled";
-import Typo from "@components/Typo/Typo";
+
+import { Col, Select as AntdSelect } from "antd";
 import { Select } from "@components/formComponents";
-import { ICreateEmployeePayload } from "@interfaces/employee";
-import { useFormikContext } from "formik";
+import Typo from "@components/Typo/Typo";
 import TextArea from "@components/formComponents/TextArea/TextArea";
+
+import { useFormikContext } from "formik";
 import { useEffect } from "react";
+
+import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IGrade } from "@interfaces/grade";
+import { IBenefit } from "@interfaces/benefit";
 
 interface IOthersProps {
   grades: IGrade[];
+  benefits: IBenefit[];
   setError: (isError: boolean) => void;
 }
 export default function Others({ grades, setError }: IOthersProps) {

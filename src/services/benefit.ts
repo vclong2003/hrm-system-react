@@ -9,7 +9,7 @@ const getBenefitList = async (
   const { search, grade_id } = payload;
   const query = { grade_id };
   return await axiosInstance.get(
-    `/benefit/${search}${buildQueryString(query)}`
+    `/benefit/${search || ""}${buildQueryString(query)}`
   );
 };
 
