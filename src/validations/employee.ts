@@ -4,21 +4,21 @@ export const employeeSchema = Yup.object().shape({
   // Employee Information -------------------------------------------
   name: Yup.string().required("Name is required"),
   gender: Yup.number().required(),
-  mother_name: Yup.string(),
+  mother_name: Yup.string().optional(),
   dob: Yup.string().required("Date of birth is required"),
   pob: Yup.string(),
-  ktp_no: Yup.string().required("KTP No. is required"),
-  nc_id: Yup.string().required("National Card is required"),
+  ktp_no: Yup.number().required("KTP No. is required"),
+  nc_id: Yup.number().required("National Card is required"),
   home_address_1: Yup.string(),
   home_address_2: Yup.string(),
-  mobile_no: Yup.string(),
-  tel_no: Yup.string(),
-  card_number: Yup.string(),
-  bank_account_no: Yup.string(),
-  bank_name: Yup.string(),
-  family_card_number: Yup.string(),
-  safety_insurance_no: Yup.string(),
-  health_insurance_no: Yup.string(),
+  mobile_no: Yup.number().nullable(),
+  tel_no: Yup.number().nullable(),
+  card_number: Yup.number().nullable(),
+  bank_account_no: Yup.number().nullable(),
+  bank_name: Yup.string().nullable(),
+  family_card_number: Yup.number().nullable(),
+  safety_insurance_no: Yup.number().nullable(),
+  health_insurance_no: Yup.number().nullable(),
 
   // Contract Information --------------------------------------------
   contract_start_date: Yup.string().required(),
@@ -35,5 +35,4 @@ export const employeeSchema = Yup.object().shape({
 
   // Others ----------------------------------------------------------
   benefits: Yup.array(),
-  remark: Yup.string(),
 });

@@ -11,15 +11,15 @@ export const initialValues: ICreateEmployeePayload = {
   nc_id: "",
   home_address_1: "",
   home_address_2: "",
-  mobile_no: "",
-  tel_no: "",
+  mobile_no: null,
+  tel_no: null,
   marriage_id: null,
   card_number: "",
-  bank_account_no: "",
+  bank_account_no: null,
   bank_name: "",
-  family_card_number: "",
-  safety_insurance_no: "",
-  health_insurance_no: "",
+  family_card_number: null,
+  safety_insurance_no: null,
+  health_insurance_no: null,
 
   // Contract Information --------------------------------------------
   contract_start_date: "",
@@ -44,5 +44,5 @@ export const initialValues: ICreateEmployeePayload = {
   // Others ----------------------------------------------------------
   grade_id: null,
   benefits: [],
-  remark: "",
+  remark: null,
 };

@@ -38,7 +38,7 @@ export default function EmployeeList() {
     dispatch(getEmployeeList({ page: 1 }));
   }, [dispatch]);
 
-  const handleNavigate = (employeeId: number) => {
+  const onNavigate = (employeeId: number) => {
     return navigate(`add-or-update/${employeeId}`);
   };
 
@@ -68,7 +68,7 @@ export default function EmployeeList() {
           dataSource={santinizeData(employees)}
           onRow={(record) => {
             return {
-              onDoubleClick: () => handleNavigate(Number(record.key)),
+              onDoubleClick: () => onNavigate(Number(record.key)),
             };
           }}
         />

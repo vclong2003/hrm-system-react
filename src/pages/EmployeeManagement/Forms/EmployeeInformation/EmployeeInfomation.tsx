@@ -43,6 +43,7 @@ export default function EmployeeInformation({
       errors.health_insurance_no
     ) {
       setError(true);
+      console.log(errors);
       return;
     }
     setError(false);
