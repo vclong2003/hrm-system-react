@@ -26,7 +26,6 @@ export default function Login() {
   }, []);
 
   const onSubmit = (values: ILoginPayload) => {
-    console.log(values);
     dispatch(login(values));
   };
 
