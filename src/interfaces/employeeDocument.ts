@@ -8,7 +8,7 @@ export interface IEmployeeDocument {
 
 // Update employee documents ----------------------------------
 export interface IUpdateEmployeeDocumentsPayload {
-  employee_id: string;
-  deleted_ids: string[];
-  documents: File[];
+  employee_id: number;
+  "deleted_ids[]"?: number[];
+  "documents[]": File[];
 }

@@ -128,6 +128,7 @@ export interface IEmployeeListItem {
 export interface IEmployeeState {
   employees: IEmployeeListItem[];
   last_page: number;
+  employee: IEmployee | null;
 }
 
 // Get Employees ---------------------------------------------
