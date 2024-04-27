@@ -1,13 +1,13 @@
 import { BreadcrumbItemType } from "antd/es/breadcrumb/Breadcrumb";
 
-export const employeeList: BreadcrumbItemType[] = [
+export const list: BreadcrumbItemType[] = [
   { title: "General" },
   {
     title: "Employee Management",
   },
 ];
 
-export const addEmployee: BreadcrumbItemType[] = [
+export const add: BreadcrumbItemType[] = [
   { title: "General" },
   {
     path: "employee",
@@ -16,7 +16,7 @@ export const addEmployee: BreadcrumbItemType[] = [
   { title: "Add Employee" },
 ];
 
-export const updateEmployee: BreadcrumbItemType[] = [
+export const update: BreadcrumbItemType[] = [
   { title: "General" },
   {
     path: "employee",
