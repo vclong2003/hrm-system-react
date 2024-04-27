@@ -6,28 +6,28 @@ import Others from "./Others/Others";
 
 import useFormSelectOptions from "@hooks/employeeManagement/useFormSelectOptions";
 
-import { ICreateEmployeePayload, IEmployee } from "@interfaces/employee";
+import { ICreateEmployeePayload } from "@interfaces/employee";
 import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 import { useEffect } from "react";
 import { useFormikContext } from "formik";
+import { useSelector } from "react-redux";
+import { RootState } from "@store/index";
 
 interface IFormsProps {
   tab: EFORM_TAB;
-  employee?: IEmployee;
   onSetError: (tab: EFORM_TAB, isError: boolean) => void;
 }
-export default function Forms({ tab, employee, onSetError }: IFormsProps) {
+export default function Forms({ tab, onSetError }: IFormsProps) {
+  const { employee } = useSelector((state: RootState) => state.employeeState);
   const { marriages, departments, positions, grades, benefits } =
     useFormSelectOptions();
   const { setFieldValue, resetForm } =
     useFormikContext<ICreateEmployeePayload>();
 
-  // Set form values when employee is present (edit mode)
   useEffect(() => {
-    if (!employee) {
-      resetForm();
-      return;
-    }
+    if (!employee) return resetForm();
+
+    // Set form values when employee is present (edit mode)
     Object.entries(employee).forEach(([key, value]) => {
       setFieldValue(key, value);
     });

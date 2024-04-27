@@ -13,6 +13,7 @@ import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IGrade } from "@interfaces/grade";
 import { IBenefit } from "@interfaces/benefit";
 import BenefitsSelector from "./BenefitsSelector/BenefitsSelector";
+import DocumentManager from "@pages/EmployeeManagement/DocumentManager/DocumentManager";
 
 interface IOthersProps {
   grades: IGrade[];
@@ -63,6 +64,10 @@ export default function Others({ grades, benefits, setError }: IOthersProps) {
             <TextArea name="remark" autoSize={{ minRows: 3, maxRows: 5 }} />
           </Col>
         </S.FormGroup>
+      </Col>
+      {/* Document Manager -------------------------------------------------- */}
+      <Col span={24}>
+        <DocumentManager />
       </Col>
     </S.Others>
   );

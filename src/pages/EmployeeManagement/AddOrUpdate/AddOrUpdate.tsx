@@ -9,10 +9,7 @@ import Forms from "../Forms/Forms";
 
 import { useEffect, useMemo, useState } from "react";
 import useFormErrors from "@hooks/employeeManagement/useFormErrors";
-import {
-  addEmployee,
-  updateEmployee,
-} from "@variables/employeeManagement/breadcrumbs";
+import { add, update } from "@variables/employeeManagement/breadcrumbs";
 import employeeService from "@services/employee";
 import notiUtils from "@utils/notification";
 
@@ -20,15 +17,18 @@ import { employeeSchema } from "@validations/employee";
 import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 import { FORM_TABS } from "@variables/employeeManagement/formTabs";
 import { initialValues } from "@variables/employeeManagement/formInitialValues";
-import { ICreateEmployeePayload, IEmployee } from "@interfaces/employee";
+import { ICreateEmployeePayload } from "@interfaces/employee";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@store/index";
+import { getEmployeeById, setEmployee, updateEmployee } from "@store/employee";
 
 export default function AddOrUpdate() {
   const navigate = useNavigate();
   const { employeeId } = useParams();
+  const dispatch = useDispatch<AppDispatch>();
 
   const [mode, setMode] = useState<"add" | "update">("add");
-  const [employee, setEmployee] = useState<IEmployee>();
   const [formTab, setFormTab] = useState<string>(
     EFORM_TAB.EMPLOYEE_INFORMATION
   );
@@ -37,11 +37,12 @@ export default function AddOrUpdate() {
   const onAddEmployee = (values: ICreateEmployeePayload) => {
     employeeService
       .createEmployee(values)
+      .then((employee) => navigate(`${employee.id}`))
       .then(() => notiUtils.notifySuccess("Employee added successfully!"));
   };
   const onUpdateEmployee = (values: ICreateEmployeePayload) => {
-    employeeService
-      .updateEmployee({ id: Number(employeeId), ...values })
+    dispatch(updateEmployee({ id: Number(employeeId), ...values }))
+      .unwrap()
       .then(() => notiUtils.notifySuccess("Employee updated successfully!"));
   };
 
@@ -54,20 +55,20 @@ export default function AddOrUpdate() {
     // If employeeId is not present -> add mode
     if (!employeeId) {
       setMode("add");
-      setEmployee(undefined);
+      dispatch(setEmployee(null));
       return;
     }
     // If employeeId is present -> update mode
     setMode("update");
-    employeeService
-      .getEmployeeById({ id: Number(employeeId) })
-      .then((data) => setEmployee(data))
+    dispatch(getEmployeeById({ id: Number(employeeId) }))
+      .unwrap()
+      .then(() => setMode("update"))
       .catch(() => navigate(-1));
-  }, [employeeId, navigate]);
+  }, [employeeId, navigate, dispatch]);
 
   return (
     <S.AddOrUpdate>
-      <Breadcrumb items={mode === "update" ? updateEmployee : addEmployee} />
+      <Breadcrumb items={mode === "update" ? update : add} />
       <Formik
         initialValues={initialValues}
         validationSchema={employeeSchema}
@@ -92,11 +93,7 @@ export default function AddOrUpdate() {
             </S.FormHeading>
             <S.Divider />
             {/* Forms -------------------------------------------------- */}
-            <Forms
-              tab={formTab as EFORM_TAB}
-              employee={employee}
-              onSetError={setTabError}
-            />
+            <Forms tab={formTab as EFORM_TAB} onSetError={setTabError} />
           </S.FormContainer>
         </Form>
       </Formik>

@@ -5,6 +5,7 @@ import Trash from "@assets/icons/trash.png";
 import PageHeading from "../PageHeading/PageHeading.tsx";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb.tsx";
 import Pagination from "@components/Pagination/Pagination.tsx";
+import Table from "@components/Table/Table.tsx";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Key, useEffect, useState } from "react";
@@ -15,8 +16,7 @@ import { IEmployeeListItem } from "@interfaces/employee.ts";
 import { EGender } from "src/enums/employee.ts";
 import { AppDispatch, RootState } from "@store/index.ts";
 import { COLUMNS } from "@variables/employeeManagement/employeeListColumns.ts";
-import { employeeList } from "@variables/employeeManagement/breadcrumbs.ts";
-import Table from "@components/Table/Table.tsx";
+import { list } from "@variables/employeeManagement/breadcrumbs.ts";
 
 const santinizeData = (data: IEmployeeListItem[]) => {
   return data.map((item) => {
@@ -46,7 +46,7 @@ export default function EmployeeList() {
 
   return (
     <S.EmployeeList>
-      <Breadcrumb items={employeeList} />
+      <Breadcrumb items={list} />
       <PageHeading variant="search" />
       <S.TableContainer>
         <S.BtnsContainer>
