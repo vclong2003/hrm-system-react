@@ -4,7 +4,6 @@ import Add from "@assets/icons/add.png";
 import Trash from "@assets/icons/trash.png";
 import PageHeading from "../PageHeading/PageHeading.tsx";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb.tsx";
-import { Table } from "antd";
 import Pagination from "@components/Pagination/Pagination.tsx";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +16,7 @@ import { EGender } from "src/enums/employee.ts";
 import { AppDispatch, RootState } from "@store/index.ts";
 import { COLUMNS } from "@variables/employeeManagement/employeeListColumns.ts";
 import { employeeList } from "@variables/employeeManagement/breadcrumbs.ts";
+import Table from "@components/Table/Table.tsx";
 
 const santinizeData = (data: IEmployeeListItem[]) => {
   return data.map((item) => {
@@ -37,6 +37,8 @@ export default function EmployeeList() {
   useEffect(() => {
     dispatch(getEmployeeList({ page: 1 }));
   }, [dispatch]);
+
+  console.log("employees", employees);
 
   const onNavigate = (employeeId: number) => {
     return navigate(`add-or-update/${employeeId}`);
