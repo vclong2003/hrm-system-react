@@ -1,9 +1,7 @@
 import { IEmployeeListItem } from "@interfaces/employee";
 import { TableColumnsType } from "antd";
-import { Key } from "react";
 
 interface IData extends IEmployeeListItem {
-  key: Key;
   gender_name: string;
 }
 

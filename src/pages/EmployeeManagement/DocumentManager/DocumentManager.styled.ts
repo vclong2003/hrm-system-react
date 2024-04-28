@@ -1,3 +1,4 @@
+import Button from "@components/Button/Button";
 import { Col, Row } from "antd";
 import styled from "styled-components";
 
@@ -29,3 +30,12 @@ export const UploadBtn = styled.div`
 export const TableContainer = styled(Col)`
   padding: 0 var(--s-5);
 `;
+
+export const ActionButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: var(--s-1);
+`;
+
+export const DownloadBtn = styled(Button)``;
+export const RemoveButton = styled(Button)``;

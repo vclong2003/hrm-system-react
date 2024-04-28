@@ -23,7 +23,6 @@ const santinizeData = (data: IEmployeeListItem[]) => {
     return {
       ...item,
       gender_name: EGender[item.gender],
-      key: item.id,
     };
   });
 };
@@ -37,8 +36,6 @@ export default function EmployeeList() {
   useEffect(() => {
     dispatch(getEmployeeList({ page: 1 }));
   }, [dispatch]);
-
-  console.log("employees", employees);
 
   const onNavigate = (employeeId: number) => {
     return navigate(`add-or-update/${employeeId}`);
@@ -62,15 +59,16 @@ export default function EmployeeList() {
         <S.Divider />
         <Table
           pagination={false}
+          rowKey={"id"}
           rowSelection={{
             selectedRowKeys,
             onChange: (keys) => setSelectedRowKeys(keys),
           }}
           columns={COLUMNS}
           dataSource={santinizeData(employees)}
-          onRow={(record) => {
+          onRow={(rowData) => {
             return {
-              onDoubleClick: () => onNavigate(Number(record.key)),
+              onDoubleClick: () => onNavigate(rowData.id),
             };
           }}
         />
