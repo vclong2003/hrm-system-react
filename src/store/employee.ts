@@ -36,7 +36,8 @@ export const getEmployeeById = createAsyncThunk(
 export const updateEmployee = createAsyncThunk(
   `${name}/updateEmployee`,
   async (payload: IUpdateEmployeePayload) => {
-    return await employeeService.updateEmployee(payload);
+    await employeeService.updateEmployee(payload);
+    return await employeeService.getEmployeeById({ id: payload.id });
   }
 );
 

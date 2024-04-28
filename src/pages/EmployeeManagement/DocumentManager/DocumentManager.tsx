@@ -6,6 +6,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { updateEmployeeDocuments } from "@store/employee";
+import Table from "@components/Table/Table";
 
 export default function DocumentManager() {
   const dispatch = useDispatch<AppDispatch>();
@@ -13,9 +14,7 @@ export default function DocumentManager() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   if (!employee) return null;
-
   console.log(employee);
-
   const onFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -40,12 +39,22 @@ export default function DocumentManager() {
           </S.LabelCol>
           <Col span={16}>
             <S.UploadBtn>
-              <input type="file" onChange={onFileSelect} ref={fileInputRef} />
-              <Typo variant="body1">Upload</Typo>
+              <label>
+                <input
+                  hidden
+                  type="file"
+                  onChange={onFileSelect}
+                  ref={fileInputRef}
+                />
+                <Typo variant="body1">Upload</Typo>
+              </label>
             </S.UploadBtn>
           </Col>
         </S.FormGroup>
       </Col>
+      <S.TableContainer span={24}>
+        <Table pagination={false} />
+      </S.TableContainer>
     </S.DocumentManager>
   );
 }

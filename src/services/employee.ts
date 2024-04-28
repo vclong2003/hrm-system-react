@@ -36,7 +36,7 @@ const createEmployee = async (
 // Update Employee ----------------------------------------------
 const updateEmployee = async (
   payload: IUpdateEmployeePayload
-): Promise<IEmployee> => {
+): Promise<void> => {
   const query = buildQueryString({ ...payload });
   return await axiosInstance.put(`/employee/${payload.id}${query}`);
 };

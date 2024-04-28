@@ -1,0 +1,20 @@
+import { TableColumnsType } from "antd";
+import { IEmployeeDocument } from "@interfaces/employeeDocument";
+
+export const COLUMNS: TableColumnsType<IEmployeeDocument> = [
+  {
+    title: "No",
+    render: (value, record, index) => index + 1,
+  },
+  {
+    title: "Document Name",
+    dataIndex: "document",
+  },
+  {
+    title: "Created At",
+    dataIndex: "created_at",
+  },
+  {
+    title: "Action",
+  },
+];
