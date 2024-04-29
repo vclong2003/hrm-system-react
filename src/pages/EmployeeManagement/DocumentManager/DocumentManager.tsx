@@ -52,7 +52,12 @@ export default function DocumentManager() {
             {/* File input ------------------------------------------ */}
             <S.UploadBtn>
               <label>
-                <input hidden type="file" onChange={onFileSelect} />
+                <input
+                  hidden
+                  type="file"
+                  onChange={onFileSelect}
+                  accept="image/*,.pdf,.csv,.xlsx,.docx"
+                />
                 <Typo variant="body1">Upload</Typo>
               </label>
             </S.UploadBtn>
