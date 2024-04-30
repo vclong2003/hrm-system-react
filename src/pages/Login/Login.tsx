@@ -46,6 +46,7 @@ export default function Login() {
 
           <S.InputLabel variant="body1">Factory:</S.InputLabel>
           <S.FormSelect name="company_id">
+            <AntSelect.Option value={0}>Select Company</AntSelect.Option>
             {companies.map((company) => (
               <AntSelect.Option key={company.id} value={company.id}>
                 {company.name}

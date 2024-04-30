@@ -1,12 +1,9 @@
-// Get Employee Contracts ------------------------------
-export interface IGetEmployeeContractsPayload {
-  employee_id: number;
-}
-
-// Save Multiple Contracts -----------------------------
+// Save Contract --------------------------------
 export interface ISaveMultipleContractsPayload {
   employee_id: number;
-  names: string[];
-  contract_dates: string[];
-  documents: string[];
+  "modified_contracts[]": number;
+  "deleted_contracts[]": number;
+  "names[]": string;
+  "contract_dates[]": string;
+  "documents[]": File;
 }
