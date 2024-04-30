@@ -6,6 +6,7 @@ import styled from "styled-components";
 export const ContractManager = styled(Row)`
   border-radius: var(--br-2);
   border: 1px solid var(--c-white-4);
+  overflow: hidden;
 `;
 
 export const Title = styled(Typo)`
@@ -69,4 +70,27 @@ export const SaveButton = styled(Button)`
 export const TableContainer = styled(Col)`
   border-left: 1px solid var(--c-white-4);
   padding: 0 var(--s-5);
+`;
+
+export const ActionButtons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--s-1);
+`;
+
+export const DownloadBtn = styled(Button)`
+  padding: var(--s-1) var(--s-2);
+  background-color: var(--c-green-1);
+`;
+
+export const RemoveBtn = styled(Button)`
+  padding: var(--s-1) var(--s-2);
+  background-color: var(--c-pink);
+`;
+
+export const BtnIcon = styled.img`
+  width: 14px;
+  height: 14px;
 `;

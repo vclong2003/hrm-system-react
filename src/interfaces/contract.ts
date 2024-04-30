@@ -11,9 +11,9 @@ export interface IContract {
 // Save Contract --------------------------------
 export interface ISaveContractPayload {
   employee_id: number;
-  "modified_contracts[]": number | "";
+  "modified_contracts[]"?: number | "";
   "deleted_contracts[]"?: number;
-  "names[]": string;
-  "contract_dates[]": string;
-  "documents[]": File;
+  "names[]"?: string;
+  "contract_dates[]"?: string;
+  "documents[]"?: File;
 }
