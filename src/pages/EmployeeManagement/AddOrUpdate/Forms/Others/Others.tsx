@@ -13,7 +13,7 @@ import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IGrade } from "@interfaces/grade";
 import { IBenefit } from "@interfaces/benefit";
 import BenefitsSelector from "./BenefitsSelector/BenefitsSelector";
-import DocumentManager from "@pages/EmployeeManagement/DocumentManager/DocumentManager";
+import DocumentManager from "../../DocumentManager/DocumentManager";
 
 interface IOthersProps {
   grades: IGrade[];

@@ -7,7 +7,9 @@ import {
 } from "@interfaces/employee";
 import employeeService from "@services/employee";
 import empDocumentService from "@services/employeeDocument";
+import contractService from "@services/contract";
 import { IUpdateEmployeeDocumentsPayload } from "@interfaces/employeeDocument";
+import { ISaveContractPayload } from "@interfaces/contract";
 
 const name = "employeeState";
 const initialState: IEmployeeState = {
@@ -50,6 +52,17 @@ export const updateEmployeeDocuments = createAsyncThunk(
   }
 );
 
+// Save contract ----------------------------------------------
+export const saveContract = createAsyncThunk(
+  `${name}/saveContract`,
+  async (payload: ISaveContractPayload) => {
+    await contractService.saveContract(payload);
+    return await employeeService.getEmployeeById({
+      id: payload.employee_id,
+    });
+  }
+);
+
 const employeeState = createSlice({
   name,
   initialState,
@@ -74,6 +87,10 @@ const employeeState = createSlice({
     });
     // Update Employee Documents ----------------------------------
     builder.addCase(updateEmployeeDocuments.fulfilled, (state, action) => {
+      state.employee = action.payload;
+    });
+    // Save contract ----------------------------------------------
+    builder.addCase(saveContract.fulfilled, (state, action) => {
       state.employee = action.payload;
     });
   },

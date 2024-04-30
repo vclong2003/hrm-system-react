@@ -9,6 +9,7 @@ import { Select } from "@components/formComponents";
 import { EType } from "src/enums/employee";
 import { useEffect } from "react";
 import helpers from "@helpers/employeeManagement/form";
+import ContractManager from "../../ContractManager/ContractManager";
 
 interface IContractInformationProps {
   setError: (isError: boolean) => void;
@@ -57,6 +58,10 @@ export default function ContractInformation({
             </Select>
           </Col>
         </S.FormGroup>
+      </Col>
+      {/* Contract Manager --------------------------- */}
+      <Col span={24}>
+        <ContractManager />
       </Col>
     </S.ContractInformation>
   );

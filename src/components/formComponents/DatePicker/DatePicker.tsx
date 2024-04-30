@@ -12,11 +12,8 @@ export default function DatePicker({ name }: IDatePickerProps) {
   }>();
 
   const onChange = (_: unknown, dateString: string | string[]) => {
-    console.log(dateString);
     setFieldValue(name, dateString);
   };
-
-  console.log(values[name]); // result 1991-05-04
 
   return (
     <S.DatePicker

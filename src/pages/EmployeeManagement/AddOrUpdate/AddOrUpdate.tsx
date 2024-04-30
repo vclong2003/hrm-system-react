@@ -5,7 +5,7 @@ import PageHeading from "../PageHeading/PageHeading";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
 import Typo from "@components/Typo/Typo";
 import HorizontalMenu from "@components/HorizontalMenu/HorizontalMenu";
-import Forms from "../Forms/Forms";
+import Forms from "./Forms/Forms";
 
 import { useEffect, useMemo, useState } from "react";
 import useFormErrors from "@hooks/employeeManagement/useFormErrors";

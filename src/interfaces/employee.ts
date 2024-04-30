@@ -4,6 +4,7 @@ import { IPosition } from "./position";
 import { IBenefit } from "./benefit";
 import { IEmployeeDocument } from "./employeeDocument";
 import { IMarriage } from "./marriage";
+import { IContract } from "./contract";
 
 export interface IEmployee {
   id: number;
@@ -64,6 +65,7 @@ export interface IEmployee {
   marriage: IMarriage;
   benefits: IBenefit[];
   documents: IEmployeeDocument[];
+  contracts: IContract[];
 }
 
 export interface IEmployeeListItem {
