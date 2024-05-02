@@ -34,19 +34,21 @@ export default function EmployeeList() {
   const { employees, per_page, total } = useSelector(
     (state: RootState) => state.employeeState
   );
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
-    dispatch(getEmployeeList({ page }));
+    setLoading(true);
+    dispatch(getEmployeeList({ page })).then(() => setLoading(false));
   }, [dispatch, page]);
 
-  const onNavigate = (employeeId: number) => {
-    return navigate(`add-or-update/${employeeId}`);
-  };
   const openDeleteModal = () => setShowDeleteModal(true);
   const closeDeleteModal = () => setShowDeleteModal(false);
+  const onNavigate = (employeeId: number) => {
+    navigate(`add-or-update/${employeeId}`);
+  };
 
   return (
     <S.EmployeeList>
@@ -73,6 +75,7 @@ export default function EmployeeList() {
         </S.BtnsContainer>
         <S.Divider />
         <Table
+          loading={loading}
           pagination={false}
           rowKey={"id"}
           rowSelection={{
