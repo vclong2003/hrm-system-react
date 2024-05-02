@@ -16,8 +16,6 @@ export default function DeleteModal({
   const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState(false);
 
-  console.log(delete_ids);
-
   const onDelete = () => {
     if (loading) return;
     if (delete_ids.length === 0) return;
