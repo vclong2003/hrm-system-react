@@ -5,6 +5,8 @@ import Trash from "@assets/icons/trash.png";
 import PageHeading from "../PageHeading/PageHeading.tsx";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb.tsx";
 import Table from "@components/Table/Table.tsx";
+import DeleteModal from "./DeleteModal.tsx";
+import { Pagination } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Key, useEffect, useState } from "react";
@@ -16,7 +18,6 @@ import { EGender } from "src/enums/employee.ts";
 import { AppDispatch, RootState } from "@store/index.ts";
 import { COLUMNS } from "@variables/employeeManagement/employeeListColumns.ts";
 import { list } from "@variables/employeeManagement/breadcrumbs.ts";
-import { Pagination } from "antd";
 
 const santinizeData = (data: IEmployeeListItem[]) => {
   return data.map((item) => {
@@ -35,6 +36,7 @@ export default function EmployeeList() {
   );
   const [page, setPage] = useState(1);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     dispatch(getEmployeeList({ page }));
@@ -43,9 +45,17 @@ export default function EmployeeList() {
   const onNavigate = (employeeId: number) => {
     return navigate(`add-or-update/${employeeId}`);
   };
+  const openDeleteModal = () => setShowDeleteModal(true);
+  const closeDeleteModal = () => setShowDeleteModal(false);
 
   return (
     <S.EmployeeList>
+      {showDeleteModal && (
+        <DeleteModal
+          delete_ids={selectedRowKeys as number[]}
+          onClose={closeDeleteModal}
+        />
+      )}
       <Breadcrumb items={list} />
       <PageHeading variant="search" />
       <S.TableContainer>
@@ -54,7 +64,9 @@ export default function EmployeeList() {
             <S.BtnIcon src={Add} />
             Add
           </S.AddBtn>
-          <S.DeleteBtn>
+          <S.DeleteBtn
+            disabled={selectedRowKeys.length === 0}
+            onClick={openDeleteModal}>
             <S.BtnIcon src={Trash} />
             Delete
           </S.DeleteBtn>

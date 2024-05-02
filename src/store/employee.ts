@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  IDeleteMultipleEmployeesPayload,
   IEmployeeState,
   IGetEmployeeByIdPayload,
   IGetEmployeeListPayload,
@@ -64,6 +65,15 @@ export const saveContract = createAsyncThunk(
   }
 );
 
+// Delete Multiple Employee -------------------------------------
+export const deleteMultipleEmployees = createAsyncThunk(
+  `${name}/deleteMultipleEmployees`,
+  async (payload: IDeleteMultipleEmployeesPayload) => {
+    await employeeService.deleteMultipleEmployees(payload);
+    return payload;
+  }
+);
+
 const employeeState = createSlice({
   name,
   initialState,
@@ -94,6 +104,13 @@ const employeeState = createSlice({
     // Save contract ----------------------------------------------
     builder.addCase(saveContract.fulfilled, (state, action) => {
       state.employee = action.payload;
+    });
+    // Delete Multiple Employee -------------------------------------
+    builder.addCase(deleteMultipleEmployees.fulfilled, (state, action) => {
+      state.employees = state.employees.filter(
+        (employee) => !action.payload.record_ids.includes(employee.id)
+      );
+      state.total = state.total - action.payload.record_ids.length;
     });
   },
 });

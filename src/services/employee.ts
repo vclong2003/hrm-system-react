@@ -46,7 +46,7 @@ const deleteMultipleEmployees = async (
   payload: IDeleteMultipleEmployeesPayload
 ): Promise<void> => {
   const query = buildQueryString({ ...payload });
-  return await axiosInstance.delete(`/employee${query}`);
+  return await axiosInstance.delete(`/employee/multiple-delete${query}`);
 };
 
 export default {
