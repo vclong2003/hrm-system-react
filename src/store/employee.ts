@@ -15,7 +15,8 @@ const name = "employeeState";
 const initialState: IEmployeeState = {
   employees: [],
   employee: null,
-  last_page: 0,
+  per_page: 0,
+  total: 0,
 };
 
 // Get employee list ---------------------------------------------
@@ -75,7 +76,8 @@ const employeeState = createSlice({
     // Get employee list ---------------------------------------------
     builder.addCase(getEmployeeList.fulfilled, (state, action) => {
       state.employees = action.payload.data;
-      state.last_page = action.payload.last_page;
+      state.per_page = action.payload.per_page;
+      state.total = action.payload.total;
     });
     // Get Employee By Id -------------------------------------------
     builder.addCase(getEmployeeById.fulfilled, (state, action) => {

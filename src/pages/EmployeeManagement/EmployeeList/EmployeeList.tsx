@@ -4,7 +4,6 @@ import Add from "@assets/icons/add.png";
 import Trash from "@assets/icons/trash.png";
 import PageHeading from "../PageHeading/PageHeading.tsx";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb.tsx";
-import Pagination from "@components/Pagination/Pagination.tsx";
 import Table from "@components/Table/Table.tsx";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +16,7 @@ import { EGender } from "src/enums/employee.ts";
 import { AppDispatch, RootState } from "@store/index.ts";
 import { COLUMNS } from "@variables/employeeManagement/employeeListColumns.ts";
 import { list } from "@variables/employeeManagement/breadcrumbs.ts";
+import { Pagination } from "antd";
 
 const santinizeData = (data: IEmployeeListItem[]) => {
   return data.map((item) => {
@@ -30,12 +30,15 @@ const santinizeData = (data: IEmployeeListItem[]) => {
 export default function EmployeeList() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
-  const { employees } = useSelector((state: RootState) => state.employeeState);
+  const { employees, per_page, total } = useSelector(
+    (state: RootState) => state.employeeState
+  );
+  const [page, setPage] = useState(1);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
 
   useEffect(() => {
-    dispatch(getEmployeeList({ page: 1 }));
-  }, [dispatch]);
+    dispatch(getEmployeeList({ page }));
+  }, [dispatch, page]);
 
   const onNavigate = (employeeId: number) => {
     return navigate(`add-or-update/${employeeId}`);
@@ -73,7 +76,14 @@ export default function EmployeeList() {
           }}
         />
         <S.Divider />
-        <Pagination />
+        <Pagination
+          current={page}
+          total={total}
+          pageSize={per_page}
+          onChange={setPage}
+          showSizeChanger={false}
+          showTotal={(total, range) => `${range[0]}-${range[1]} of ${total}`}
+        />
       </S.TableContainer>
     </S.EmployeeList>
   );

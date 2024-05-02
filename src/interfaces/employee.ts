@@ -129,7 +129,8 @@ export interface IEmployeeListItem {
 
 export interface IEmployeeState {
   employees: IEmployeeListItem[];
-  last_page: number;
+  per_page: number;
+  total: number;
   employee: IEmployee | null;
 }
 
@@ -141,6 +142,8 @@ export interface IGetEmployeeListPayload {
 export interface IGetEmployeeListResponse {
   current_page: number;
   last_page: number;
+  per_page: number;
+  total: number;
   data: IEmployeeListItem[];
 }
 
