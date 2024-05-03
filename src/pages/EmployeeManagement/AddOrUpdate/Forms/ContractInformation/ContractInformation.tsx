@@ -36,7 +36,10 @@ export default function ContractInformation({
             <Typo variant="body1">Date Start</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <DatePicker name="contract_start_date" />
+            <DatePicker
+              name="contract_start_date"
+              error={errors.contract_start_date}
+            />
           </Col>
         </S.FormGroup>
         {/* Type -------------------------------------- */}
@@ -45,7 +48,7 @@ export default function ContractInformation({
             <Typo variant="body1">Employee Type</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Select name="type">
+            <Select name="type" error={errors.type}>
               <AntdSelect.Option value={EType.Permanent}>
                 Permanent
               </AntdSelect.Option>

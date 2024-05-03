@@ -5,9 +5,15 @@ import { Field, useFormikContext } from "formik";
 interface ISelectProps extends SelectProps {
   children: React.ReactNode;
   name: string;
+  error?: string;
 }
 
-export default function Select({ children, name, ...props }: ISelectProps) {
+export default function Select({
+  children,
+  name,
+  error,
+  ...props
+}: ISelectProps) {
   const { setFieldValue, values } = useFormikContext<{
     [key: string]: string;
   }>();
@@ -17,12 +23,16 @@ export default function Select({ children, name, ...props }: ISelectProps) {
   };
 
   return (
-    <Field
-      component={S.Select}
-      value={values[name]}
-      onChange={handleChange}
-      {...props}>
-      {children}
-    </Field>
+    <>
+      <Field
+        component={S.Select}
+        value={values[name]}
+        onChange={handleChange}
+        $error={!!error}
+        {...props}>
+        {children}
+      </Field>
+      {error && <S.Error variant="body2">{error}</S.Error>}
+    </>
   );
 }

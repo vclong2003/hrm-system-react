@@ -1,3 +1,4 @@
+import Typo from "@components/Typo/Typo";
 import { Input as BaseInput } from "antd";
 import styled from "styled-components";
 
@@ -18,4 +19,8 @@ export const Input = styled(BaseInput)<IInputProps>`
   border: ${({ $error }) => ($error ? "1px solid var(--c-pink-1)" : "none")};
 
   border-radius: var(--br-1);
+`;
+
+export const Error = styled(Typo)`
+  color: var(--c-red);
 `;

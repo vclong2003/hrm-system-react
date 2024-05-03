@@ -4,8 +4,9 @@ import { useFormikContext } from "formik";
 
 interface ITextAreaProps extends TextAreaProps {
   name: string;
+  error?: string;
 }
-export default function TextArea({ name, ...props }: ITextAreaProps) {
+export default function TextArea({ name, error, ...props }: ITextAreaProps) {
   const { setFieldValue, values } = useFormikContext<{
     [key: string]: string;
   }>();
@@ -15,11 +16,15 @@ export default function TextArea({ name, ...props }: ITextAreaProps) {
   };
 
   return (
-    <S.TextArea
-      name={name}
-      onChange={handleChange}
-      value={values[name]}
-      {...props}
-    />
+    <>
+      <S.TextArea
+        name={name}
+        onChange={handleChange}
+        value={values[name]}
+        $error={!!error}
+        {...props}
+      />
+      {error && <S.Error variant="body2">{error}</S.Error>}
+    </>
   );
 }

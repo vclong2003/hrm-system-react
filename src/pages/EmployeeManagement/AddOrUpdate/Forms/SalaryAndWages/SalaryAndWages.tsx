@@ -35,7 +35,11 @@ export default function SalaryAndWages({ setError }: ISalaryAndWagesProps) {
             <Typo variant="body1">Basic Salary</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Input prefix={current} name="basic_salary" />
+            <Input
+              prefix={current}
+              name="basic_salary"
+              error={errors.basic_salary}
+            />
           </Col>
         </S.FormGroup>
         {/* Audit Salary -------------------------------------------- */}
@@ -44,7 +48,11 @@ export default function SalaryAndWages({ setError }: ISalaryAndWagesProps) {
             <Typo variant="body1">Basic Salary (Audit)</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Input prefix={current} name="audit_salary" />
+            <Input
+              prefix={current}
+              name="audit_salary"
+              error={errors.audit_salary}
+            />
           </Col>
         </S.FormGroup>
         {/* Safety Insurance ----------------------------------------- */}
@@ -53,7 +61,11 @@ export default function SalaryAndWages({ setError }: ISalaryAndWagesProps) {
             <Typo variant="body1">Safety Insurance</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Input prefix={current} name="safety_insurance" />
+            <Input
+              prefix={current}
+              name="safety_insurance"
+              error={errors.safety_insurance}
+            />
           </Col>
         </S.FormGroup>
         {/* Health Insurance ----------------------------------------- */}
@@ -62,7 +74,11 @@ export default function SalaryAndWages({ setError }: ISalaryAndWagesProps) {
             <Typo variant="body1">Health Insurance</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Input prefix={current} name="health_insurance" />
+            <Input
+              prefix={current}
+              name="health_insurance"
+              error={errors.health_insurance}
+            />
           </Col>
         </S.FormGroup>
       </Col>

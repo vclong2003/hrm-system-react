@@ -44,7 +44,7 @@ export default function EmploymentDetails({
             <Typo variant="body1">Department</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Select name="department_id">
+            <Select name="department_id" error={errors.department_id}>
               {departments.map((department) => (
                 <AntdSelect.Option key={department.id} value={department.id}>
                   {department.name}
@@ -59,7 +59,7 @@ export default function EmploymentDetails({
             <Typo variant="body1">Position</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Select name="position_id">
+            <Select name="position_id" error={errors.position_id}>
               {positions.map((position) => (
                 <AntdSelect.Option key={position.id} value={position.id}>
                   {position.name}
@@ -74,7 +74,7 @@ export default function EmploymentDetails({
             <Typo variant="body1">Shift</Typo>
           </S.LabelCol>
           <Col span={14}>
-            <Select name="shift">
+            <Select name="shift" error={errors.shift}>
               <AntdSelect.Option value={EShift.First}>1</AntdSelect.Option>
               <AntdSelect.Option value={EShift.Second}>2</AntdSelect.Option>
             </Select>
@@ -97,9 +97,6 @@ export default function EmploymentDetails({
             Attendance Allowance Paid
           </Checkbox>
         </S.FormGroup>
-        {/* <S.FormGroup>
-          <Checkbox name="hidden_on_payroll">Hidden on Payroll</Checkbox>
-        </S.FormGroup> */}
       </Col>
     </S.EmploymentDetails>
   );

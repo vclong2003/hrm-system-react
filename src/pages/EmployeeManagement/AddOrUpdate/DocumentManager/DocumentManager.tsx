@@ -66,7 +66,7 @@ export default function DocumentManager() {
       </Col>
       <S.TableContainer span={24}>
         <Table pagination={false} dataSource={employee.documents} rowKey={"id"}>
-          <Column title="No" render={(value, rowData, index) => index + 1} />
+          <Column title="No" render={(_, __, index) => index + 1} />
           <Column
             title="Document Name"
             dataIndex="document"
@@ -80,7 +80,7 @@ export default function DocumentManager() {
           {/* Action Buttons ------------------------------------------------ */}
           <Column
             title="Action"
-            render={(value, rowData: IEmployeeDocument) => (
+            render={(_, rowData: IEmployeeDocument) => (
               <S.ActionButtons>
                 <S.DownloadBtn
                   type="button"

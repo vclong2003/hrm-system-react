@@ -9,8 +9,8 @@ export interface IInputProps extends InputProps {
 export default function Input({ error, ...props }: IInputProps) {
   return (
     <>
-      <Field as={S.Input} {...props} />
-      {error && error}
+      <Field as={S.Input} $error={!!error} {...props} />
+      {error && <S.Error variant="body2">{error}</S.Error>}
     </>
   );
 }

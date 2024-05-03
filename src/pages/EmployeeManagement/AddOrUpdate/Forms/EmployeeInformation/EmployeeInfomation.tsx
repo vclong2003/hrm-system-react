@@ -9,7 +9,7 @@ import { Select as AntSelect } from "antd";
 import { useFormikContext } from "formik";
 import { useEffect } from "react";
 import { EGender } from "src/enums/employee";
-import helpers from "@helpers/employeeManagement/form";
+import helper from "@helpers/employeeManagement/form";
 
 interface IEmployeeInformationProps {
   nik?: string;
@@ -23,7 +23,7 @@ export default function EmployeeInformation({
 }: IEmployeeInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
   useEffect(() => {
-    const isAnyError = helpers.checkErrors(errors, [
+    const isAnyError = helper.checkErrors(errors, [
       "name",
       "gender",
       "mother_name",
@@ -54,7 +54,7 @@ export default function EmployeeInformation({
           <S.LabelCol
             span={9}
             style={{ alignItems: "center", display: "flex" }}>
-            <Typo variant="body1">NIK :</Typo>
+            <Typo variant="body1">NIK:</Typo>
           </S.LabelCol>
           <Col span={15}>
             <Input disabled value={nik || "Not Generated Yet"} />
@@ -65,10 +65,10 @@ export default function EmployeeInformation({
           <S.LabelCol
             span={9}
             style={{ alignItems: "center", display: "flex" }}>
-            <Typo variant="body1">Name* :</Typo>
+            <Typo variant="body1">Name:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="name" />
+            <Input name="name" error={errors.name} />
           </Col>
         </S.FormGroup>
         {/* Gender ------------------------------------------------------ */}
@@ -76,10 +76,10 @@ export default function EmployeeInformation({
           <S.LabelCol
             span={9}
             style={{ alignItems: "center", display: "flex" }}>
-            <Typo variant="body1">Gender' :</Typo>
+            <Typo variant="body1">Gender:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Select name="gender">
+            <Select name="gender" error={errors.gender}>
               <AntSelect.Option value={EGender.Male}>Male</AntSelect.Option>
               <AntSelect.Option value={EGender.Female}>Female</AntSelect.Option>
             </Select>
@@ -90,10 +90,10 @@ export default function EmployeeInformation({
           <S.LabelCol
             span={9}
             style={{ alignItems: "center", display: "flex" }}>
-            <Typo variant="body1">Mother Name :</Typo>
+            <Typo variant="body1">Mother Name:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="mother_name" />
+            <Input name="mother_name" error={errors.mother_name} />
           </Col>
         </S.FormGroup>
         {/* Date of birth ----------------------------------------------- */}
@@ -101,10 +101,10 @@ export default function EmployeeInformation({
           <S.LabelCol
             span={9}
             style={{ alignItems: "center", display: "flex" }}>
-            <Typo variant="body1">Date of birth :</Typo>
+            <Typo variant="body1">Date of birth:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <DatePicker name="dob" />
+            <DatePicker name="dob" error={errors.dob} />
           </Col>
         </S.FormGroup>
         {/* Place Of birth ---------------------------------------------- */}
@@ -112,10 +112,14 @@ export default function EmployeeInformation({
           <S.LabelCol
             span={9}
             style={{ alignItems: "center", display: "flex" }}>
-            <Typo variant="body1">Place Of birth :</Typo>
+            <Typo variant="body1">Place Of birth:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="pob" placeholder="-auto change to upper case-" />
+            <Input
+              name="pob"
+              error={errors.pob}
+              placeholder="-auto change to upper case-"
+            />
           </Col>
         </S.FormGroup>
         {/* KTP No. ---------------------------------------------------- */}
@@ -123,10 +127,10 @@ export default function EmployeeInformation({
           <S.LabelCol
             span={9}
             style={{ alignItems: "center", display: "flex" }}>
-            <Typo variant="body1">KTP No.' :</Typo>
+            <Typo variant="body1">KTP No. :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="ktp_no" />
+            <Input name="ktp_no" error={errors.ktp_no} />
           </Col>
         </S.FormGroup>
         {/* National Card ---------------------------------------------- */}
@@ -137,7 +141,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">National Card :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="nc_id" />
+            <Input name="nc_id" error={errors.nc_id} />
           </Col>
         </S.FormGroup>
         {/* Home Address I ---------------------------------------------- */}
@@ -148,7 +152,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Home Address I :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="home_address_1" />
+            <Input name="home_address_1" error={errors.home_address_1} />
           </Col>
         </S.FormGroup>
         {/* Home Address 2 ---------------------------------------------- */}
@@ -159,7 +163,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Home Address 2:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="home_address_2" />
+            <Input name="home_address_2" error={errors.home_address_2} />
           </Col>
         </S.FormGroup>
       </Col>
@@ -172,7 +176,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Mobile NO. :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="mobile_no" />
+            <Input name="mobile_no" error={errors.mobile_no} />
           </Col>
         </S.FormGroup>
         {/* Tel No. ---------------------------------------------------- */}
@@ -183,7 +187,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Tel No. :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="tel_no" />
+            <Input name="tel_no" error={errors.tel_no} />
           </Col>
         </S.FormGroup>
         {/* Marriage Status -------------------------------------------- */}
@@ -211,7 +215,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Bank Card NO.:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="card_number" />
+            <Input name="card_number" error={errors.card_number} />
           </Col>
         </S.FormGroup>
         {/* Bank Account No. ------------------------------------------- */}
@@ -222,7 +226,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Bank Account No. :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="bank_account_no" />
+            <Input name="bank_account_no" error={errors.bank_account_no} />
           </Col>
         </S.FormGroup>
         {/* Bank Name ------------------------------------------------- */}
@@ -233,7 +237,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">Bank Name :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="bank_name" />
+            <Input name="bank_name" error={errors.bank_name} />
           </Col>
         </S.FormGroup>
         {/* Family Card Number ----------------------------------------- */}
@@ -244,7 +248,10 @@ export default function EmployeeInformation({
             <Typo variant="body1">Family Card Number :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="family_card_number" />
+            <Input
+              name="family_card_number"
+              error={errors.family_card_number}
+            />
           </Col>
         </S.FormGroup>
         {/* Safety Insurance NO. --------------------------------------- */}
@@ -255,7 +262,10 @@ export default function EmployeeInformation({
             <Typo variant="body1">Safety Insurance NO. :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="safety_insurance_no" />
+            <Input
+              name="safety_insurance_no"
+              error={errors.safety_insurance_no}
+            />
           </Col>
         </S.FormGroup>
         {/* Health Insurance No. --------------------------------------- */}
@@ -266,7 +276,10 @@ export default function EmployeeInformation({
             <Typo variant="body1">Health Insurance No. :</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input name="health_insurance_no" />
+            <Input
+              name="health_insurance_no"
+              error={errors.health_insurance_no}
+            />
           </Col>
         </S.FormGroup>
       </Col>
