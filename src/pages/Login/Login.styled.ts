@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Form as FormikForm } from "formik";
 import Typo from "@components/Typo/Typo";
-import { Input, Select } from "@components/formComponents";
 
 export const Login = styled.div`
   max-width: 384px;
@@ -27,16 +26,12 @@ export const Form = styled(FormikForm)`
   width: 100%;
 `;
 
-export const InputLabel = styled(Typo)`
-  margin-bottom: var(--s-1);
-`;
-
-export const FormInput = styled(Input)`
+export const FormGroup = styled.div`
   margin-bottom: var(--s-3);
 `;
 
-export const FormSelect = styled(Select)`
-  margin-bottom: var(--s-6);
+export const InputLabel = styled(Typo)`
+  margin-bottom: var(--s-1);
 `;
 
 export const LoginButton = styled(Button)`

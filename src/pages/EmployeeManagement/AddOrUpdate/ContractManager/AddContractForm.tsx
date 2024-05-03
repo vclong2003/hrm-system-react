@@ -37,8 +37,6 @@ export default function AddContractForm() {
     );
   };
 
-  console.log(employee);
-
   return (
     <Formik
       initialValues={initialValues}

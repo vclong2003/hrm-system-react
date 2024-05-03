@@ -15,6 +15,7 @@ import { AppDispatch, RootState } from "@store/index";
 
 import { loginSchema } from "@validations/login";
 import { initialValues } from "@variables/auth/loginForm";
+import { Input, Select } from "@components/formComponents";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
@@ -37,32 +38,43 @@ export default function Login() {
         onSubmit={onSubmit}
         initialValues={initialValues}
         validationSchema={loginSchema}>
-        <S.Form>
-          <S.InputLabel variant="body1">Username:</S.InputLabel>
-          <S.FormInput type="text" name="username" />
+        {({ errors }) => (
+          <S.Form>
+            {/* Username ----------------------------------------------------- */}
+            <S.FormGroup>
+              <S.InputLabel variant="body1">Username:</S.InputLabel>
+              <Input type="text" name="username" error={errors.username} />
+            </S.FormGroup>
 
-          <S.InputLabel variant="body1">Password:</S.InputLabel>
-          <S.FormInput type="password" name="password" />
+            {/* Password ----------------------------------------------------- */}
+            <S.FormGroup>
+              <S.InputLabel variant="body1">Password:</S.InputLabel>
+              <Input type="password" name="password" error={errors.password} />
+            </S.FormGroup>
 
-          <S.InputLabel variant="body1">Factory:</S.InputLabel>
-          <S.FormSelect name="company_id">
-            <AntSelect.Option value={0}>Select Company</AntSelect.Option>
-            {companies.map((company) => (
-              <AntSelect.Option key={company.id} value={company.id}>
-                {company.name}
-              </AntSelect.Option>
-            ))}
-          </S.FormSelect>
+            {/* Company ----------------------------------------------------- */}
+            <S.FormGroup>
+              <S.InputLabel variant="body1">Factory:</S.InputLabel>
+              <Select name="company_id" error={errors.company_id}>
+                <AntSelect.Option value={0}>Select Company</AntSelect.Option>
+                {companies.map((company) => (
+                  <AntSelect.Option key={company.id} value={company.id}>
+                    {company.name}
+                  </AntSelect.Option>
+                ))}
+              </Select>
+            </S.FormGroup>
 
-          <S.LoginButton size="large" type="submit">
-            Login
-          </S.LoginButton>
-          <S.ForgotPasswordContainer>
-            <S.ForgotPasswordLink to="#">
-              Forgot Your Password?
-            </S.ForgotPasswordLink>
-          </S.ForgotPasswordContainer>
-        </S.Form>
+            <S.LoginButton size="large" type="submit">
+              Login
+            </S.LoginButton>
+            <S.ForgotPasswordContainer>
+              <S.ForgotPasswordLink to="#">
+                Forgot Your Password?
+              </S.ForgotPasswordLink>
+            </S.ForgotPasswordContainer>
+          </S.Form>
+        )}
       </Formik>
     </S.Login>
   );
