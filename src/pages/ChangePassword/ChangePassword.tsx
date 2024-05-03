@@ -1,11 +1,11 @@
 import * as S from "./ChangePassword.styled";
-import { Formik } from "formik";
+// import { Formik } from "formik";
 
 export default function ChangePassword() {
   return (
     <S.ChangePassword>
       <S.Title variant="h3">Sign In</S.Title>
-      <Formik>
+      {/* <Formik>
         <S.Form>
           <S.InnerTitle variant="h4">Change Password</S.InnerTitle>
           <S.Divider />
@@ -19,7 +19,7 @@ export default function ChangePassword() {
             <S.ConfirmBtn type="submit">Confirm</S.ConfirmBtn>
           </S.InputsContainer>
         </S.Form>
-      </Formik>
+      </Formik> */}
     </S.ChangePassword>
   );
 }
