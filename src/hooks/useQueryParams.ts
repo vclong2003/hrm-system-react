@@ -1,7 +1,5 @@
 import { useSearchParams } from "react-router-dom";
 
-// T = "page", "search"
-
 export default function useQueryParams<T extends string>() {
   const [searchParams, setSearchParams] = useSearchParams();
 

@@ -13,53 +13,42 @@ import { Key, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getEmployeeList } from "@store/employee.ts";
 
-import { IEmployeeListItem } from "@interfaces/employee.ts";
-import { EGender } from "src/enums/employee.ts";
 import { AppDispatch, RootState } from "@store/index.ts";
 import { COLUMNS } from "@variables/employeeManagement/employeeListColumns.ts";
 import { list } from "@variables/employeeManagement/breadcrumbs.ts";
 import useDebounce from "@hooks/useDebounce.ts";
 import useQueryParams from "@hooks/useQueryParams.ts";
-
-const santinizeData = (data: IEmployeeListItem[]) => {
-  return data.map((item) => {
-    return {
-      ...item,
-      gender_name: EGender[item.gender],
-    };
-  });
-};
+import helper from "@helpers/employeeManagement/employeeList.ts";
 
 export default function EmployeeList() {
   const navigate = useNavigate();
   const { getParam, setParam } = useQueryParams<"page" | "search">();
+
   const dispatch = useDispatch<AppDispatch>();
   const { employees, per_page, total } = useSelector(
     (state: RootState) => state.employeeState
   );
+
   const [loading, setLoading] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
+
+  const [page, setPage] = useState(Number(getParam("page")) || 1);
   const [searchValue, setSearchValue] = useDebounce<string>(
     getParam("search") || ""
   );
-  const [page, setPage] = useState(Number(getParam("page")) || 1);
-  const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-  useEffect(() => {
-    setLoading(true);
-    setParam("search", searchValue);
-    dispatch(getEmployeeList({ page, search: searchValue })).then(() =>
-      setLoading(false)
-    );
-  }, [dispatch, page, searchValue]);
-
-  useEffect(() => setParam("page", page.toString()), [page]);
 
   const openDeleteModal = () => setShowDeleteModal(true);
   const closeDeleteModal = () => setShowDeleteModal(false);
-  const onNavigate = (employeeId: number) => {
-    navigate(`add-or-update/${employeeId}`);
-  };
+  const openEmployeeDetail = (id: number) => navigate(`add-or-update/${id}`);
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getEmployeeList({ page, search: searchValue }))
+      .then(() => setParam("search", searchValue))
+      .then(() => setLoading(false));
+  }, [dispatch, page, searchValue]);
+  useEffect(() => setParam("page", page.toString()), [page]);
 
   return (
     <S.EmployeeList>
@@ -98,10 +87,10 @@ export default function EmployeeList() {
             onChange: (keys) => setSelectedRowKeys(keys),
           }}
           columns={COLUMNS}
-          dataSource={santinizeData(employees)}
+          dataSource={helper.santinizeEmployeesData(employees)}
           onRow={(rowData) => {
             return {
-              onDoubleClick: () => onNavigate(rowData.id),
+              onDoubleClick: () => openEmployeeDetail(rowData.id),
             };
           }}
         />
