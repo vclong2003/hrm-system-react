@@ -7,7 +7,7 @@ import Typo from "@components/Typo/Typo";
 import HorizontalMenu from "@components/HorizontalMenu/HorizontalMenu";
 import Forms from "./Forms/Forms";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { add, update } from "@variables/employeeManagement/breadcrumbs";
 import employeeService from "@services/employee";
 import notiUtils from "@utils/notification";

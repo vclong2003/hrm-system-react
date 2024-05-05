@@ -18,6 +18,8 @@ import { EGender } from "src/enums/employee.ts";
 import { AppDispatch, RootState } from "@store/index.ts";
 import { COLUMNS } from "@variables/employeeManagement/employeeListColumns.ts";
 import { list } from "@variables/employeeManagement/breadcrumbs.ts";
+import useDebounce from "@hooks/useDebounce.ts";
+import useQueryParams from "@hooks/useQueryParams.ts";
 
 const santinizeData = (data: IEmployeeListItem[]) => {
   return data.map((item) => {
@@ -30,19 +32,28 @@ const santinizeData = (data: IEmployeeListItem[]) => {
 
 export default function EmployeeList() {
   const navigate = useNavigate();
+  const { getParam, setParam } = useQueryParams<"page" | "search">();
   const dispatch = useDispatch<AppDispatch>();
   const { employees, per_page, total } = useSelector(
     (state: RootState) => state.employeeState
   );
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
+  const [searchValue, setSearchValue] = useDebounce<string>(
+    getParam("search") || ""
+  );
+  const [page, setPage] = useState(Number(getParam("page")) || 1);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    dispatch(getEmployeeList({ page })).then(() => setLoading(false));
-  }, [dispatch, page]);
+    setParam("search", searchValue);
+    dispatch(getEmployeeList({ page, search: searchValue })).then(() =>
+      setLoading(false)
+    );
+  }, [dispatch, page, searchValue]);
+
+  useEffect(() => setParam("page", page.toString()), [page]);
 
   const openDeleteModal = () => setShowDeleteModal(true);
   const closeDeleteModal = () => setShowDeleteModal(false);
@@ -59,7 +70,11 @@ export default function EmployeeList() {
         />
       )}
       <Breadcrumb items={list} />
-      <PageHeading variant="search" />
+      <PageHeading
+        variant="search"
+        initSearchValue={getParam("search") || ""}
+        onSearch={setSearchValue}
+      />
       <S.TableContainer>
         <S.BtnsContainer>
           <S.AddBtn onClick={() => navigate("add-or-update")}>

@@ -8,12 +8,14 @@ interface IPageHeadingProps {
   variant: "search" | "add" | "update";
   disabled?: boolean;
   loading?: boolean;
+  initSearchValue?: string;
   onSearch?: (value: string) => void;
 }
 export default function PageHeading({
   variant,
   disabled,
   loading,
+  initSearchValue,
   onSearch,
 }: IPageHeadingProps) {
   return (
@@ -21,8 +23,10 @@ export default function PageHeading({
       <Typo variant="h3">Employee Management</Typo>
       {variant === "search" && (
         <S.SearchInput
+          allowClear
           placeholder="Search..."
           prefix={<S.SearchIcon src={Search} />}
+          defaultValue={initSearchValue}
           onChange={(e) => onSearch?.(e.target.value)}
         />
       )}
