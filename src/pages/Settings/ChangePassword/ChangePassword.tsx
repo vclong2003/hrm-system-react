@@ -41,13 +41,13 @@ export default function ChangePassword() {
             <S.Divider />
             <S.FormGroup>
               <Col span={8}>
-                <Typo variant="body1">Old Password</Typo>
+                <Typo variant="body1">New Password</Typo>
                 <Input name="password" type="password" />
               </Col>
             </S.FormGroup>
             <S.FormGroup>
               <Col span={8}>
-                <Typo variant="body1">New Password</Typo>
+                <Typo variant="body1">Confirm New Password</Typo>
                 <Input name="password_confirmation" type="password" />
               </Col>
             </S.FormGroup>
