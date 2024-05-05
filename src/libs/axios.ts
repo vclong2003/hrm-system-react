@@ -28,7 +28,7 @@ axiosInstance.interceptors.response.use(
   (response) => response.data?.data,
   (error) => {
     if (error.response?.status === 401) {
-      if (authUtils.getToken()) authUtils.redirectToLogin();
+      if (authUtils.getToken()) authUtils.logout();
       return Promise.reject("Unauthorized");
     }
 
