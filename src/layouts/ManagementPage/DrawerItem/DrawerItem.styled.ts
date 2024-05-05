@@ -1,11 +1,8 @@
 import Typo from "@components/Typo/Typo";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-interface IDrawerItemProps {
-  $isActive?: boolean;
-}
-
-export const DrawerItem = styled.div<IDrawerItemProps>`
+export const DrawerItem = styled(NavLink)`
   display: flex;
   font-display: row;
   align-items: center;
@@ -13,8 +10,11 @@ export const DrawerItem = styled.div<IDrawerItemProps>`
   margin-bottom: var(--s-3);
   border-radius: var(--br-2);
   cursor: pointer;
-  background-color: ${({ $isActive }) =>
-    $isActive ? "var(--c-white-1)" : "transparent"};
+  text-decoration: none;
+  background-color: transparent;
+  &.active {
+    background-color: var(--c-white-1);
+  }
 `;
 
 export const Icon = styled.div`

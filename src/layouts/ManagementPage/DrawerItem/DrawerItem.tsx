@@ -1,19 +1,17 @@
-import { useNavigate } from "react-router-dom";
 import * as S from "./DrawerItem.styled";
 
-import TestIcon from "@assets/icons/employee_management.png";
-
-export default function DrawerItem() {
-  const navigate = useNavigate();
-
-  const onClick = () => navigate("/employee");
-
+interface IDrawerItemProps {
+  to: string;
+  label: string;
+  icon: string;
+}
+export default function DrawerItem({ to, label, icon }: IDrawerItemProps) {
   return (
-    <S.DrawerItem onClick={onClick} $isActive>
+    <S.DrawerItem to={to}>
       <S.Icon>
-        <S.IconImage src={TestIcon} alt="icon" />
+        <S.IconImage src={icon} alt="icon" />
       </S.Icon>
-      <S.Text variant="body1">Employee Management</S.Text>
+      <S.Text variant="body1">{label}</S.Text>
     </S.DrawerItem>
   );
 }
