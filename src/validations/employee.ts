@@ -6,15 +6,15 @@ export const employeeSchema = Yup.object().shape({
   gender: Yup.number().required("Gender is required"),
   mother_name: Yup.string().nullable(),
   dob: Yup.string().required("Date of birth is required"),
-  pob: Yup.string(),
+  pob: Yup.string().nullable(),
   ktp_no: Yup.number()
     .required("KTP No. is required")
     .typeError("KTP must be a number"),
   nc_id: Yup.number()
     .required("National Card is required")
     .typeError("NC must be a number"),
-  home_address_1: Yup.string(),
-  home_address_2: Yup.string(),
+  home_address_1: Yup.string().nullable(),
+  home_address_2: Yup.string().nullable(),
   mobile_no: Yup.number().nullable().typeError("Mobile must be a number"),
   tel_no: Yup.number().nullable().typeError("Telephone must be a number"),
   card_number: Yup.number()
