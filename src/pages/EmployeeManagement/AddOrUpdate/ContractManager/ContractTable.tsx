@@ -15,7 +15,6 @@ export default function ContractTable() {
   const { employee } = useSelector((state: RootState) => state.employeeState);
 
   const onDownload = (contract: IContract) => saveAs(contract.document);
-
   const onDelete = (contract: IContract) => {
     dispatch(
       saveContract({

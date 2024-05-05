@@ -7,6 +7,7 @@ import { Input } from "@components/formComponents";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@store/index";
 import { saveContract } from "@store/employee";
+import { useState } from "react";
 
 interface IFormValues {
   date: string;
@@ -23,9 +24,12 @@ export default function AddContractForm() {
   const dispatch = useDispatch<AppDispatch>();
   const { employee } = useSelector((state: RootState) => state.employeeState);
 
+  const [loading, setLoading] = useState(false);
+
   const onSubmit = (values: IFormValues) => {
     if (!employee) return;
     if (!values.file) return;
+    setLoading(true);
     dispatch(
       saveContract({
         employee_id: employee.id,
@@ -34,7 +38,7 @@ export default function AddContractForm() {
         "documents[]": values.file,
         "modified_contracts[]": "",
       })
-    );
+    ).then(() => setLoading(false));
   };
 
   return (
@@ -77,8 +81,9 @@ export default function AddContractForm() {
             <S.SaveButton
               size="large"
               type="button"
+              disabled={loading}
               onClick={contractForm.submitForm}>
-              Save
+              {loading ? "Saving..." : "Save"}
             </S.SaveButton>
           </S.ButtonGroup>
         </>
