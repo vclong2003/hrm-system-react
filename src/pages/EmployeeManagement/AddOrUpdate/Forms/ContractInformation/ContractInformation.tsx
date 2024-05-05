@@ -7,25 +7,11 @@ import { Select as AntdSelect } from "antd";
 import DatePicker from "@components/formComponents/DatePicker/DatePicker";
 import { Select } from "@components/formComponents";
 import { EType } from "src/enums/employee";
-import { useEffect } from "react";
-import helpers from "@helpers/employeeManagement/form";
+
 import ContractManager from "../../ContractManager/ContractManager";
 
-interface IContractInformationProps {
-  setError: (isError: boolean) => void;
-}
-export default function ContractInformation({
-  setError,
-}: IContractInformationProps) {
+export default function ContractInformation() {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
-
-  useEffect(() => {
-    const isAnyError = helpers.checkErrors(errors, [
-      "contract_start_date",
-      "type",
-    ]);
-    setError(isAnyError);
-  }, [errors]);
 
   return (
     <S.ContractInformation>

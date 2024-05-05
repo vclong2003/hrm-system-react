@@ -4,24 +4,9 @@ import { useFormikContext } from "formik";
 import { Col } from "antd";
 import Typo from "@components/Typo/Typo";
 import { Input } from "@components/formComponents";
-import { useEffect } from "react";
-import helpers from "@helpers/employeeManagement/form";
 
-interface ISalaryAndWagesProps {
-  setError: (isError: boolean) => void;
-}
-export default function SalaryAndWages({ setError }: ISalaryAndWagesProps) {
+export default function SalaryAndWages() {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
-
-  useEffect(() => {
-    const isAnyError = helpers.checkErrors(errors, [
-      "basic_salary",
-      "audit_salary",
-      "safety_insurance",
-      "health_insurance",
-    ]);
-    setError(isAnyError);
-  }, [errors]);
 
   // Rp prefix for input
   const current = <S.MoneyCurrent variant="body1">Rp</S.MoneyCurrent>;

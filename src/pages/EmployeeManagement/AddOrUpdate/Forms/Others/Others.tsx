@@ -6,8 +6,6 @@ import Typo from "@components/Typo/Typo";
 import TextArea from "@components/formComponents/TextArea/TextArea";
 
 import { useFormikContext } from "formik";
-import { useEffect } from "react";
-import helpers from "@helpers/employeeManagement/form";
 
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IGrade } from "@interfaces/grade";
@@ -18,15 +16,9 @@ import DocumentManager from "../../DocumentManager/DocumentManager";
 interface IOthersProps {
   grades: IGrade[];
   benefits: IBenefit[];
-  setError: (isError: boolean) => void;
 }
-export default function Others({ grades, benefits, setError }: IOthersProps) {
+export default function Others({ grades, benefits }: IOthersProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
-
-  useEffect(() => {
-    const isAnyError = helpers.checkErrors(errors, ["grade_id", "remark"]);
-    setError(isAnyError);
-  }, [errors]);
 
   return (
     <S.Others>

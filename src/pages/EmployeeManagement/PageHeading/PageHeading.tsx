@@ -7,12 +7,14 @@ import Button from "@components/Button/Button";
 interface IPageHeadingProps {
   variant: "search" | "add" | "update";
   disabled?: boolean;
+  loading?: boolean;
   onSearch?: (value: string) => void;
 }
 export default function PageHeading({
   variant,
-  onSearch,
   disabled,
+  loading,
+  onSearch,
 }: IPageHeadingProps) {
   return (
     <S.PageHeading>
@@ -25,12 +27,20 @@ export default function PageHeading({
         />
       )}
       {variant === "add" && (
-        <Button size="large" type="submit" disabled={disabled}>
+        <Button
+          size="large"
+          type="submit"
+          disabled={disabled}
+          loading={loading}>
           Add
         </Button>
       )}
       {variant === "update" && (
-        <Button size="large" type="submit" disabled={disabled}>
+        <Button
+          size="large"
+          type="submit"
+          disabled={disabled}
+          loading={loading}>
           Save Changes
         </Button>
       )}

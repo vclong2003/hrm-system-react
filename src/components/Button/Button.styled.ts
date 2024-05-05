@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 interface IButtonProps {
   size?: "large" | "medium";
+  disabled?: boolean;
+  $loading?: boolean;
 }
 
 export const Button = styled.button<IButtonProps>`
@@ -13,4 +15,5 @@ export const Button = styled.button<IButtonProps>`
   font-size: ${({ size }) =>
     size === "large" ? "var(--fs-body1)" : "var(--fs-body2)"};
   cursor: pointer;
+  opacity: ${({ disabled, $loading }) => (disabled || $loading ? 0.5 : 1)};
 `;

@@ -4,7 +4,7 @@ export const employeeSchema = Yup.object().shape({
   // Employee Information -------------------------------------------
   name: Yup.string().required("Name is required"),
   gender: Yup.number().required("Gender is required"),
-  mother_name: Yup.string().optional(),
+  mother_name: Yup.string().nullable(),
   dob: Yup.string().required("Date of birth is required"),
   pob: Yup.string(),
   ktp_no: Yup.number()
@@ -23,7 +23,7 @@ export const employeeSchema = Yup.object().shape({
   bank_account_no: Yup.number()
     .nullable()
     .typeError("Bank Account must be a number"),
-  bank_name: Yup.string(),
+  bank_name: Yup.string().nullable(),
   family_card_number: Yup.number()
     .nullable()
     .typeError("Family Card must be a number"),

@@ -6,34 +6,21 @@ import { Select } from "@components/formComponents";
 import Checkbox from "@components/formComponents/Checkbox/Checkbox";
 
 import { useFormikContext } from "formik";
-import helpers from "@helpers/employeeManagement/form";
 
 import { EShift } from "src/enums/employee";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IDepartment } from "@interfaces/department";
 import { IPosition } from "@interfaces/position";
-import { useEffect } from "react";
 
 interface IEmploymentDetailsProps {
   departments: IDepartment[];
   positions: IPosition[];
-  setError: (isError: boolean) => void;
 }
 export default function EmploymentDetails({
   departments,
   positions,
-  setError,
 }: IEmploymentDetailsProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
-
-  useEffect(() => {
-    const isAnyError = helpers.checkErrors(errors, [
-      "department_id",
-      "position_id",
-      "shift",
-    ]);
-    setError(isAnyError);
-  }, [errors]);
 
   return (
     <S.EmploymentDetails>

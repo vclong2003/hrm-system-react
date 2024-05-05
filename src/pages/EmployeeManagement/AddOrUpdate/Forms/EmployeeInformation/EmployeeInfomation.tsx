@@ -7,44 +7,17 @@ import { IMarriage } from "@interfaces/marriage";
 import { Col } from "antd";
 import { Select as AntSelect } from "antd";
 import { useFormikContext } from "formik";
-import { useEffect } from "react";
 import { EGender } from "src/enums/employee";
-import helper from "@helpers/employeeManagement/form";
 
 interface IEmployeeInformationProps {
   nik?: string;
   marriages: IMarriage[];
-  setError: (isError: boolean) => void;
 }
 export default function EmployeeInformation({
   nik,
   marriages,
-  setError,
 }: IEmployeeInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
-  useEffect(() => {
-    const isAnyError = helper.checkErrors(errors, [
-      "name",
-      "gender",
-      "mother_name",
-      "dob",
-      "pob",
-      "ktp_no",
-      "nc_id",
-      "home_address_1",
-      "home_address_2",
-      "mobile_no",
-      "tel_no",
-      "marriage_id",
-      "card_number",
-      "bank_account_no",
-      "bank_name",
-      "family_card_number",
-      "safety_insurance_no",
-      "health_insurance_no",
-    ]);
-    setError(isAnyError);
-  }, [errors]);
 
   return (
     <S.EmployeeInformation>

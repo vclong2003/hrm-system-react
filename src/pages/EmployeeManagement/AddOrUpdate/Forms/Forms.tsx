@@ -15,69 +15,47 @@ import { RootState } from "@store/index";
 
 interface IFormsProps {
   tab: EFORM_TAB;
-  onSetError: (tab: EFORM_TAB, isError: boolean) => void;
 }
-export default function Forms({ tab, onSetError }: IFormsProps) {
+export default function Forms({ tab }: IFormsProps) {
   const { employee } = useSelector((state: RootState) => state.employeeState);
   const { marriages, departments, positions, grades, benefits } =
     useFormSelectOptions();
-  const { setFieldValue, resetForm } =
+  const { setFieldValue, values, validateForm, resetForm } =
     useFormikContext<ICreateEmployeePayload>();
 
   useEffect(() => {
-    if (!employee) return resetForm();
+    resetForm();
 
+    if (!employee) return;
     // Set form values when employee is present (edit mode)
     Object.entries(employee).forEach(([key, value]) => {
       setFieldValue(key, value);
     });
-    setFieldValue("annual_leaves", null); // Quick fix
+    // Quick fix
+    setFieldValue("annual_leaves", null);
+    // Santinize benefits
     setFieldValue(
       "benefits",
-      employee.benefits.map((b) => b.id) // Santinize benefits
+      employee.benefits.map((b) => b.id)
     );
   }, [employee]);
+
+  useEffect(() => {
+    validateForm();
+  }, [values]);
 
   return (
     <>
       {tab === EFORM_TAB.EMPLOYEE_INFORMATION && (
-        <EmployeeInformation
-          nik={employee?.staff_id}
-          marriages={marriages}
-          setError={(isError) =>
-            onSetError(EFORM_TAB.EMPLOYEE_INFORMATION, isError)
-          }
-        />
+        <EmployeeInformation nik={employee?.staff_id} marriages={marriages} />
       )}
-      {tab === EFORM_TAB.CONTRACT_INFORMATION && (
-        <ContractInformation
-          setError={(isError) =>
-            onSetError(EFORM_TAB.CONTRACT_INFORMATION, isError)
-          }
-        />
-      )}
+      {tab === EFORM_TAB.CONTRACT_INFORMATION && <ContractInformation />}
       {tab === EFORM_TAB.EMPLOYMENT_DETAILS && (
-        <EmploymentDetails
-          departments={departments}
-          positions={positions}
-          setError={(isError) =>
-            onSetError(EFORM_TAB.EMPLOYMENT_DETAILS, isError)
-          }
-        />
+        <EmploymentDetails departments={departments} positions={positions} />
       )}
-      {tab === EFORM_TAB.SALARY_AND_WAGES && (
-        <SalaryAndWages
-          setError={(isError) =>
-            onSetError(EFORM_TAB.SALARY_AND_WAGES, isError)
-          }
-        />
-      )}
+      {tab === EFORM_TAB.SALARY_AND_WAGES && <SalaryAndWages />}
       {tab === EFORM_TAB.OTHERS && (
-        <Others
-          grades={grades}
-          benefits={benefits}
-          setError={(isError) => onSetError(EFORM_TAB.OTHERS, isError)}
-        />
+        <Others grades={grades} benefits={benefits} />
       )}
     </>
   );
