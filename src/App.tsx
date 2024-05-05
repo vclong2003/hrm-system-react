@@ -1,12 +1,15 @@
 import AppProvider from "@providers/AppProvider";
 import NotificationProvider from "@providers/NotificationProvider";
+import UserProvider from "@providers/UserProvider";
 import AppRoutes from "@routes/AppRoutes";
 
 function App() {
   return (
     <AppProvider>
       <NotificationProvider>
-        <AppRoutes />
+        <UserProvider>
+          <AppRoutes />
+        </UserProvider>
       </NotificationProvider>
     </AppProvider>
   );

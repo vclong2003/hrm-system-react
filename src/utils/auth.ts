@@ -20,11 +20,17 @@ const getToken = (): string | null => {
  * Redirects the user to the login page.
  */
 const redirectToLogin = (): void => {
-  window.location.href = "/login";
+  window.location.href = "/";
+};
+
+const logout = (): void => {
+  localStorage.removeItem(TOKEN_KEY);
+  redirectToLogin();
 };
 
 export default {
   saveToken,
   getToken,
   redirectToLogin,
+  logout,
 };

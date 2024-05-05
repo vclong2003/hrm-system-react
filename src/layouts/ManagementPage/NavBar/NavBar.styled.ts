@@ -7,10 +7,11 @@ export const NavBar = styled.nav`
   flex-direction: row;
   align-items: center;
   box-shadow: var(--box-shadow);
+  padding: var(--s-3) var(--s-8);
+  background-color: var(--c-white);
 `;
 
 export const Logo = styled.div`
-  margin: var(--s-3) var(--s-8);
   display: flex;
   flex-direction: row;
   gap: var(--s-3);
@@ -23,8 +24,6 @@ export const LogoImage = styled.img`
 
 export const LogoText = styled(Typo)``;
 
-export const Divider = styled.div``;
-
-export const LanguageSwitcher = styled.div``;
-
-export const UserMenu = styled.div``;
+export const Divider = styled.div`
+  flex: 1;
+`;

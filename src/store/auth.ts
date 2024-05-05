@@ -18,6 +18,14 @@ export const login = createAsyncThunk(
   }
 );
 
+// Get current user -----------------------------------------------
+export const getCurrentUser = createAsyncThunk(
+  `${name}/getCurrentUser`,
+  async () => {
+    return await authService.getCurrentUser();
+  }
+);
+
 const authState = createSlice({
   name,
   initialState,
@@ -25,6 +33,10 @@ const authState = createSlice({
   extraReducers: (builder) => {
     // Login ---------------------------------------------
     builder.addCase(login.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+    // Get current user -----------------------------------
+    builder.addCase(getCurrentUser.fulfilled, (state, action) => {
       state.user = action.payload;
     });
   },
