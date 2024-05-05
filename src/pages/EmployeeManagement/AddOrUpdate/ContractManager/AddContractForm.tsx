@@ -29,6 +29,7 @@ export default function AddContractForm() {
   const onSubmit = (values: IFormValues) => {
     if (!employee) return;
     if (!values.file) return;
+    if (loading) return;
     setLoading(true);
     dispatch(
       saveContract({
@@ -46,7 +47,7 @@ export default function AddContractForm() {
       initialValues={initialValues}
       enableReinitialize
       onSubmit={onSubmit}>
-      {(contractForm) => (
+      {({ setFieldValue, submitForm }) => (
         <>
           <S.FormGroup>
             <S.LabelCol span={10}>
@@ -71,9 +72,7 @@ export default function AddContractForm() {
                   hidden
                   type="file"
                   accept="image/*,.pdf,.csv,.xlsx,.docx"
-                  onChange={(e) =>
-                    contractForm.setFieldValue("file", e.target.files?.[0])
-                  }
+                  onChange={(e) => setFieldValue("file", e.target.files?.[0])}
                 />
                 <Typo variant="body1">Upload</Typo>
               </label>
@@ -82,7 +81,7 @@ export default function AddContractForm() {
               size="large"
               type="button"
               disabled={loading}
-              onClick={contractForm.submitForm}>
+              onClick={submitForm}>
               {loading ? "Saving..." : "Save"}
             </S.SaveButton>
           </S.ButtonGroup>

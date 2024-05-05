@@ -18,13 +18,17 @@ export const LabelCol = styled(Col)`
   align-items: center;
 `;
 
-export const UploadBtn = styled.div`
+interface IUploadBtnProps {
+  $loading?: boolean;
+}
+export const UploadBtn = styled.div<IUploadBtnProps>`
   background-color: var(--c-blue-1);
   padding: var(--s-1) var(--s-3);
   width: fit-content;
   border-radius: var(--br-1);
   border: 1px dashed var(--c-blue);
   color: var(--c-blue);
+  opacity: ${({ $loading }) => ($loading ? 0.5 : 1)};
 `;
 
 export const TableContainer = styled(Col)`

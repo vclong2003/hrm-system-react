@@ -10,7 +10,10 @@ import Trash from "@assets/icons/trash.png";
 import { saveAs } from "file-saver";
 import { saveContract } from "@store/employee";
 
-export default function ContractTable() {
+interface IContractTableProps {
+  loading?: boolean;
+}
+export default function ContractTable({ loading }: IContractTableProps) {
   const dispatch = useDispatch<AppDispatch>();
   const { employee } = useSelector((state: RootState) => state.employeeState);
 
@@ -25,7 +28,11 @@ export default function ContractTable() {
   };
 
   return (
-    <Table dataSource={employee?.contracts} pagination={false} rowKey={"id"}>
+    <Table
+      dataSource={employee?.contracts}
+      pagination={false}
+      rowKey={"id"}
+      loading={loading}>
       <Column title="No" render={(_, __, index) => index + 1} />
       <Column title="Contract Name" dataIndex="name" />
       <Column title="Sign Date" dataIndex="contract_date" />

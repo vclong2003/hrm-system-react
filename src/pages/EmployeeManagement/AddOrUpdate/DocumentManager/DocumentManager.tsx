@@ -13,8 +13,11 @@ import { saveAs } from "file-saver";
 
 import Download from "@assets/icons/download.png";
 import Trash from "@assets/icons/trash.png";
+import { useState } from "react";
 
 export default function DocumentManager() {
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch<AppDispatch>();
   const { employee } = useSelector((state: RootState) => state.employeeState);
   if (!employee) return null;
@@ -22,12 +25,13 @@ export default function DocumentManager() {
   const onFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setLoading(true);
     dispatch(
       updateEmployeeDocuments({
         employee_id: employee.id,
         "documents[]": [file],
       })
-    );
+    ).then(() => setLoading(false));
   };
   const onDocumentDownload = (document: IEmployeeDocument) => {
     saveAs(document.document);
@@ -50,22 +54,29 @@ export default function DocumentManager() {
           </S.LabelCol>
           <Col span={16}>
             {/* File input ------------------------------------------ */}
-            <S.UploadBtn>
+            <S.UploadBtn $loading={loading}>
               <label>
                 <input
                   hidden
                   type="file"
                   onChange={onFileSelect}
                   accept="image/*,.pdf,.csv,.xlsx,.docx"
+                  disabled={loading}
                 />
-                <Typo variant="body1">Upload</Typo>
+                <Typo variant="body1">
+                  {loading ? "Uploading..." : "Upload"}
+                </Typo>
               </label>
             </S.UploadBtn>
           </Col>
         </S.FormGroup>
       </Col>
       <S.TableContainer span={24}>
-        <Table pagination={false} dataSource={employee.documents} rowKey={"id"}>
+        <Table
+          pagination={false}
+          dataSource={employee.documents}
+          rowKey={"id"}
+          loading={loading}>
           <Column title="No" render={(_, __, index) => index + 1} />
           <Column
             title="Document Name"
