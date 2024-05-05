@@ -4,17 +4,20 @@ import { Form as FormikForm } from "formik";
 import { Input } from "@components/formComponents";
 import Button from "@components/Button/Button";
 
-export const ChangePassword = styled.div`
+export const ResetPassword = styled.div`
   max-width: 384px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: var(--s-6);
 `;
 
 export const Title = styled(Typo)``;
 
-export const InnerTitle = styled(Typo)``;
+export const InnerTitle = styled(Typo)`
+  margin-bottom: var(--s-3);
+`;
 
 export const Divider = styled.div`
   width: 100%;
@@ -41,5 +44,6 @@ export const FormInput = styled(Input)`
 `;
 
 export const ConfirmBtn = styled(Button)`
+  width: 100%;
   margin: var(--s-5) 0;
 `;

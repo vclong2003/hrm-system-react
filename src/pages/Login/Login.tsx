@@ -69,7 +69,7 @@ export default function Login() {
               Login
             </S.LoginButton>
             <S.ForgotPasswordContainer>
-              <S.ForgotPasswordLink to="#">
+              <S.ForgotPasswordLink to="/forgot-password">
                 Forgot Your Password?
               </S.ForgotPasswordLink>
             </S.ForgotPasswordContainer>

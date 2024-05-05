@@ -1,6 +1,6 @@
 import { IRoute } from "@interfaces/common";
+import ResetPassword from "@pages/ResetPassword/ResetPassword";
 
-import ChangePassword from "@pages/ChangePassword/ChangePassword";
 import ForgotPassword from "@pages/ForgotPassword/ForgotPassword";
 import Login from "@pages/Login/Login";
 
@@ -10,8 +10,8 @@ export const authRoutes: IRoute[] = [
     component: <Login />,
   },
   {
-    path: "/change-password",
-    component: <ChangePassword />,
+    path: "/reset-password",
+    component: <ResetPassword />,
   },
   {
     path: "/forgot-password",
