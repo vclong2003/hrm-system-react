@@ -35,15 +35,14 @@ export default function EmployeeList() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
   const [page, setPage] = useState(Number(getParam("page")) || 1);
-  const [searchValue, setSearchValue] = useDebounce<string>(
-    getParam("search") || ""
-  );
+  const [searchValue, setSearchValue] = useDebounce<string>(getParam("search"));
 
   const openDeleteModal = () => setShowDeleteModal(true);
   const closeDeleteModal = () => setShowDeleteModal(false);
   const openEmployeeDetail = (id: number) => navigate(`add-or-update/${id}`);
 
   useEffect(() => {
+    console.log(page, searchValue);
     setLoading(true);
     dispatch(getEmployeeList({ page, search: searchValue }))
       .unwrap()
@@ -64,13 +63,14 @@ export default function EmployeeList() {
         />
       )}
       <Breadcrumb items={list} />
+      {/* Page heading ----------------------------------------------- */}
       <PageHeading
         variant="search"
-        initSearchValue={getParam("search") || ""}
+        initSearchValue={getParam("search")}
         onSearch={setSearchValue}
       />
       <S.TableContainer>
-        {/* Table header buttons ----------------------------- */}
+        {/* Table header buttons --------------------------- */}
         <S.BtnsContainer>
           <S.AddBtn onClick={() => navigate("add-or-update")}>
             <S.BtnIcon src={Add} />

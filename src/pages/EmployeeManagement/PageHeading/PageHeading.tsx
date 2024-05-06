@@ -8,7 +8,7 @@ interface IPageHeadingProps {
   variant: "search" | "add" | "update";
   disabled?: boolean;
   loading?: boolean;
-  initSearchValue?: string;
+  initSearchValue?: string | undefined | null;
   onSearch?: (value: string) => void;
 }
 export default function PageHeading({
@@ -26,7 +26,7 @@ export default function PageHeading({
           allowClear
           placeholder="Search..."
           prefix={<S.SearchIcon src={Search} />}
-          defaultValue={initSearchValue}
+          defaultValue={initSearchValue || ""}
           onChange={(e) => onSearch?.(e.target.value)}
         />
       )}
