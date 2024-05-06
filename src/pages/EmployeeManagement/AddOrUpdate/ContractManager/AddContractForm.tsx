@@ -1,4 +1,4 @@
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import * as S from "./ContractManager.styled";
 import Typo from "@components/Typo/Typo";
 import { Col } from "antd";
@@ -25,7 +25,10 @@ export default function AddContractForm() {
 
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = (values: IFormValues) => {
+  const onSubmit = (
+    values: IFormValues,
+    helpers: FormikHelpers<IFormValues>
+  ) => {
     if (!employee) return;
     if (!values.file) return;
     if (loading) return;
@@ -38,7 +41,9 @@ export default function AddContractForm() {
         "documents[]": values.file,
         "modified_contracts[]": "",
       })
-    ).then(() => setLoading(false));
+    )
+      .then(() => setLoading(false))
+      .then(() => helpers.resetForm());
   };
 
   return (

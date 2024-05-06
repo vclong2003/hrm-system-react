@@ -30,4 +30,12 @@ export const COLUMNS: TableColumnsType<IData> = [
     title: "Position",
     dataIndex: "position_name",
   },
+  {
+    title: "Grade",
+    dataIndex: "grade_name",
+  },
+  {
+    title: "Start Date",
+    dataIndex: "contract_start_date",
+  },
 ];
