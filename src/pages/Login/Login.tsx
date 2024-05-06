@@ -20,13 +20,15 @@ export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
   const { user } = useSelector((state: RootState) => state.authState);
   const [companies, setCompanies] = useState<ICompany[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     companyService.getCompanyList().then((data) => setCompanies(data));
   }, []);
 
   const onSubmit = (values: ILoginPayload) => {
-    dispatch(login(values));
+    setLoading(true);
+    dispatch(login(values)).then(() => setLoading(false));
   };
 
   return (
@@ -65,7 +67,7 @@ export default function Login() {
             </S.FormGroup>
 
             {/* Buttons ----------------------------------------------------- */}
-            <S.LoginButton size="large" type="submit">
+            <S.LoginButton size="large" type="submit" disabled={loading}>
               Login
             </S.LoginButton>
             <S.ForgotPasswordContainer>

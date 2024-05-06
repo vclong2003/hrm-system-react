@@ -3,6 +3,7 @@ import * as S from "./ResetPassword.styled";
 import { Formik } from "formik";
 import { Navigate } from "react-router-dom";
 
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import useQueryParams from "@hooks/useQueryParams";
@@ -21,12 +22,14 @@ export default function ResetPassword() {
   const navigate = useNavigate();
   const { getParam } = useQueryParams<"token" | "email" | "company_id">();
   const { user } = useSelector((state: RootState) => state.authState);
+  const [loading, setLoading] = useState(false);
 
   if (!getParam("token") || !getParam("email") || !getParam("company_id")) {
     return <Navigate to="/" />;
   }
 
   const onSubmit = (values: Partial<IResetPasswordPayload>) => {
+    setLoading(true);
     authService
       .resetPassword({
         ...values,
@@ -34,10 +37,9 @@ export default function ResetPassword() {
         company_id: Number(getParam("company_id")),
         token: getParam("token"),
       } as IResetPasswordPayload)
-      .then(() =>
-        notiUtil.notifySuccess("Password changed successfully! Redirecting...")
-      )
-      .then(() => navigate("/login"));
+      .then(() => notiUtil.notifySuccess("Password changed successfully!"))
+      .then(() => navigate("/login"))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -53,7 +55,7 @@ export default function ResetPassword() {
             <S.FormInput name="password" type="password" />
             <S.FormLabel variant="body1">Confirm New Password</S.FormLabel>
             <S.FormInput name="password_confirmation" type="password" />
-            <S.ConfirmBtn type="submit" size="large">
+            <S.ConfirmBtn type="submit" size="large" disabled={loading}>
               Confirm
             </S.ConfirmBtn>
           </S.InputsContainer>

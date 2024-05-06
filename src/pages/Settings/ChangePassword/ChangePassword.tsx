@@ -6,6 +6,7 @@ import { Form, Formik } from "formik";
 import { Col } from "antd";
 import { Input } from "@components/formComponents";
 
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import authService from "@services/auth";
 import notiUtil from "@utils/notification";
@@ -21,16 +22,19 @@ const initialValues: Partial<IChangePasswordPayload> = {
 
 export default function ChangePassword() {
   const { user } = useSelector((state: RootState) => state.authState);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = (values: Partial<IChangePasswordPayload>) => {
     if (!user) return;
+    setLoading(true);
     authService
       .changePassword({
         ...values,
         company_id: user.company_id,
         email: user.email,
       } as IChangePasswordPayload)
-      .then(() => notiUtil.notifySuccess("Password changed successfully!"));
+      .then(() => notiUtil.notifySuccess("Password changed successfully!"))
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -55,7 +59,7 @@ export default function ChangePassword() {
             </S.FormGroup>
             <S.FormGroup>
               <Col span={8}>
-                <S.SubmitBtn type="submit" size="large">
+                <S.SubmitBtn type="submit" size="large" disabled={loading}>
                   Save
                 </S.SubmitBtn>
               </Col>
