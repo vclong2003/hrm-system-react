@@ -26,7 +26,6 @@ export const COLUMNS: TableColumnsType<IData> = [
     title: "Department",
     dataIndex: "department_name",
   },
-  { title: "salary", dataIndex: "audit_salary" },
   {
     title: "Position",
     dataIndex: "position_name",

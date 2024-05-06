@@ -46,13 +46,12 @@ export default function EmployeeList() {
   useEffect(() => {
     setLoading(true);
     dispatch(getEmployeeList({ page, search: searchValue }))
-      .then(() => {
-        setParam("search", searchValue);
-        if (searchValue) setPage(1);
-      })
-      .then(() => setLoading(false));
+      .unwrap()
+      .then(({ last_page }) => last_page < page && setPage(1))
+      .finally(() => setLoading(false));
   }, [dispatch, page, searchValue]);
 
+  useEffect(() => setParam("search", searchValue), [searchValue]);
   useEffect(() => setParam("page", page.toString()), [page]);
 
   return (
