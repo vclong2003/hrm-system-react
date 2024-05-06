@@ -1,7 +1,6 @@
 import * as S from "./EmployeeInformation.styled";
 import Typo from "@components/Typo/Typo";
-import { Input, Select } from "@components/formComponents";
-import DatePicker from "@components/formComponents/DatePicker/DatePicker";
+import { DatePicker, Input, Select } from "@components/formComponents";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IMarriage } from "@interfaces/marriage";
 import { Col } from "antd";

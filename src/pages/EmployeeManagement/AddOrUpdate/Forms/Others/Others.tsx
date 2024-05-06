@@ -1,9 +1,8 @@
 import * as S from "./Others.styled";
 
 import { Col, Select as AntdSelect } from "antd";
-import { Select } from "@components/formComponents";
+import { Select, TextArea } from "@components/formComponents";
 import Typo from "@components/Typo/Typo";
-import TextArea from "@components/formComponents/TextArea/TextArea";
 
 import { useFormikContext } from "formik";
 

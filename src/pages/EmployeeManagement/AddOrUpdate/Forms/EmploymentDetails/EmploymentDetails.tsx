@@ -2,8 +2,7 @@ import * as S from "./EmploymentDetails.styled";
 
 import { Col, Select as AntdSelect } from "antd";
 import Typo from "@components/Typo/Typo";
-import { Select } from "@components/formComponents";
-import Checkbox from "@components/formComponents/Checkbox/Checkbox";
+import { Checkbox, Select } from "@components/formComponents";
 
 import { useFormikContext } from "formik";
 

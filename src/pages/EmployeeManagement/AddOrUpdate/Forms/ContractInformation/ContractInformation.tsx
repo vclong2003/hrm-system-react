@@ -4,8 +4,7 @@ import { useFormikContext } from "formik";
 import Typo from "@components/Typo/Typo";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { Select as AntdSelect } from "antd";
-import DatePicker from "@components/formComponents/DatePicker/DatePicker";
-import { Select } from "@components/formComponents";
+import { DatePicker, Select } from "@components/formComponents";
 import { EType } from "src/enums/employee";
 
 import ContractManager from "../../ContractManager/ContractManager";
