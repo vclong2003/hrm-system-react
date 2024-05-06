@@ -43,6 +43,7 @@ export default function AddOrUpdate() {
       .finally(() => setLoading(false));
   };
   const onUpdateEmployee = (values: ICreateEmployeePayload) => {
+    console.log(values);
     setLoading(true);
     dispatch(updateEmployee({ id: Number(employeeId), ...values }))
       .unwrap()

@@ -37,10 +37,12 @@ export default function Forms({ tab }: IFormsProps) {
       "benefits",
       employee.benefits.map((b) => b.id)
     );
+    console.log(employee);
   }, [employee]);
 
   useEffect(() => {
     validateForm();
+    console.log(values);
   }, [values]);
 
   const formParts = {
