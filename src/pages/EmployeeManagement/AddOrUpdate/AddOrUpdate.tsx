@@ -7,25 +7,25 @@ import Typo from "@components/Typo/Typo";
 import HorizontalMenu from "@components/HorizontalMenu/HorizontalMenu";
 import Forms from "./Forms/Forms";
 
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { add, update } from "@variables/employeeManagement/breadcrumbs";
+import { getEmployeeById, setEmployee, updateEmployee } from "@store/employee";
 import employeeService from "@services/employee";
 import notiUtils from "@utils/notification";
-
-import { employeeSchema } from "@validations/employee";
-import { EFORM_TAB } from "src/enums/employee-addOrCreate";
-import { FORM_TABS } from "@variables/employeeManagement/formTabs";
-import { initialValues } from "@variables/employeeManagement/formInitialValues";
-import { ICreateEmployeePayload } from "@interfaces/employee";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@store/index";
-import { getEmployeeById, setEmployee, updateEmployee } from "@store/employee";
 import helper from "@helpers/employeeManagement/form";
 
+import { ICreateEmployeePayload } from "@interfaces/employee";
+import { EFORM_TAB } from "src/enums/employee-addOrCreate";
+import { FORM_TABS } from "@variables/employeeManagement/formTabs";
+import { add, update } from "@variables/employeeManagement/breadcrumbs";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@store/index";
+import { employeeSchema } from "@validations/employee";
+import { initialValues } from "@variables/employeeManagement/formInitialValues";
+
 export default function AddOrUpdate() {
-  const navigate = useNavigate();
   const { employeeId } = useParams();
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
   const [mode, setMode] = useState<"add" | "update">("add");

@@ -1,7 +1,8 @@
 import { getCurrentUser } from "@store/auth";
-import { AppDispatch } from "@store/index";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+
+import { AppDispatch } from "@store/index";
 
 interface IUserProviderProps {
   children: JSX.Element;

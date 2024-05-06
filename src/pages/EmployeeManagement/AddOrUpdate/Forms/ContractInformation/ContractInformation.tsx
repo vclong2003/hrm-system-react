@@ -1,13 +1,15 @@
-import { Col } from "antd";
 import * as S from "./ContractInformation.styled";
-import { useFormikContext } from "formik";
-import Typo from "@components/Typo/Typo";
-import { ICreateEmployeePayload } from "@interfaces/employee";
-import { Select as AntdSelect } from "antd";
-import { DatePicker, Select } from "@components/formComponents";
-import { EType } from "src/enums/employee";
 
 import ContractManager from "../../ContractManager/ContractManager";
+import Typo from "@components/Typo/Typo";
+import { Select as AntdSelect } from "antd";
+import { DatePicker, Select } from "@components/formComponents";
+import { Col } from "antd";
+
+import { useFormikContext } from "formik";
+
+import { ICreateEmployeePayload } from "@interfaces/employee";
+import { EType } from "src/enums/employee";
 
 export default function ContractInformation() {
   const { errors } = useFormikContext<ICreateEmployeePayload>();

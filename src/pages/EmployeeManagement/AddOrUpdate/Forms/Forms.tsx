@@ -5,12 +5,12 @@ import SalaryAndWages from "./SalaryAndWages/SalaryAndWages";
 import Others from "./Others/Others";
 
 import useFormSelectOptions from "@hooks/employeeManagement/useFormSelectOptions";
-
-import { ICreateEmployeePayload } from "@interfaces/employee";
-import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 import { useEffect } from "react";
 import { useFormikContext } from "formik";
 import { useSelector } from "react-redux";
+
+import { ICreateEmployeePayload } from "@interfaces/employee";
+import { EFORM_TAB } from "src/enums/employee-addOrCreate";
 import { RootState } from "@store/index";
 
 interface IFormsProps {
@@ -25,7 +25,6 @@ export default function Forms({ tab }: IFormsProps) {
 
   useEffect(() => {
     resetForm();
-
     if (!employee) return;
     // Set form values when employee is present (edit mode)
     Object.entries(employee).forEach(([key, value]) => {
@@ -44,19 +43,17 @@ export default function Forms({ tab }: IFormsProps) {
     validateForm();
   }, [values]);
 
-  return (
-    <>
-      {tab === EFORM_TAB.EMPLOYEE_INFORMATION && (
-        <EmployeeInformation nik={employee?.staff_id} marriages={marriages} />
-      )}
-      {tab === EFORM_TAB.CONTRACT_INFORMATION && <ContractInformation />}
-      {tab === EFORM_TAB.EMPLOYMENT_DETAILS && (
-        <EmploymentDetails departments={departments} positions={positions} />
-      )}
-      {tab === EFORM_TAB.SALARY_AND_WAGES && <SalaryAndWages />}
-      {tab === EFORM_TAB.OTHERS && (
-        <Others grades={grades} benefits={benefits} />
-      )}
-    </>
-  );
+  const formParts = {
+    [EFORM_TAB.EMPLOYEE_INFORMATION]: (
+      <EmployeeInformation marriages={marriages} />
+    ),
+    [EFORM_TAB.CONTRACT_INFORMATION]: <ContractInformation />,
+    [EFORM_TAB.EMPLOYMENT_DETAILS]: (
+      <EmploymentDetails departments={departments} positions={positions} />
+    ),
+    [EFORM_TAB.SALARY_AND_WAGES]: <SalaryAndWages />,
+    [EFORM_TAB.OTHERS]: <Others grades={grades} benefits={benefits} />,
+  };
+
+  return formParts[tab];
 }

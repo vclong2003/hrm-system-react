@@ -2,6 +2,7 @@ import * as S from "./EmployeeList.styled.ts";
 
 import Add from "@assets/icons/add.png";
 import Trash from "@assets/icons/trash.png";
+
 import PageHeading from "../PageHeading/PageHeading.tsx";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb.tsx";
 import Table from "@components/Table/Table.tsx";
@@ -9,16 +10,17 @@ import DeleteModal from "./DeleteModal.tsx";
 import { Pagination } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Key, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useDebounce from "@hooks/useDebounce.ts";
+import useQueryParams from "@hooks/useQueryParams.ts";
 import { getEmployeeList } from "@store/employee.ts";
+import helper from "@helpers/employeeManagement/employeeList.ts";
 
+import { Key } from "react";
 import { AppDispatch, RootState } from "@store/index.ts";
 import { COLUMNS } from "@variables/employeeManagement/employeeListColumns.ts";
 import { list } from "@variables/employeeManagement/breadcrumbs.ts";
-import useDebounce from "@hooks/useDebounce.ts";
-import useQueryParams from "@hooks/useQueryParams.ts";
-import helper from "@helpers/employeeManagement/employeeList.ts";
 
 export default function EmployeeList() {
   const navigate = useNavigate();
@@ -32,7 +34,6 @@ export default function EmployeeList() {
   const [loading, setLoading] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedRowKeys, setSelectedRowKeys] = useState<Key[]>([]);
-
   const [page, setPage] = useState(Number(getParam("page")) || 1);
   const [searchValue, setSearchValue] = useDebounce<string>(
     getParam("search") || ""
@@ -51,10 +52,12 @@ export default function EmployeeList() {
       })
       .then(() => setLoading(false));
   }, [dispatch, page, searchValue]);
+
   useEffect(() => setParam("page", page.toString()), [page]);
 
   return (
     <S.EmployeeList>
+      {/* Delete modal ----------------------------------------------- */}
       {showDeleteModal && (
         <DeleteModal
           delete_ids={selectedRowKeys as number[]}
@@ -68,6 +71,7 @@ export default function EmployeeList() {
         onSearch={setSearchValue}
       />
       <S.TableContainer>
+        {/* Table header buttons ----------------------------- */}
         <S.BtnsContainer>
           <S.AddBtn onClick={() => navigate("add-or-update")}>
             <S.BtnIcon src={Add} />
@@ -81,6 +85,7 @@ export default function EmployeeList() {
           </S.DeleteBtn>
         </S.BtnsContainer>
         <S.Divider />
+        {/* Table ---------------------------------------------------- */}
         <Table
           loading={loading}
           pagination={false}
@@ -98,6 +103,7 @@ export default function EmployeeList() {
           }}
         />
         <S.Divider />
+        {/* Pagination ----------------------------------------------- */}
         <Pagination
           current={page}
           total={total}

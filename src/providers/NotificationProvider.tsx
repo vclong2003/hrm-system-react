@@ -1,3 +1,5 @@
+import "react-toastify/dist/ReactToastify.css"; // Css for toast notification
+
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 

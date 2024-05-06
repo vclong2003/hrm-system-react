@@ -1,15 +1,15 @@
 import * as S from "./EmploymentDetails.styled";
 
-import { Col, Select as AntdSelect } from "antd";
 import Typo from "@components/Typo/Typo";
+import { Col, Select as AntdSelect } from "antd";
 import { Checkbox, Select } from "@components/formComponents";
 
 import { useFormikContext } from "formik";
 
-import { EShift } from "src/enums/employee";
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IDepartment } from "@interfaces/department";
 import { IPosition } from "@interfaces/position";
+import { EShift } from "src/enums/employee";
 
 interface IEmploymentDetailsProps {
   departments: IDepartment[];

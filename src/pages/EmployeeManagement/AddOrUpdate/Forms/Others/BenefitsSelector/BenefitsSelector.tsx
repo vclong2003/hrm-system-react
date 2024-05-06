@@ -1,9 +1,11 @@
-import { IBenefit } from "@interfaces/benefit";
 import * as S from "./BenefitsSelector.styled";
 
 import Cross from "@assets/icons/cross.png";
+
 import { useMemo } from "react";
 import { useFormikContext } from "formik";
+
+import { IBenefit } from "@interfaces/benefit";
 
 interface IBenefitsSelectorProps {
   name: string;

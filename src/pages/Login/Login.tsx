@@ -3,19 +3,18 @@ import * as S from "./Login.styled";
 import { Formik } from "formik";
 import { Select as AntSelect } from "antd";
 import { Navigate } from "react-router-dom";
+import { Input, Select } from "@components/formComponents";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import companyService from "@services/company";
 import { login } from "@store/auth";
+import companyService from "@services/company";
 
-import { ICompany } from "@interfaces/company";
 import { ILoginPayload } from "@interfaces/auth";
+import { ICompany } from "@interfaces/company";
 import { AppDispatch, RootState } from "@store/index";
-
 import { loginSchema } from "@validations/login";
 import { initialValues } from "@variables/auth/loginForm";
-import { Input, Select } from "@components/formComponents";
 
 export default function Login() {
   const dispatch = useDispatch<AppDispatch>();
@@ -65,6 +64,7 @@ export default function Login() {
               </Select>
             </S.FormGroup>
 
+            {/* Buttons ----------------------------------------------------- */}
             <S.LoginButton size="large" type="submit">
               Login
             </S.LoginButton>

@@ -1,16 +1,16 @@
 import * as S from "./Others.styled";
 
+import BenefitsSelector from "./BenefitsSelector/BenefitsSelector";
+import DocumentManager from "../../DocumentManager/DocumentManager";
+import Typo from "@components/Typo/Typo";
 import { Col, Select as AntdSelect } from "antd";
 import { Select, TextArea } from "@components/formComponents";
-import Typo from "@components/Typo/Typo";
 
 import { useFormikContext } from "formik";
 
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IGrade } from "@interfaces/grade";
 import { IBenefit } from "@interfaces/benefit";
-import BenefitsSelector from "./BenefitsSelector/BenefitsSelector";
-import DocumentManager from "../../DocumentManager/DocumentManager";
 
 interface IOthersProps {
   grades: IGrade[];

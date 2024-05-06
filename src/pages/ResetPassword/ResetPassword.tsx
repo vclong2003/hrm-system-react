@@ -1,13 +1,16 @@
 import * as S from "./ResetPassword.styled";
 
-import { useSelector } from "react-redux";
-import { RootState } from "@store/index";
 import { Formik } from "formik";
+import { Navigate } from "react-router-dom";
+
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import useQueryParams from "@hooks/useQueryParams";
-import { Navigate, useNavigate } from "react-router-dom";
-import { IResetPasswordPayload } from "@interfaces/auth";
 import authService from "@services/auth";
 import notiUtil from "@utils/notification";
+
+import { IResetPasswordPayload } from "@interfaces/auth";
+import { RootState } from "@store/index";
 
 const initialValues: Partial<IResetPasswordPayload> = {
   password: "",

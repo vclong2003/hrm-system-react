@@ -1,16 +1,18 @@
-import { changePassword } from "@variables/settings/breadcrumbs";
 import * as S from "./ChangePassword.styled";
+
+import Typo from "@components/Typo/Typo";
 import Breadcrumb from "@components/Breadcrumb/Breadcrumb";
 import { Form, Formik } from "formik";
-import Typo from "@components/Typo/Typo";
 import { Col } from "antd";
 import { Input } from "@components/formComponents";
-import { IChangePasswordPayload } from "@interfaces/auth";
-import { useSelector } from "react-redux";
-import { RootState } from "@store/index";
 
+import { useSelector } from "react-redux";
 import authService from "@services/auth";
 import notiUtil from "@utils/notification";
+
+import { IChangePasswordPayload } from "@interfaces/auth";
+import { RootState } from "@store/index";
+import { changePassword } from "@variables/settings/breadcrumbs";
 
 const initialValues: Partial<IChangePasswordPayload> = {
   password: "",

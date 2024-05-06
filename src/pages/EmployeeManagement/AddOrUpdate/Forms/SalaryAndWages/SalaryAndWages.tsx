@@ -1,9 +1,12 @@
-import { ICreateEmployeePayload } from "@interfaces/employee";
 import * as S from "./SalaryAndWages.styled";
-import { useFormikContext } from "formik";
-import { Col } from "antd";
+
 import Typo from "@components/Typo/Typo";
 import { Input } from "@components/formComponents";
+import { Col } from "antd";
+
+import { useFormikContext } from "formik";
+
+import { ICreateEmployeePayload } from "@interfaces/employee";
 
 export default function SalaryAndWages() {
   const { errors } = useFormikContext<ICreateEmployeePayload>();

@@ -1,8 +1,8 @@
-import Typo from "@components/Typo/Typo";
 import * as S from "./PageHeading.styled";
 
 import Search from "@assets/icons/search.png";
 import Button from "@components/Button/Button";
+import Typo from "@components/Typo/Typo";
 
 interface IPageHeadingProps {
   variant: "search" | "add" | "update";

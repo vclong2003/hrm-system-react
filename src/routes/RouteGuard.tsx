@@ -1,5 +1,5 @@
-import authUtils from "@utils/auth";
 import { Navigate, Outlet } from "react-router-dom";
+import authUtils from "@utils/auth";
 
 export default function RouteGuard() {
   const token = authUtils.getToken();

@@ -1,10 +1,11 @@
 import { Route, Routes } from "react-router-dom";
-import { authRoutes } from "./authRoutes";
-import { managementRoutes } from "./managementRoutes";
 
 import RouteGuard from "./RouteGuard";
 import AuthPage from "@layouts/AuthPage/AuthPage";
 import ManagementPage from "@layouts/ManagementPage/ManagementPage";
+
+import { authRoutes } from "./authRoutes";
+import { managementRoutes } from "./managementRoutes";
 
 export default function AppRoutes() {
   return (

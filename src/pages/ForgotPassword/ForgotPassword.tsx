@@ -1,12 +1,14 @@
 import * as S from "./ForgotPassword.styled";
 
-import { useSelector } from "react-redux";
 import { Formik } from "formik";
-import { RootState } from "@store/index";
 import { Navigate } from "react-router-dom";
-import { IForgotPasswordPayload } from "@interfaces/auth";
+
+import { useSelector } from "react-redux";
 import authService from "@services/auth";
 import notiUtil from "@utils/notification";
+
+import { IForgotPasswordPayload } from "@interfaces/auth";
+import { RootState } from "@store/index";
 
 const initialValues: IForgotPasswordPayload = {
   email: "",

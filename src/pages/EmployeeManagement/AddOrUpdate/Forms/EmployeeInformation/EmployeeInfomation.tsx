@@ -1,22 +1,26 @@
 import * as S from "./EmployeeInformation.styled";
+
 import Typo from "@components/Typo/Typo";
 import { DatePicker, Input, Select } from "@components/formComponents";
+import { Select as AntSelect } from "antd";
+import { Col } from "antd";
+
+import { useFormikContext } from "formik";
+import { useSelector } from "react-redux";
+
 import { ICreateEmployeePayload } from "@interfaces/employee";
 import { IMarriage } from "@interfaces/marriage";
-import { Col } from "antd";
-import { Select as AntSelect } from "antd";
-import { useFormikContext } from "formik";
 import { EGender } from "src/enums/employee";
+import { RootState } from "@store/index";
 
 interface IEmployeeInformationProps {
-  nik?: string;
   marriages: IMarriage[];
 }
 export default function EmployeeInformation({
-  nik,
   marriages,
 }: IEmployeeInformationProps) {
   const { errors } = useFormikContext<ICreateEmployeePayload>();
+  const { employee } = useSelector((state: RootState) => state.employeeState);
 
   return (
     <S.EmployeeInformation>
@@ -29,7 +33,7 @@ export default function EmployeeInformation({
             <Typo variant="body1">NIK:</Typo>
           </S.LabelCol>
           <Col span={15}>
-            <Input disabled value={nik || "Not Generated Yet"} />
+            <Input disabled value={employee?.staff_id || "Not Generated Yet"} />
           </Col>
         </S.FormGroup>
         {/* Name ------------------------------------------------------- */}
