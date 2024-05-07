@@ -41,15 +41,15 @@ export default function EmployeeList() {
   const closeDeleteModal = () => setShowDeleteModal(false);
   const openEmployeeDetail = (id: number) => navigate(`add-or-update/${id}`);
 
-  useEffect(() => {
-    console.log(page, searchValue);
+  const fetchEmployees = () => {
     setLoading(true);
     dispatch(getEmployeeList({ page, search: searchValue }))
       .unwrap()
       .then(({ last_page }) => last_page < page && setPage(1))
       .finally(() => setLoading(false));
-  }, [dispatch, page, searchValue]);
+  };
 
+  useEffect(() => fetchEmployees(), [dispatch, page, searchValue]);
   useEffect(() => setParam("search", searchValue), [searchValue]);
   useEffect(() => setParam("page", page.toString()), [page]);
 
@@ -60,6 +60,7 @@ export default function EmployeeList() {
         <DeleteModal
           delete_ids={selectedRowKeys as number[]}
           onClose={closeDeleteModal}
+          onDeleted={fetchEmployees}
         />
       )}
       <Breadcrumb items={list} />

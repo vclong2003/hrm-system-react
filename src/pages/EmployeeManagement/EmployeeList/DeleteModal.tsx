@@ -1,27 +1,27 @@
 import Typo from "@components/Typo/Typo";
-import { deleteMultipleEmployees } from "@store/employee";
-import { AppDispatch } from "@store/index";
 import { Modal } from "antd";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import employeeService from "@services/employee";
 
 interface IDeleteModalProps {
   delete_ids: number[];
   onClose: () => void;
+  onDeleted: () => void;
 }
 export default function DeleteModal({
   delete_ids,
   onClose,
+  onDeleted,
 }: IDeleteModalProps) {
-  const dispatch = useDispatch<AppDispatch>();
   const [loading, setLoading] = useState(false);
 
   const onDelete = () => {
     if (loading) return;
     if (delete_ids.length === 0) return;
     setLoading(true);
-    dispatch(deleteMultipleEmployees({ record_ids: delete_ids }))
-      .unwrap()
+    employeeService
+      .deleteMultipleEmployees({ record_ids: delete_ids })
+      .then(() => onDeleted())
       .then(() => onClose())
       .finally(() => setLoading(false));
   };
